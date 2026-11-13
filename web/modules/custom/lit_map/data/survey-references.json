@@ -1,0 +1,62 @@
+{
+  "languages": [
+    {
+      "id": "en",
+      "label": "English"
+    },
+    {
+      "id": "es",
+      "label": "Spanish"
+    },
+    {
+      "id": "ko",
+      "label": "Korean"
+    },
+    {
+      "id": "pt",
+      "label": "Portuguese"
+    }
+  ],
+  "municipalities": [
+    {
+      "id": "hackensack",
+      "name": "Hackensack",
+      "county": "34003"
+    },
+    {
+      "id": "fort-lee",
+      "name": "Fort Lee",
+      "county": "34003"
+    },
+    {
+      "id": "jersey-city",
+      "name": "Jersey City",
+      "county": "34017"
+    },
+    {
+      "id": "hoboken",
+      "name": "Hoboken",
+      "county": "34017"
+    },
+    {
+      "id": "morristown",
+      "name": "Morristown",
+      "county": "34027"
+    },
+    {
+      "id": "parsippany-troy-hills",
+      "name": "Parsippany-Troy Hills",
+      "county": "34027"
+    },
+    {
+      "id": "newark",
+      "name": "Newark",
+      "county": "34013"
+    },
+    {
+      "id": "montclair",
+      "name": "Montclair",
+      "county": "34013"
+    }
+  ]
+}

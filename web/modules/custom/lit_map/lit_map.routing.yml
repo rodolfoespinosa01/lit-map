@@ -1,0 +1,27 @@
+lit_map.geometry_preview:
+  path: '/lit-map/geometry-preview'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\GeometryPreviewController::build'
+    _title: 'New Jersey county geometry preview'
+  requirements:
+    _permission: 'access content'
+
+lit_map.bubble_preview:
+  path: '/lit-map/bubble-preview'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\BubblePreviewController::build'
+    _title: 'LiT synthetic bubble map preview'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+lit_map.interaction_preview:
+  path: '/lit-map/interaction-preview'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\InteractionPreviewController::build'
+    _title: 'LiT synthetic interaction preview'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE

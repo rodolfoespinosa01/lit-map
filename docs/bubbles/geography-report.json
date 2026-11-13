@@ -1,0 +1,79 @@
+{
+  "sources": {
+    "cb_2025_us_county_500k": {
+      "url": "https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_us_county_500k.zip",
+      "sha256": "aa976c00b181939755d0da757f4c7c2dc0103c3b3b4530fb2a91c2bb62fc777c"
+    },
+    "cb_2025_34_cousub_500k": {
+      "url": "https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_34_cousub_500k.zip",
+      "sha256": "02eac39c75a27cead005918498ac046c43f3e6302508d94bc0b00c207bbe4d9c"
+    },
+    "cb_2025_us_state_5m": {
+      "url": "https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_us_state_5m.zip",
+      "sha256": "8a45692bc532dbd38938a1924f445850cef2682ea67d750d7fd2f19cfe836903"
+    }
+  },
+  "tools": {
+    "python": "3.11.9",
+    "pyshp": "2.3.1",
+    "pyproj": "3.7.2",
+    "PROJ": "9.5.1",
+    "shapely": "2.1.2"
+  },
+  "countyCount": 21,
+  "municipalityCount": 564,
+  "municipalitiesPerCounty": {
+    "34001": 23,
+    "34003": 70,
+    "34005": 40,
+    "34007": 36,
+    "34009": 16,
+    "34011": 14,
+    "34013": 22,
+    "34015": 24,
+    "34017": 12,
+    "34019": 26,
+    "34021": 12,
+    "34023": 25,
+    "34025": 53,
+    "34027": 39,
+    "34029": 33,
+    "34031": 16,
+    "34033": 15,
+    "34035": 21,
+    "34037": 24,
+    "34039": 21,
+    "34041": 22
+  },
+  "municipalityRings": 611,
+  "municipalityVertices": 32969,
+  "statesIncludingDC": 51,
+  "allAnchorsInterior": true,
+  "allMunicipalAnchorsInsideNamedCounty": true,
+  "extraSimplification": false,
+  "municipalitySvgBytes": {
+    "34001": 32669,
+    "34003": 60586,
+    "34005": 49889,
+    "34007": 34262,
+    "34009": 20744,
+    "34011": 31677,
+    "34013": 25976,
+    "34015": 29370,
+    "34017": 12783,
+    "34019": 29824,
+    "34021": 16885,
+    "34023": 34697,
+    "34025": 49650,
+    "34027": 48286,
+    "34029": 38395,
+    "34031": 20058,
+    "34033": 22209,
+    "34035": 30249,
+    "34037": 20730,
+    "34039": 22153,
+    "34041": 22466
+  },
+  "usaSvgBytes": 1541724,
+  "geometryMetadataBytes": 173779
+}

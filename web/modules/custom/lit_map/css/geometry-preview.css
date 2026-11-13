@@ -1,0 +1,37 @@
+.lit-geometry-preview {
+  max-width: 1120px;
+  margin: 2rem auto;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  color: #203b32;
+  background: #f8faf7;
+  border-top: 5px solid #b51c36;
+  font: 16px/1.6 system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.lit-geometry-preview *,
+.lit-geometry-preview *::before,
+.lit-geometry-preview *::after { box-sizing: border-box; }
+.lit-geometry-preview__eyebrow { color: #8f1931; font-size: .75rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.lit-geometry-preview h2 { margin: .25rem 0 1rem; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.035em; }
+.lit-geometry-preview__intro { max-width: 760px; }
+.lit-geometry-preview__layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 2rem; margin-top: 2rem; align-items: start; }
+.lit-geometry-preview__figure { margin: 0; padding: 1rem; background: #fff; border: 1px solid #d4dfd8; border-radius: .5rem; }
+.lit-geometry-preview__figure svg { max-width: 470px; margin: 0 auto; }
+.lit-geometry-preview figcaption { border-top: 1px solid #d4dfd8; padding-top: 1rem; font-size: .75rem; color: #4a6056; }
+.lit-geometry-preview h3 { font-size: 1.3rem; line-height: 1.3; margin-top: 0; }
+.lit-geometry-preview h4 { margin-bottom: .4rem; }
+.lit-geometry-preview__note { font-size: .8rem; color: #4a6056; }
+.lit-geometry-preview__swatch { display: inline-block; width: .9rem; height: .9rem; background: #b51c36; border: 1px solid #761229; margin-right: .4rem; }
+.lit-geometry-preview .lit-map-county:is([data-county-key="nj-bergen"], [data-county-key="nj-hudson"], [data-county-key="nj-morris"], [data-county-key="nj-essex"]) { --lit-county-fill: #b51c36; --lit-county-border: #fff; --lit-county-border-width: 1.25; }
+.lit-geometry-preview__counties { margin: 0; font-size: .85rem; }
+.lit-geometry-preview__counties > div { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; padding: .35rem 0; border-bottom: 1px solid #dce4de; }
+.lit-geometry-preview__counties dt { font-weight: 600; }
+.lit-geometry-preview__counties dd { margin: 0; font-variant-numeric: tabular-nums; color: #4a6056; }
+.lit-geometry-preview__marker { display: inline-block; font-size: .62rem; font-weight: 600; color: #8f1931; }
+.lit-geometry-preview__footer { border-top: 1px solid #d4dfd8; padding-top: 1rem; margin-top: 2rem; font-size: .8rem; color: #4a6056; }
+@media (max-width: 700px) {
+  .lit-geometry-preview { margin: 1rem 0; }
+  .lit-geometry-preview__layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .lit-geometry-preview__figure { padding: .5rem; }
+}

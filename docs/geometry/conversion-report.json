@@ -1,0 +1,22 @@
+{
+  "source_sha256": "aa976c00b181939755d0da757f4c7c2dc0103c3b3b4530fb2a91c2bb62fc777c",
+  "svg_sha256": "55c8fb88e0dd4ee4b0e35a3375e9c73d8f6f512220a50ada7fceb04e19d0fad3",
+  "tools": {
+    "python": "3.11.9",
+    "pyshp": "2.3.1",
+    "pyproj": "3.7.2",
+    "PROJ": "9.5.1",
+    "shapely": "2.1.2",
+    "GEOS": "3.13.1"
+  },
+  "source_crs": "EPSG:4269",
+  "target_crs": "EPSG:32111",
+  "target_name": "NAD83 / New Jersey",
+  "viewBox": "0 0 464.231 824",
+  "svg_units_per_metre": 0.0028189785966901064,
+  "counties": 21,
+  "rings": 23,
+  "vertices": 7987,
+  "all_projected_geometries_valid": true,
+  "additional_simplification": false
+}

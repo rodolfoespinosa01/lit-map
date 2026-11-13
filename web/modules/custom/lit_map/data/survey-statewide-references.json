@@ -1,0 +1,2842 @@
+{
+  "languages": [
+    {
+      "id": "en",
+      "label": "English"
+    },
+    {
+      "id": "es",
+      "label": "Spanish"
+    },
+    {
+      "id": "ko",
+      "label": "Korean"
+    },
+    {
+      "id": "pt",
+      "label": "Portuguese"
+    }
+  ],
+  "municipalities": [
+    {
+      "id": "m3400100100",
+      "name": "Absecon city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400102080",
+      "name": "Atlantic City city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400107810",
+      "name": "Brigantine city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400108680",
+      "name": "Buena borough",
+      "county": "34001"
+    },
+    {
+      "id": "m3400108710",
+      "name": "Buena Vista township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400115160",
+      "name": "Corbin City city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400120290",
+      "name": "Egg Harbor township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400120350",
+      "name": "Egg Harbor City city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400121870",
+      "name": "Estell Manor city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400123940",
+      "name": "Folsom borough",
+      "county": "34001"
+    },
+    {
+      "id": "m3400125560",
+      "name": "Galloway township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400129280",
+      "name": "Hamilton township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400129430",
+      "name": "Hammonton town",
+      "county": "34001"
+    },
+    {
+      "id": "m3400140530",
+      "name": "Linwood city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400141370",
+      "name": "Longport borough",
+      "county": "34001"
+    },
+    {
+      "id": "m3400143890",
+      "name": "Margate City city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400149410",
+      "name": "Mullica township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400152950",
+      "name": "Northfield city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400159640",
+      "name": "Pleasantville city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400160600",
+      "name": "Port Republic city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400168430",
+      "name": "Somers Point city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400175620",
+      "name": "Ventnor City city",
+      "county": "34001"
+    },
+    {
+      "id": "m3400180330",
+      "name": "Weymouth township",
+      "county": "34001"
+    },
+    {
+      "id": "m3400300700",
+      "name": "Allendale borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400301090",
+      "name": "Alpine borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400305170",
+      "name": "Bergenfield borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400306490",
+      "name": "Bogota borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400310480",
+      "name": "Carlstadt borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400313570",
+      "name": "Cliffside Park borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400313810",
+      "name": "Closter borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400315820",
+      "name": "Cresskill borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400317530",
+      "name": "Demarest borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400318400",
+      "name": "Dumont borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400319510",
+      "name": "East Rutherford borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400320020",
+      "name": "Edgewater borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400321300",
+      "name": "Elmwood Park borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400321450",
+      "name": "Emerson borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400321480",
+      "name": "Englewood city",
+      "county": "34003"
+    },
+    {
+      "id": "m3400321510",
+      "name": "Englewood Cliffs borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400322470",
+      "name": "Fair Lawn borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400322560",
+      "name": "Fairview borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400324420",
+      "name": "Fort Lee borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400324990",
+      "name": "Franklin Lakes borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400325770",
+      "name": "Garfield city",
+      "county": "34003"
+    },
+    {
+      "id": "m3400326640",
+      "name": "Glen Rock borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400328680",
+      "name": "Hackensack city",
+      "county": "34003"
+    },
+    {
+      "id": "m3400330150",
+      "name": "Harrington Park borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400330420",
+      "name": "Hasbrouck Heights borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400330540",
+      "name": "Haworth borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400331920",
+      "name": "Hillsdale borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400332310",
+      "name": "Ho-Ho-Kus borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400340020",
+      "name": "Leonia borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400340680",
+      "name": "Little Ferry borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400341100",
+      "name": "Lodi borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400342090",
+      "name": "Lyndhurst township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400342750",
+      "name": "Mahwah township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400344880",
+      "name": "Maywood borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400346110",
+      "name": "Midland Park borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400347610",
+      "name": "Montvale borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400347700",
+      "name": "Moonachie borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400351660",
+      "name": "New Milford borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400352320",
+      "name": "North Arlington borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400353430",
+      "name": "Northvale borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400353610",
+      "name": "Norwood borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400353850",
+      "name": "Oakland borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400354870",
+      "name": "Old Tappan borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400354990",
+      "name": "Oradell borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400355770",
+      "name": "Palisades Park borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400355950",
+      "name": "Paramus borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400356130",
+      "name": "Park Ridge borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400361680",
+      "name": "Ramsey borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400362910",
+      "name": "Ridgefield borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400362940",
+      "name": "Ridgefield Park village",
+      "county": "34003"
+    },
+    {
+      "id": "m3400363000",
+      "name": "Ridgewood village",
+      "county": "34003"
+    },
+    {
+      "id": "m3400363360",
+      "name": "River Edge borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400363690",
+      "name": "River Vale township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400363990",
+      "name": "Rochelle Park township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400364170",
+      "name": "Rockleigh borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400365280",
+      "name": "Rutherford borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400365340",
+      "name": "Saddle Brook township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400365400",
+      "name": "Saddle River borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400368970",
+      "name": "South Hackensack township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400372360",
+      "name": "Teaneck township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400372420",
+      "name": "Tenafly borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400372480",
+      "name": "Teterboro borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400375140",
+      "name": "Upper Saddle River borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400376400",
+      "name": "Waldwick borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400376490",
+      "name": "Wallington borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400377135",
+      "name": "Washington township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400380270",
+      "name": "Westwood borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400382300",
+      "name": "Woodcliff Lake borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400382570",
+      "name": "Wood-Ridge borough",
+      "county": "34003"
+    },
+    {
+      "id": "m3400383050",
+      "name": "Wyckoff township",
+      "county": "34003"
+    },
+    {
+      "id": "m3400503370",
+      "name": "Bass River township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400505740",
+      "name": "Beverly city",
+      "county": "34005"
+    },
+    {
+      "id": "m3400506670",
+      "name": "Bordentown city",
+      "county": "34005"
+    },
+    {
+      "id": "m3400506700",
+      "name": "Bordentown township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400508920",
+      "name": "Burlington city",
+      "county": "34005"
+    },
+    {
+      "id": "m3400508950",
+      "name": "Burlington township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400512670",
+      "name": "Chesterfield township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400512940",
+      "name": "Cinnaminson township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400517080",
+      "name": "Delanco township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400517440",
+      "name": "Delran township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400518790",
+      "name": "Eastampton township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400520050",
+      "name": "Edgewater Park township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400522110",
+      "name": "Evesham township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400523250",
+      "name": "Fieldsboro borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400523850",
+      "name": "Florence township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400529010",
+      "name": "Hainesport township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400542060",
+      "name": "Lumberton township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400543290",
+      "name": "Mansfield township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400543740",
+      "name": "Maple Shade township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400545120",
+      "name": "Medford township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400545210",
+      "name": "Medford Lakes borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400547880",
+      "name": "Moorestown township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400548900",
+      "name": "Mount Holly township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400549020",
+      "name": "Mount Laurel township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400551510",
+      "name": "New Hanover township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400553070",
+      "name": "North Hanover township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400555800",
+      "name": "Palmyra borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400557480",
+      "name": "Pemberton borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400557510",
+      "name": "Pemberton township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400563510",
+      "name": "Riverside township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400563660",
+      "name": "Riverton borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400566810",
+      "name": "Shamong township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400568610",
+      "name": "Southampton township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400569990",
+      "name": "Springfield township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400572060",
+      "name": "Tabernacle township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400577150",
+      "name": "Washington township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400578200",
+      "name": "Westampton township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400581440",
+      "name": "Willingboro township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400582420",
+      "name": "Woodland township",
+      "county": "34005"
+    },
+    {
+      "id": "m3400582960",
+      "name": "Wrightstown borough",
+      "county": "34005"
+    },
+    {
+      "id": "m3400702200",
+      "name": "Audubon borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400702230",
+      "name": "Audubon Park borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400703250",
+      "name": "Barrington borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400704750",
+      "name": "Bellmawr borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400705440",
+      "name": "Berlin borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400705470",
+      "name": "Berlin township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400708170",
+      "name": "Brooklawn borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400710000",
+      "name": "Camden city",
+      "county": "34007"
+    },
+    {
+      "id": "m3400712280",
+      "name": "Cherry Hill township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400712550",
+      "name": "Chesilhurst borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400713420",
+      "name": "Clementon borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400714260",
+      "name": "Collingswood borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400726070",
+      "name": "Gibbsboro borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400726760",
+      "name": "Gloucester township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400726820",
+      "name": "Gloucester City city",
+      "county": "34007"
+    },
+    {
+      "id": "m3400728740",
+      "name": "Haddon township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400728770",
+      "name": "Haddonfield borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400728800",
+      "name": "Haddon Heights borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400732220",
+      "name": "Hi-Nella borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400739210",
+      "name": "Laurel Springs borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400739420",
+      "name": "Lawnside borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400740440",
+      "name": "Lindenwold borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400742630",
+      "name": "Magnolia borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400745510",
+      "name": "Merchantville borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400748750",
+      "name": "Mount Ephraim borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400753880",
+      "name": "Oaklyn borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400757660",
+      "name": "Pennsauken township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400758770",
+      "name": "Pine Hill borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400765160",
+      "name": "Runnemede borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400768340",
+      "name": "Somerdale borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400771220",
+      "name": "Stratford borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400772240",
+      "name": "Tavistock borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400776220",
+      "name": "Voorhees township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400777630",
+      "name": "Waterford township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400781740",
+      "name": "Winslow township",
+      "county": "34007"
+    },
+    {
+      "id": "m3400782450",
+      "name": "Woodlynne borough",
+      "county": "34007"
+    },
+    {
+      "id": "m3400902320",
+      "name": "Avalon borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400910270",
+      "name": "Cape May city",
+      "county": "34009"
+    },
+    {
+      "id": "m3400910330",
+      "name": "Cape May Point borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400917560",
+      "name": "Dennis township",
+      "county": "34009"
+    },
+    {
+      "id": "m3400941610",
+      "name": "Lower township",
+      "county": "34009"
+    },
+    {
+      "id": "m3400945810",
+      "name": "Middle township",
+      "county": "34009"
+    },
+    {
+      "id": "m3400953490",
+      "name": "North Wildwood city",
+      "county": "34009"
+    },
+    {
+      "id": "m3400954360",
+      "name": "Ocean City city",
+      "county": "34009"
+    },
+    {
+      "id": "m3400966390",
+      "name": "Sea Isle City city",
+      "county": "34009"
+    },
+    {
+      "id": "m3400971010",
+      "name": "Stone Harbor borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400974810",
+      "name": "Upper township",
+      "county": "34009"
+    },
+    {
+      "id": "m3400978530",
+      "name": "West Cape May borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400980210",
+      "name": "West Wildwood borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400981170",
+      "name": "Wildwood city",
+      "county": "34009"
+    },
+    {
+      "id": "m3400981200",
+      "name": "Wildwood Crest borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3400981890",
+      "name": "Woodbine borough",
+      "county": "34009"
+    },
+    {
+      "id": "m3401107600",
+      "name": "Bridgeton city",
+      "county": "34011"
+    },
+    {
+      "id": "m3401114710",
+      "name": "Commercial township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401116900",
+      "name": "Deerfield township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401118220",
+      "name": "Downe township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401122350",
+      "name": "Fairfield township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401128170",
+      "name": "Greenwich township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401133120",
+      "name": "Hopewell township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401139450",
+      "name": "Lawrence township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401144580",
+      "name": "Maurice River township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401146680",
+      "name": "Millville city",
+      "county": "34011"
+    },
+    {
+      "id": "m3401167020",
+      "name": "Shiloh borough",
+      "county": "34011"
+    },
+    {
+      "id": "m3401171160",
+      "name": "Stow Creek township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401174870",
+      "name": "Upper Deerfield township",
+      "county": "34011"
+    },
+    {
+      "id": "m3401176070",
+      "name": "Vineland city",
+      "county": "34011"
+    },
+    {
+      "id": "m3401304695",
+      "name": "Belleville township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401306260",
+      "name": "Bloomfield township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401309250",
+      "name": "Caldwell borough",
+      "county": "34013"
+    },
+    {
+      "id": "m3401311200",
+      "name": "Cedar Grove township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401313045",
+      "name": "City of Orange township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401319390",
+      "name": "East Orange city",
+      "county": "34013"
+    },
+    {
+      "id": "m3401321840",
+      "name": "Essex Fells borough",
+      "county": "34013"
+    },
+    {
+      "id": "m3401322385",
+      "name": "Fairfield township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401326610",
+      "name": "Glen Ridge borough",
+      "county": "34013"
+    },
+    {
+      "id": "m3401334450",
+      "name": "Irvington township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401340890",
+      "name": "Livingston township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401343800",
+      "name": "Maplewood township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401346380",
+      "name": "Millburn township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401347500",
+      "name": "Montclair township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401351000",
+      "name": "Newark city",
+      "county": "34013"
+    },
+    {
+      "id": "m3401352620",
+      "name": "North Caldwell borough",
+      "county": "34013"
+    },
+    {
+      "id": "m3401353680",
+      "name": "Nutley township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401364590",
+      "name": "Roseland borough",
+      "county": "34013"
+    },
+    {
+      "id": "m3401369274",
+      "name": "South Orange Village township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401375815",
+      "name": "Verona township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401378510",
+      "name": "West Caldwell township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401379800",
+      "name": "West Orange township",
+      "county": "34013"
+    },
+    {
+      "id": "m3401513360",
+      "name": "Clayton borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401517710",
+      "name": "Deptford township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401519180",
+      "name": "East Greenwich township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401521060",
+      "name": "Elk township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401524840",
+      "name": "Franklin township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401526340",
+      "name": "Glassboro borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401528185",
+      "name": "Greenwich township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401530180",
+      "name": "Harrison township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401541160",
+      "name": "Logan township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401543440",
+      "name": "Mantua township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401547250",
+      "name": "Monroe township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401549680",
+      "name": "National Park borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401551390",
+      "name": "Newfield borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401557150",
+      "name": "Paulsboro borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401559070",
+      "name": "Pitman borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401569030",
+      "name": "South Harrison township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401571850",
+      "name": "Swedesboro borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401577180",
+      "name": "Washington township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401578110",
+      "name": "Wenonah borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401578800",
+      "name": "West Deptford township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401580120",
+      "name": "Westville borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401582120",
+      "name": "Woodbury city",
+      "county": "34015"
+    },
+    {
+      "id": "m3401582180",
+      "name": "Woodbury Heights borough",
+      "county": "34015"
+    },
+    {
+      "id": "m3401582840",
+      "name": "Woolwich township",
+      "county": "34015"
+    },
+    {
+      "id": "m3401703580",
+      "name": "Bayonne city",
+      "county": "34017"
+    },
+    {
+      "id": "m3401719360",
+      "name": "East Newark borough",
+      "county": "34017"
+    },
+    {
+      "id": "m3401728650",
+      "name": "Guttenberg town",
+      "county": "34017"
+    },
+    {
+      "id": "m3401730210",
+      "name": "Harrison town",
+      "county": "34017"
+    },
+    {
+      "id": "m3401732250",
+      "name": "Hoboken city",
+      "county": "34017"
+    },
+    {
+      "id": "m3401736000",
+      "name": "Jersey City city",
+      "county": "34017"
+    },
+    {
+      "id": "m3401736510",
+      "name": "Kearny town",
+      "county": "34017"
+    },
+    {
+      "id": "m3401752470",
+      "name": "North Bergen township",
+      "county": "34017"
+    },
+    {
+      "id": "m3401766570",
+      "name": "Secaucus town",
+      "county": "34017"
+    },
+    {
+      "id": "m3401774630",
+      "name": "Union City city",
+      "county": "34017"
+    },
+    {
+      "id": "m3401777930",
+      "name": "Weehawken township",
+      "county": "34017"
+    },
+    {
+      "id": "m3401779610",
+      "name": "West New York town",
+      "county": "34017"
+    },
+    {
+      "id": "m3401900550",
+      "name": "Alexandria township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401905650",
+      "name": "Bethlehem township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401906370",
+      "name": "Bloomsbury borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401909280",
+      "name": "Califon borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401913720",
+      "name": "Clinton town",
+      "county": "34019"
+    },
+    {
+      "id": "m3401913750",
+      "name": "Clinton township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401917170",
+      "name": "Delaware township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401918820",
+      "name": "East Amwell township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401923700",
+      "name": "Flemington borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401924870",
+      "name": "Franklin township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401925350",
+      "name": "Frenchtown borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401926550",
+      "name": "Glen Gardner borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401929460",
+      "name": "Hampton borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401931320",
+      "name": "High Bridge borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401932460",
+      "name": "Holland township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401937065",
+      "name": "Kingwood township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401938610",
+      "name": "Lambertville city",
+      "county": "34019"
+    },
+    {
+      "id": "m3401939630",
+      "name": "Lebanon borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401939660",
+      "name": "Lebanon township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401946260",
+      "name": "Milford borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401961920",
+      "name": "Raritan township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401962250",
+      "name": "Readington township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401970980",
+      "name": "Stockton borough",
+      "county": "34019"
+    },
+    {
+      "id": "m3401972510",
+      "name": "Tewksbury township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401974420",
+      "name": "Union township",
+      "county": "34019"
+    },
+    {
+      "id": "m3401978230",
+      "name": "West Amwell township",
+      "county": "34019"
+    },
+    {
+      "id": "m3402119780",
+      "name": "East Windsor township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402122185",
+      "name": "Ewing township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402129310",
+      "name": "Hamilton township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402131620",
+      "name": "Hightstown borough",
+      "county": "34021"
+    },
+    {
+      "id": "m3402133150",
+      "name": "Hopewell borough",
+      "county": "34021"
+    },
+    {
+      "id": "m3402133180",
+      "name": "Hopewell township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402139510",
+      "name": "Lawrence township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402157600",
+      "name": "Pennington borough",
+      "county": "34021"
+    },
+    {
+      "id": "m3402160900",
+      "name": "Princeton",
+      "county": "34021"
+    },
+    {
+      "id": "m3402163850",
+      "name": "Robbinsville township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402174000",
+      "name": "Trenton city",
+      "county": "34021"
+    },
+    {
+      "id": "m3402180240",
+      "name": "West Windsor township",
+      "county": "34021"
+    },
+    {
+      "id": "m3402310750",
+      "name": "Carteret borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402315550",
+      "name": "Cranbury township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402318490",
+      "name": "Dunellen borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402319000",
+      "name": "East Brunswick township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402320230",
+      "name": "Edison township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402330840",
+      "name": "Helmetta borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402331470",
+      "name": "Highland Park borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402334890",
+      "name": "Jamesburg borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402345690",
+      "name": "Metuchen borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402345900",
+      "name": "Middlesex borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402346620",
+      "name": "Milltown borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402347280",
+      "name": "Monroe township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402351210",
+      "name": "New Brunswick city",
+      "county": "34023"
+    },
+    {
+      "id": "m3402352560",
+      "name": "North Brunswick township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402354705",
+      "name": "Old Bridge township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402358200",
+      "name": "Perth Amboy city",
+      "county": "34023"
+    },
+    {
+      "id": "m3402359010",
+      "name": "Piscataway township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402359280",
+      "name": "Plainsboro township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402365790",
+      "name": "Sayreville borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402368550",
+      "name": "South Amboy city",
+      "county": "34023"
+    },
+    {
+      "id": "m3402368790",
+      "name": "South Brunswick township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402369390",
+      "name": "South Plainfield borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402369420",
+      "name": "South River borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402369810",
+      "name": "Spotswood borough",
+      "county": "34023"
+    },
+    {
+      "id": "m3402382000",
+      "name": "Woodbridge township",
+      "county": "34023"
+    },
+    {
+      "id": "m3402500070",
+      "name": "Aberdeen township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402500730",
+      "name": "Allenhurst borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402500760",
+      "name": "Allentown borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402501960",
+      "name": "Asbury Park city",
+      "county": "34025"
+    },
+    {
+      "id": "m3402502110",
+      "name": "Atlantic Highlands borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402502440",
+      "name": "Avon-by-the-Sea borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402504930",
+      "name": "Belmar borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402506970",
+      "name": "Bradley Beach borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402507750",
+      "name": "Brielle borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402514560",
+      "name": "Colts Neck township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402516660",
+      "name": "Deal borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402519840",
+      "name": "Eatontown borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402521570",
+      "name": "Englishtown borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402522440",
+      "name": "Fair Haven borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402522950",
+      "name": "Farmingdale borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402525200",
+      "name": "Freehold borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402525230",
+      "name": "Freehold township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402530690",
+      "name": "Hazlet township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402531500",
+      "name": "Highlands borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402532640",
+      "name": "Holmdel township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402533300",
+      "name": "Howell township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402534200",
+      "name": "Interlaken borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402536480",
+      "name": "Keansburg borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402536810",
+      "name": "Keyport borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402537560",
+      "name": "Lake Como borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402540770",
+      "name": "Little Silver borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402541010",
+      "name": "Loch Arbour village",
+      "county": "34025"
+    },
+    {
+      "id": "m3402541310",
+      "name": "Long Branch city",
+      "county": "34025"
+    },
+    {
+      "id": "m3402542990",
+      "name": "Manalapan township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402543050",
+      "name": "Manasquan borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402544070",
+      "name": "Marlboro township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402544520",
+      "name": "Matawan borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402545990",
+      "name": "Middletown township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402546560",
+      "name": "Millstone township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402547130",
+      "name": "Monmouth Beach borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402549890",
+      "name": "Neptune township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402549920",
+      "name": "Neptune City borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402554270",
+      "name": "Ocean township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402554570",
+      "name": "Oceanport borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402562430",
+      "name": "Red Bank borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402564410",
+      "name": "Roosevelt borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402565130",
+      "name": "Rumson borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402566240",
+      "name": "Sea Bright borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402566330",
+      "name": "Sea Girt borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402567350",
+      "name": "Shrewsbury borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402567365",
+      "name": "Shrewsbury township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402570110",
+      "name": "Spring Lake borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402570140",
+      "name": "Spring Lake Heights borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402573020",
+      "name": "Tinton Falls borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402574540",
+      "name": "Union Beach borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402574900",
+      "name": "Upper Freehold township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402576460",
+      "name": "Wall township",
+      "county": "34025"
+    },
+    {
+      "id": "m3402579310",
+      "name": "West Long Branch borough",
+      "county": "34025"
+    },
+    {
+      "id": "m3402706610",
+      "name": "Boonton town",
+      "county": "34027"
+    },
+    {
+      "id": "m3402706640",
+      "name": "Boonton township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402709040",
+      "name": "Butler borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402712100",
+      "name": "Chatham borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402712130",
+      "name": "Chatham township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402712580",
+      "name": "Chester borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402712610",
+      "name": "Chester township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402717650",
+      "name": "Denville township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402718070",
+      "name": "Dover town",
+      "county": "34027"
+    },
+    {
+      "id": "m3402719210",
+      "name": "East Hanover township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402723910",
+      "name": "Florham Park borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402729550",
+      "name": "Hanover township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402729700",
+      "name": "Harding township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402734980",
+      "name": "Jefferson township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402737110",
+      "name": "Kinnelon borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402740290",
+      "name": "Lincoln Park borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402741362",
+      "name": "Long Hill township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402742510",
+      "name": "Madison borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402745330",
+      "name": "Mendham borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402745360",
+      "name": "Mendham township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402746860",
+      "name": "Mine Hill township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402747670",
+      "name": "Montville township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402748090",
+      "name": "Morris township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402748210",
+      "name": "Morris Plains borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402748300",
+      "name": "Morristown town",
+      "county": "34027"
+    },
+    {
+      "id": "m3402748480",
+      "name": "Mountain Lakes borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402748690",
+      "name": "Mount Arlington borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402749080",
+      "name": "Mount Olive township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402750130",
+      "name": "Netcong borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402756460",
+      "name": "Parsippany-Troy Hills township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402758110",
+      "name": "Pequannock township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402761890",
+      "name": "Randolph township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402763300",
+      "name": "Riverdale borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402764050",
+      "name": "Rockaway borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402764080",
+      "name": "Rockaway township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402764980",
+      "name": "Roxbury township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402775890",
+      "name": "Victory Gardens borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402777240",
+      "name": "Washington township",
+      "county": "34027"
+    },
+    {
+      "id": "m3402780390",
+      "name": "Wharton borough",
+      "county": "34027"
+    },
+    {
+      "id": "m3402903050",
+      "name": "Barnegat township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402903130",
+      "name": "Barnegat Light borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402903520",
+      "name": "Bay Head borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402903940",
+      "name": "Beach Haven borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402904180",
+      "name": "Beachwood borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402905305",
+      "name": "Berkeley township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402907420",
+      "name": "Brick township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402918670",
+      "name": "Eagleswood township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402930390",
+      "name": "Harvey Cedars borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402934530",
+      "name": "Island Heights borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402934680",
+      "name": "Jackson township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402937380",
+      "name": "Lacey township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402937770",
+      "name": "Lakehurst borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402938550",
+      "name": "Lakewood township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402939390",
+      "name": "Lavallette borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402940560",
+      "name": "Little Egg Harbor township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402941250",
+      "name": "Long Beach township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402943140",
+      "name": "Manchester township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402943380",
+      "name": "Mantoloking borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402954300",
+      "name": "Ocean township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402954450",
+      "name": "Ocean Gate borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402958590",
+      "name": "Pine Beach borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402959790",
+      "name": "Plumsted township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402959880",
+      "name": "Point Pleasant borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402959910",
+      "name": "Point Pleasant Beach borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402966450",
+      "name": "Seaside Heights borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402966480",
+      "name": "Seaside Park borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402967110",
+      "name": "Ship Bottom borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402969510",
+      "name": "South Toms River borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402970320",
+      "name": "Stafford township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402971640",
+      "name": "Surf City borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3402973125",
+      "name": "Toms River township",
+      "county": "34029"
+    },
+    {
+      "id": "m3402974210",
+      "name": "Tuckerton borough",
+      "county": "34029"
+    },
+    {
+      "id": "m3403106340",
+      "name": "Bloomingdale borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403113690",
+      "name": "Clifton city",
+      "county": "34031"
+    },
+    {
+      "id": "m3403129070",
+      "name": "Haledon borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403130570",
+      "name": "Hawthorne borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403140620",
+      "name": "Little Falls township",
+      "county": "34031"
+    },
+    {
+      "id": "m3403153040",
+      "name": "North Haledon borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403156550",
+      "name": "Passaic city",
+      "county": "34031"
+    },
+    {
+      "id": "m3403157000",
+      "name": "Paterson city",
+      "county": "34031"
+    },
+    {
+      "id": "m3403160090",
+      "name": "Pompton Lakes borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403161170",
+      "name": "Prospect Park borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403163150",
+      "name": "Ringwood borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403173140",
+      "name": "Totowa borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403176730",
+      "name": "Wanaque borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403177840",
+      "name": "Wayne township",
+      "county": "34031"
+    },
+    {
+      "id": "m3403179460",
+      "name": "West Milford township",
+      "county": "34031"
+    },
+    {
+      "id": "m3403182423",
+      "name": "Woodland Park borough",
+      "county": "34031"
+    },
+    {
+      "id": "m3403300880",
+      "name": "Alloway township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403310610",
+      "name": "Carneys Point township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403321240",
+      "name": "Elmer borough",
+      "county": "34033"
+    },
+    {
+      "id": "m3403321330",
+      "name": "Elsinboro township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403341640",
+      "name": "Lower Alloways Creek township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403343200",
+      "name": "Mannington township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403354810",
+      "name": "Oldmans township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403357750",
+      "name": "Penns Grove borough",
+      "county": "34033"
+    },
+    {
+      "id": "m3403357870",
+      "name": "Pennsville township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403358530",
+      "name": "Pilesgrove township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403359130",
+      "name": "Pittsgrove township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403361470",
+      "name": "Quinton township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403365490",
+      "name": "Salem city",
+      "county": "34033"
+    },
+    {
+      "id": "m3403375110",
+      "name": "Upper Pittsgrove township",
+      "county": "34033"
+    },
+    {
+      "id": "m3403382720",
+      "name": "Woodstown borough",
+      "county": "34033"
+    },
+    {
+      "id": "m3403504450",
+      "name": "Bedminster township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403505560",
+      "name": "Bernards township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403505590",
+      "name": "Bernardsville borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403506790",
+      "name": "Bound Brook borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403507180",
+      "name": "Branchburg township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403507720",
+      "name": "Bridgewater township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403522890",
+      "name": "Far Hills borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403524900",
+      "name": "Franklin township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403527510",
+      "name": "Green Brook township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403531890",
+      "name": "Hillsborough township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403543620",
+      "name": "Manville borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403546590",
+      "name": "Millstone borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403547580",
+      "name": "Montgomery township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403553280",
+      "name": "North Plainfield borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403557300",
+      "name": "Peapack and Gladstone borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403561980",
+      "name": "Raritan borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403564320",
+      "name": "Rocky Hill borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403568460",
+      "name": "Somerville borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403568730",
+      "name": "South Bound Brook borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403576940",
+      "name": "Warren township",
+      "county": "34035"
+    },
+    {
+      "id": "m3403577600",
+      "name": "Watchung borough",
+      "county": "34035"
+    },
+    {
+      "id": "m3403701330",
+      "name": "Andover borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403701360",
+      "name": "Andover township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403707300",
+      "name": "Branchville borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403709160",
+      "name": "Byram township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403724810",
+      "name": "Frankford township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403724930",
+      "name": "Franklin borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403725140",
+      "name": "Fredon township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403727420",
+      "name": "Green township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403729220",
+      "name": "Hamburg borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403729490",
+      "name": "Hampton township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403729850",
+      "name": "Hardyston township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403732910",
+      "name": "Hopatcong borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403737440",
+      "name": "Lafayette township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403747430",
+      "name": "Montague township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403751930",
+      "name": "Newton town",
+      "county": "34037"
+    },
+    {
+      "id": "m3403754660",
+      "name": "Ogdensburg borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403765700",
+      "name": "Sandyston township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403769690",
+      "name": "Sparta township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403770380",
+      "name": "Stanhope borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403770890",
+      "name": "Stillwater township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403771670",
+      "name": "Sussex borough",
+      "county": "34037"
+    },
+    {
+      "id": "m3403775740",
+      "name": "Vernon township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403776640",
+      "name": "Walpack township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403776790",
+      "name": "Wantage township",
+      "county": "34037"
+    },
+    {
+      "id": "m3403905320",
+      "name": "Berkeley Heights township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403913150",
+      "name": "Clark township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403915640",
+      "name": "Cranford township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403921000",
+      "name": "Elizabeth city",
+      "county": "34039"
+    },
+    {
+      "id": "m3403922860",
+      "name": "Fanwood borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403925800",
+      "name": "Garwood borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403931980",
+      "name": "Hillside township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403936690",
+      "name": "Kenilworth borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403940350",
+      "name": "Linden city",
+      "county": "34039"
+    },
+    {
+      "id": "m3403948510",
+      "name": "Mountainside borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403951810",
+      "name": "New Providence borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403959190",
+      "name": "Plainfield city",
+      "county": "34039"
+    },
+    {
+      "id": "m3403961530",
+      "name": "Rahway city",
+      "county": "34039"
+    },
+    {
+      "id": "m3403964620",
+      "name": "Roselle borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403964650",
+      "name": "Roselle Park borough",
+      "county": "34039"
+    },
+    {
+      "id": "m3403966060",
+      "name": "Scotch Plains township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403970020",
+      "name": "Springfield township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403971430",
+      "name": "Summit city",
+      "county": "34039"
+    },
+    {
+      "id": "m3403974480",
+      "name": "Union township",
+      "county": "34039"
+    },
+    {
+      "id": "m3403979040",
+      "name": "Westfield town",
+      "county": "34039"
+    },
+    {
+      "id": "m3403981650",
+      "name": "Winfield township",
+      "county": "34039"
+    },
+    {
+      "id": "m3404100670",
+      "name": "Allamuchy township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404101030",
+      "name": "Alpha borough",
+      "county": "34041"
+    },
+    {
+      "id": "m3404104990",
+      "name": "Belvidere town",
+      "county": "34041"
+    },
+    {
+      "id": "m3404106160",
+      "name": "Blairstown township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404124960",
+      "name": "Franklin township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404125320",
+      "name": "Frelinghuysen township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404128260",
+      "name": "Greenwich township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404128710",
+      "name": "Hackettstown town",
+      "county": "34041"
+    },
+    {
+      "id": "m3404129820",
+      "name": "Hardwick township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404130090",
+      "name": "Harmony township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404133060",
+      "name": "Hope township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404133930",
+      "name": "Independence township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404137320",
+      "name": "Knowlton township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404140110",
+      "name": "Liberty township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404141490",
+      "name": "Lopatcong township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404143320",
+      "name": "Mansfield township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404155530",
+      "name": "Oxford township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404158350",
+      "name": "Phillipsburg town",
+      "county": "34041"
+    },
+    {
+      "id": "m3404159820",
+      "name": "Pohatcong township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404177270",
+      "name": "Washington borough",
+      "county": "34041"
+    },
+    {
+      "id": "m3404177300",
+      "name": "Washington township",
+      "county": "34041"
+    },
+    {
+      "id": "m3404180570",
+      "name": "White township",
+      "county": "34041"
+    }
+  ]
+}

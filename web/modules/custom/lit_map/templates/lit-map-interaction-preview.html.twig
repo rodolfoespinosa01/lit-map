@@ -1,0 +1,45 @@
+<article class="lit-interaction" data-lit-interaction>
+  <header>
+    <p class="lit-interaction__eyebrow">Lives in Translation · Milestone 3</p>
+    <h2>Languages across New Jersey</h2>
+    <p>Interaction preview, not the final map. Select languages, a county, or both to explore the demonstration.</p>
+  </header>
+  <p class="lit-interaction__notice"><strong>Synthetic demonstration data</strong> · All counts are fabricated survey responses, not population estimates or unique people.</p>
+  {% if available %}
+    <noscript><p>JavaScript is needed for this local interaction preview. The geographic reference below remains available; no survey results are displayed without JavaScript.</p></noscript>
+    <div class="lit-interaction__controls" data-controls hidden>
+      <fieldset class="lit-interaction__languages">
+        <legend>Languages <span>(choose any combination)</span></legend>
+        <div data-languages></div>
+        <button type="button" data-clear-languages>Clear languages</button>
+      </fieldset>
+      <div class="lit-interaction__places">
+        <label>County <select data-county><option value="">Choose a county</option></select></label>
+        <label class="lit-interaction__toggle"><input type="checkbox" data-breakdown> Show town/city breakdown</label>
+        <label>Town/city <select data-municipality disabled><option value="">Select a county first</option></select></label>
+        <p class="lit-interaction__hint">Choosing a town/city turns the breakdown on. Turning it off clears the town/city filter.</p>
+        <button type="button" data-reset>Reset all selections</button>
+      </div>
+    </div>
+    <p class="lit-interaction__status" data-status role="status" aria-live="polite" aria-atomic="true">Choose a language or county to begin.</p>
+    <div class="lit-interaction__layout">
+      <figure class="lit-interaction__figure">
+        <div class="lit-interaction__map-layout">
+          <div class="lit-interaction__map">{% include '@lit_map/geometry/nj-counties.svg' only %}</div>
+          <div class="lit-interaction__callouts" data-callouts aria-label="Map county callouts"></div>
+        </div>
+        <figcaption>
+          <p><strong>Map counts are county totals for each language.</strong> Numbered callouts match markers on the map. Town/city filtering applies to the results panel only.</p>
+          <p>Colored counties have a recorded value, including explicit zeroes. An outline marks your selected county. Unrecorded combinations mean “No data available.”</p>
+          <p>U.S. Census Bureau, 2025 county boundaries, 1:500,000. NAD83 / New Jersey. No town/city boundaries are shown.</p>
+        </figcaption>
+      </figure>
+      <section class="lit-interaction__results" aria-label="Accessible survey response results" data-results>
+        <h3>Survey response results</h3>
+        <p>Choose a language or county to begin.</p>
+      </section>
+    </div>
+  {% else %}
+    <p class="lit-interaction__error" role="status">The synthetic demonstration data is temporarily unavailable. Please try again later.</p>
+  {% endif %}
+</article>

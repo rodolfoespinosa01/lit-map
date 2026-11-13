@@ -1,0 +1,66 @@
+.DS_Store
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/drush/Commands/contrib/
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/settings.php
+/web/sites/*/settings.*.php
+!/web/sites/*/default.settings.php
+/web/sites/*/services.yml
+/private/
+/backups/
+*.sql
+*.sql.*
+*.dump
+*.sqlite
+*.sqlite3
+.env
+.env.*
+auth.json
+*.pem
+*.key
+/.ddev/.env*
+/.ddev/db_snapshots/
+/.ddev/.importdb*
+/.ddev/.snapshot*
+/node_modules/
+/tools/geometry/.venv/
+/tools/geometry/source/*.zip
+__pycache__/
+
+# Local QA evidence only; retain documentation, source metadata and test inputs.
+/docs/geometry/screenshots/
+/docs/interactions/screenshots/
+/docs/bubbles/screenshots/
+/docs/geometry/browser-checks.json
+/docs/interactions/browser-checks.json
+/docs/interactions/fixture-refresh-checks.json
+/docs/bubbles/browser-results.json
+/docs/bubbles/cache-results.json
+/docs/bubbles/edge-results.json
+# Keep conversion-report.json, geography-report.json and fixture-report.json:
+# converter --check modes and statewide-test.php read these files.
+
+# Incomplete geographic downloads and local development caches.
+/tools/geometry/source/*.part
+/tools/geometry/source/*.tmp
+/.cache/
+/.pytest_cache/
+/.phpunit.cache/
+/test-results/
+/playwright-report/
+
+# Temporary copies made by the fixture freshness tests.
+/web/modules/custom/lit_map/data/survey.synthetic.v2.json.qa-backup
+/web/modules/custom/lit_map/data/survey.statewide.v2.json.qa-missing
+
+# Reserved local-only storage, outside the public web root.
+# Never place real exports or recordings in the tracked synthetic fixture folders.
+/secrets/
+/survey-exports/
+/recordings/

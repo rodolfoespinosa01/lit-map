@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Theme integration for the LiT geometry preview.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function lit_map_theme($existing, $type, $theme, $path): array {
+  return [
+    'lit_map_bubble_preview' => [
+      'variables' => ['available' => FALSE, 'instance_id' => NULL],
+    ],
+    'lit_map_interaction_preview' => [
+      'variables' => ['available' => FALSE],
+    ],
+    'lit_map_geometry_preview' => [
+      'variables' => ['counties' => []],
+    ],
+  ];
+}

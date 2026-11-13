@@ -1,0 +1,26 @@
+/* Reusable asset styling: geometry never hard-codes fills or strokes. */
+.lit-map-geometry {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lit-map-county {
+  fill: var(--lit-county-fill, #e4e9e7);
+  stroke: var(--lit-county-border, #566961);
+  stroke-width: var(--lit-county-border-width, 1);
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.lit-map-labels text {
+  fill: var(--lit-label-color, #172d26);
+  font: 10px system-ui, sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  paint-order: stroke;
+  stroke: #fff;
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}

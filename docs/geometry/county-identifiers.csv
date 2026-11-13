@@ -1,0 +1,22 @@
+key,geoid,name,statefp,countyfp,rings,polygon_parts,vertices
+nj-atlantic,34001,Atlantic,34,001,1,1,437
+nj-bergen,34003,Bergen,34,003,1,1,298
+nj-burlington,34005,Burlington,34,005,1,1,553
+nj-camden,34007,Camden,34,007,1,1,420
+nj-cape-may,34009,Cape May,34,009,1,1,324
+nj-cumberland,34011,Cumberland,34,011,1,1,451
+nj-essex,34013,Essex,34,013,1,1,330
+nj-gloucester,34015,Gloucester,34,015,1,1,452
+nj-hudson,34017,Hudson,34,017,2,2,206
+nj-hunterdon,34019,Hunterdon,34,019,1,1,339
+nj-mercer,34021,Mercer,34,021,1,1,327
+nj-middlesex,34023,Middlesex,34,023,1,1,360
+nj-monmouth,34025,Monmouth,34,025,1,1,321
+nj-morris,34027,Morris,34,027,1,1,718
+nj-ocean,34029,Ocean,34,029,1,1,251
+nj-passaic,34031,Passaic,34,031,1,1,357
+nj-salem,34033,Salem,34,033,2,2,498
+nj-somerset,34035,Somerset,34,035,1,1,423
+nj-sussex,34037,Sussex,34,037,1,1,223
+nj-union,34039,Union,34,039,1,1,270
+nj-warren,34041,Warren,34,041,1,1,429

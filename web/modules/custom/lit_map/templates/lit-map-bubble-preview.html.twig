@@ -1,0 +1,55 @@
+<section id="{{ instance_id }}" class="lit-bubbles" aria-label="LiT synthetic bubble map preview">
+  <h2>New Jersey language survey · interaction preview</h2>
+  <p class="lit-bubbles__notice"><strong>Synthetic demonstration data.</strong> Every count is fabricated for testing. Values mean survey responses, not population, language prevalence, or unique people.</p>
+  {% if available %}
+    <div class="lit-bubbles__controls">
+      <fieldset data-languages><legend>Compare languages</legend></fieldset>
+      <label>Bubble size: active language <select data-active></select></label>
+      <label>County <select data-county><option value="">Choose a county</option></select></label>
+      <label><input type="checkbox" data-breakdown disabled> Show towns/cities</label>
+      <label>Town/city <select data-municipality disabled><option value="">All towns/cities</option></select></label>
+    </div>
+    <div class="lit-bubbles__toolbar" aria-label="Map navigation">
+      <button type="button" data-action="nj">Back to New Jersey</button>
+      <button type="button" data-action="usa">USA overview</button>
+      <button type="button" data-action="in" aria-label="Zoom in">Zoom +</button>
+      <button type="button" data-action="out" aria-label="Zoom out">Zoom −</button>
+      <button type="button" data-action="fit">Fit current view</button>
+      <button type="button" data-action="reset">Reset selections</button>
+    </div>
+    <div class="lit-bubbles__layout">
+      <div>
+        <h3 data-heading>New Jersey</h3>
+        <div class="lit-bubbles__stage" tabindex="0" role="group" aria-label="Interactive map. Arrow keys pan, plus and minus zoom, Home fits view. County and town selectors provide equivalent navigation.">
+          <div data-nj>{{ source('@lit_map/geometry/nj-counties.svg')|replace({'id="county-': 'id="' ~ instance_id ~ '-county-'})|raw }}</div>
+          <div data-usa hidden></div>
+          <svg class="lit-bubbles__overlay" aria-label="Synthetic survey response bubbles"></svg>
+        </div>
+        <p data-map-status role="status"></p>
+        <p class="lit-bubbles__callout" data-callout aria-live="polite">Select languages to show bubbles. Select a county at any time.</p>
+        <div class="lit-bubbles__toolbar" aria-label="Pan controls">
+          <button type="button" data-action="left" aria-label="Pan left">←</button><button type="button" data-action="up" aria-label="Pan up">↑</button><button type="button" data-action="down" aria-label="Pan down">↓</button><button type="button" data-action="right" aria-label="Pan right">→</button>
+          <label><input type="checkbox" data-touch> Move map with touch (turn off to scroll here)</label>
+          <label><input type="checkbox" data-motion> Gentle motion</label>
+        </div>
+        <p data-motion-help></p>
+        <p class="lit-bubbles__source">Boundaries: <a href="https://www.census.gov/geographies/mapping-files/2025/geo/carto-boundary-file.html">U.S. Census Bureau, 2025 cartographic boundary files</a>. Generalized geometry; zoom adds no geographic detail.</p>
+        <div class="lit-bubbles__legend">
+          <strong>Reading the bubbles</strong>
+          <div data-legend></div>
+          <p>Area represents only the active language. Small positive bubbles have a 5 px minimum radius; large bubbles cap at 32 px. These caps alter visual scaling. Hollow rings mean an explicit zero; no bubble means no data, not zero. Touch targets are at least 44 px.</p>
+          <p>Anchors stay inside their boundaries. Bubbles may overlap or extend across borders. Select a bubble or a result below to bring it forward and show its name and exact count. Zoom in for separation. The results list provides every value.</p>
+          <p>Drag to pan after zooming; use buttons or arrow keys for precise movement. Page scrolling remains available by default. Enable touch movement only when you want to drag the map on a phone.</p>
+        </div>
+      </div>
+      <aside class="lit-bubbles__panel" aria-label="Survey response comparisons">
+        <h3 data-results-heading>Survey responses</h3>
+        <p data-summary role="status"></p>
+        <div data-results></div>
+      </aside>
+    </div>
+    <noscript>This interactive preview requires JavaScript. No survey counts are represented by the unfiltered geometry.</noscript>
+  {% else %}
+    <p role="status">The demonstration data is temporarily unavailable. Please try again later.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,217 @@
+{
+  "source": "https://www2.census.gov/geo/tiger/GENZ2025/shp/cb_2025_us_county_500k.zip",
+  "vintage": 2025,
+  "projection": "EPSG:32111",
+  "counties": [
+    {
+      "key": "nj-atlantic",
+      "geoid": "34001",
+      "name": "Atlantic",
+      "statefp": "34",
+      "countyfp": "001",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 437
+    },
+    {
+      "key": "nj-bergen",
+      "geoid": "34003",
+      "name": "Bergen",
+      "statefp": "34",
+      "countyfp": "003",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 298
+    },
+    {
+      "key": "nj-burlington",
+      "geoid": "34005",
+      "name": "Burlington",
+      "statefp": "34",
+      "countyfp": "005",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 553
+    },
+    {
+      "key": "nj-camden",
+      "geoid": "34007",
+      "name": "Camden",
+      "statefp": "34",
+      "countyfp": "007",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 420
+    },
+    {
+      "key": "nj-cape-may",
+      "geoid": "34009",
+      "name": "Cape May",
+      "statefp": "34",
+      "countyfp": "009",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 324
+    },
+    {
+      "key": "nj-cumberland",
+      "geoid": "34011",
+      "name": "Cumberland",
+      "statefp": "34",
+      "countyfp": "011",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 451
+    },
+    {
+      "key": "nj-essex",
+      "geoid": "34013",
+      "name": "Essex",
+      "statefp": "34",
+      "countyfp": "013",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 330
+    },
+    {
+      "key": "nj-gloucester",
+      "geoid": "34015",
+      "name": "Gloucester",
+      "statefp": "34",
+      "countyfp": "015",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 452
+    },
+    {
+      "key": "nj-hudson",
+      "geoid": "34017",
+      "name": "Hudson",
+      "statefp": "34",
+      "countyfp": "017",
+      "rings": 2,
+      "polygon_parts": 2,
+      "vertices": 206
+    },
+    {
+      "key": "nj-hunterdon",
+      "geoid": "34019",
+      "name": "Hunterdon",
+      "statefp": "34",
+      "countyfp": "019",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 339
+    },
+    {
+      "key": "nj-mercer",
+      "geoid": "34021",
+      "name": "Mercer",
+      "statefp": "34",
+      "countyfp": "021",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 327
+    },
+    {
+      "key": "nj-middlesex",
+      "geoid": "34023",
+      "name": "Middlesex",
+      "statefp": "34",
+      "countyfp": "023",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 360
+    },
+    {
+      "key": "nj-monmouth",
+      "geoid": "34025",
+      "name": "Monmouth",
+      "statefp": "34",
+      "countyfp": "025",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 321
+    },
+    {
+      "key": "nj-morris",
+      "geoid": "34027",
+      "name": "Morris",
+      "statefp": "34",
+      "countyfp": "027",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 718
+    },
+    {
+      "key": "nj-ocean",
+      "geoid": "34029",
+      "name": "Ocean",
+      "statefp": "34",
+      "countyfp": "029",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 251
+    },
+    {
+      "key": "nj-passaic",
+      "geoid": "34031",
+      "name": "Passaic",
+      "statefp": "34",
+      "countyfp": "031",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 357
+    },
+    {
+      "key": "nj-salem",
+      "geoid": "34033",
+      "name": "Salem",
+      "statefp": "34",
+      "countyfp": "033",
+      "rings": 2,
+      "polygon_parts": 2,
+      "vertices": 498
+    },
+    {
+      "key": "nj-somerset",
+      "geoid": "34035",
+      "name": "Somerset",
+      "statefp": "34",
+      "countyfp": "035",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 423
+    },
+    {
+      "key": "nj-sussex",
+      "geoid": "34037",
+      "name": "Sussex",
+      "statefp": "34",
+      "countyfp": "037",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 223
+    },
+    {
+      "key": "nj-union",
+      "geoid": "34039",
+      "name": "Union",
+      "statefp": "34",
+      "countyfp": "039",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 270
+    },
+    {
+      "key": "nj-warren",
+      "geoid": "34041",
+      "name": "Warren",
+      "statefp": "34",
+      "countyfp": "041",
+      "rings": 1,
+      "polygon_parts": 1,
+      "vertices": 429
+    }
+  ]
+}

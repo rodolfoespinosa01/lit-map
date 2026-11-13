@@ -1,0 +1,64 @@
+.lit-interaction { max-width: 1440px; margin: 2rem auto; padding: clamp(1rem, 3vw, 2.5rem); background: #f7f9f6; border-top: 5px solid #ad1733; color: #19382c; font: 16px/1.5 system-ui, sans-serif; box-sizing: border-box; }
+.lit-interaction *, .lit-interaction *::before, .lit-interaction *::after { box-sizing: border-box; }
+.lit-interaction [hidden] { display: none !important; }
+.lit-interaction h2 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.035em; line-height: 1.1; margin: .5rem 0 1rem; }
+.lit-interaction__eyebrow { font-size: .75rem; color: #97142d; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+.lit-interaction__notice { position: sticky; top: 0; z-index: 5; padding: 1rem; background: #fff1d9; border-left: 4px solid #a96700; color: #543a16; }
+.lit-interaction__controls { display: grid; grid-template-columns: 1fr 1.5fr; gap: 1.5rem; margin-top: 1.5rem; }
+.lit-interaction fieldset { min-width: 0; border: 1px solid #bccfc3; border-radius: .5rem; padding: 1rem; margin: 0; }
+.lit-interaction legend { font-weight: 700; }
+.lit-interaction legend span { font-weight: 400; font-size: .85rem; }
+.lit-interaction [data-languages] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-bottom: 1rem; }
+.lit-interaction [data-languages] label { display: flex; gap: .5rem; align-items: center; min-height: 44px; padding: .5rem; background: white; border: 1px solid #d4dfd8; border-radius: .25rem; cursor: pointer; }
+.lit-interaction input[type="checkbox"] { width: 20px; height: 20px; accent-color: #a71733; flex-shrink: 0; }
+.lit-interaction__places { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 1rem; align-items: start; }
+.lit-interaction__places label { display: flex; flex-direction: column; gap: .25rem; font-weight: 600; min-width: 0; }
+.lit-interaction__places .lit-interaction__toggle { flex-direction: row; align-items: center; min-height: 44px; align-self: center; }
+.lit-interaction select { min-height: 44px; width: 100%; font: inherit; padding: .5rem; border: 1px solid #7b9587; border-radius: .25rem; background: white; color: #19382c; }
+.lit-interaction select:disabled { color: #65776d; background: #edf1ed; }
+.lit-interaction button { min-height: 44px; padding: .45rem .7rem; border: 1px solid #7b9587; border-radius: .25rem; background: white; color: #19382c; font: inherit; cursor: pointer; text-align: left; }
+.lit-interaction button:hover { background: #e9f1eb; }
+.lit-interaction :is(button, select, input):focus-visible { outline: 3px solid #1261ac; outline-offset: 3px; }
+.lit-interaction :is(button, select, input) { scroll-margin-top: 10rem; }
+.lit-interaction__hint { font-size: .8rem; color: #456252; margin: 0; }
+.lit-interaction__status { border-bottom: 1px solid #c7d6cc; padding: 1rem 0; font-weight: 600; }
+.lit-interaction__layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr); gap: 1.5rem; align-items: start; }
+.lit-interaction__figure { margin: 0; padding: 1rem; border: 1px solid #c7d6cc; border-radius: .5rem; background: white; }
+.lit-interaction__map-layout { display: grid; align-items: start; gap: 1rem; }
+.lit-interaction__map-layout.has-callouts { grid-template-columns: minmax(0, 1fr) minmax(170px, .9fr); }
+.lit-interaction__map { min-width: 0; }
+.lit-interaction .lit-map-geometry { max-width: 430px; margin: 0 auto; }
+.lit-interaction .lit-map-county { cursor: pointer; --lit-county-fill: #e8eeea; }
+.lit-interaction .lit-map-county.has-data { --lit-county-fill: #b21d3c; --lit-county-border: white; }
+.lit-interaction .lit-map-county.is-selected { --lit-county-border: #103e80; --lit-county-border-width: 3; stroke-dasharray: 5 2; }
+.lit-interaction .lit-map-county:focus-visible { outline: none; stroke: #0063ce; stroke-width: 4; stroke-dasharray: 3 2; }
+.lit-interaction__markers { pointer-events: none; }
+.lit-interaction__markers circle { fill: #183c31; stroke: white; stroke-width: 1.5px; }
+.lit-interaction__markers text { fill: white; font: bold 12px system-ui, sans-serif; text-anchor: middle; dominant-baseline: central; }
+.lit-interaction__callouts { display: grid; gap: .7rem; }
+.lit-interaction__callout { border: 1px solid #ccd9d0; border-radius: .35rem; padding: .65rem; background: #f7f9f6; min-width: 0; }
+.lit-interaction__callout h4 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .25rem; }
+.lit-interaction__number { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 50%; background: #183c31; color: white; font: bold 12px system-ui, sans-serif; }
+.lit-interaction .lit-interaction__county-button { border: 0; padding: .25rem; background: transparent; text-decoration: underline; font-weight: 650; }
+.lit-interaction__counts { margin: .3rem 0; font-size: .9rem; }
+.lit-interaction__counts > div { padding: .35rem 0; border-top: 1px solid #d8e3db; }
+.lit-interaction__counts dt { font-weight: 650; }
+.lit-interaction__counts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.lit-interaction figcaption { font-size: .78rem; color: #456252; margin-top: 1rem; border-top: 1px solid #c7d6cc; }
+.lit-interaction__results { padding: 1rem; background: white; border: 1px solid #c7d6cc; border-radius: .5rem; }
+.lit-interaction__results h3 { margin-top: 0; }
+.lit-interaction__results h4 { margin: 1rem 0 .25rem; font-size: 1.05rem; }
+.lit-interaction__town-result { margin: .75rem 0; border-left: 3px solid #c7d6cc; padding-left: .75rem; }
+.lit-interaction__town-result h5 { font-size: 1rem; margin: .5rem 0; }
+.lit-interaction__county-result { border-top: 1px solid #c7d6cc; }
+@media (max-width: 1000px) {
+  .lit-interaction__layout { grid-template-columns: minmax(0, 1fr); }
+  .lit-interaction__controls { grid-template-columns: minmax(0, 1fr); }
+  .lit-interaction__map-layout.has-callouts { grid-template-columns: minmax(0, 1fr) minmax(190px, .7fr); }
+}
+@media (max-width: 540px) {
+  .lit-interaction { margin: 1rem 0; }
+  .lit-interaction__places, .lit-interaction__map-layout.has-callouts { grid-template-columns: minmax(0, 1fr); }
+  .lit-interaction__figure { padding: .6rem; }
+  .lit-interaction__callouts { grid-template-columns: minmax(0, 1fr); }
+}

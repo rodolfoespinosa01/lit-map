@@ -1,0 +1,52 @@
+geoid,name,abbreviation,panel,rings
+01,Alabama,AL,contiguous,4
+02,Alaska,AK,alaska,139
+04,Arizona,AZ,contiguous,1
+05,Arkansas,AR,contiguous,1
+06,California,CA,contiguous,11
+08,Colorado,CO,contiguous,1
+09,Connecticut,CT,contiguous,1
+10,Delaware,DE,contiguous,2
+11,District of Columbia,DC,contiguous,1
+12,Florida,FL,contiguous,11
+13,Georgia,GA,contiguous,1
+15,Hawaii,HI,hawaii,8
+16,Idaho,ID,contiguous,1
+17,Illinois,IL,contiguous,1
+18,Indiana,IN,contiguous,1
+19,Iowa,IA,contiguous,1
+20,Kansas,KS,contiguous,1
+21,Kentucky,KY,contiguous,2
+22,Louisiana,LA,contiguous,9
+23,Maine,ME,contiguous,11
+24,Maryland,MD,contiguous,4
+25,Massachusetts,MA,contiguous,4
+26,Michigan,MI,contiguous,20
+27,Minnesota,MN,contiguous,1
+28,Mississippi,MS,contiguous,5
+29,Missouri,MO,contiguous,1
+30,Montana,MT,contiguous,1
+31,Nebraska,NE,contiguous,1
+32,Nevada,NV,contiguous,1
+33,New Hampshire,NH,contiguous,1
+34,New Jersey,NJ,contiguous,1
+35,New Mexico,NM,contiguous,1
+36,New York,NY,contiguous,7
+37,North Carolina,NC,contiguous,3
+38,North Dakota,ND,contiguous,1
+39,Ohio,OH,contiguous,5
+40,Oklahoma,OK,contiguous,1
+41,Oregon,OR,contiguous,1
+42,Pennsylvania,PA,contiguous,1
+44,Rhode Island,RI,contiguous,5
+45,South Carolina,SC,contiguous,1
+46,South Dakota,SD,contiguous,1
+47,Tennessee,TN,contiguous,1
+48,Texas,TX,contiguous,1
+49,Utah,UT,contiguous,1
+50,Vermont,VT,contiguous,1
+51,Virginia,VA,contiguous,4
+53,Washington,WA,contiguous,14
+54,West Virginia,WV,contiguous,1
+55,Wisconsin,WI,contiguous,17
+56,Wyoming,WY,contiguous,1

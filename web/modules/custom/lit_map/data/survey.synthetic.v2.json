@@ -1,0 +1,204 @@
+{
+  "schema_version": 2,
+  "synthetic": true,
+  "records": [
+    {
+      "county_geoid": "34003",
+      "municipality": "hackensack",
+      "language": "es",
+      "response_count": 12
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": "fort-lee",
+      "language": "es",
+      "response_count": 3
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": null,
+      "language": "es",
+      "response_count": 5
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": "hackensack",
+      "language": "en",
+      "response_count": 8
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": "fort-lee",
+      "language": "en",
+      "response_count": 4
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": null,
+      "language": "en",
+      "response_count": 2
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": "hackensack",
+      "language": "ko",
+      "response_count": 0
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": "fort-lee",
+      "language": "ko",
+      "response_count": 7
+    },
+    {
+      "county_geoid": "34003",
+      "municipality": null,
+      "language": "ko",
+      "response_count": 1
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "jersey-city",
+      "language": "es",
+      "response_count": 18
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "hoboken",
+      "language": "es",
+      "response_count": 4
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": null,
+      "language": "es",
+      "response_count": 6
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "jersey-city",
+      "language": "en",
+      "response_count": 10
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "hoboken",
+      "language": "en",
+      "response_count": 6
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": null,
+      "language": "en",
+      "response_count": 1
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "jersey-city",
+      "language": "pt",
+      "response_count": 3
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": null,
+      "language": "pt",
+      "response_count": 2
+    },
+    {
+      "county_geoid": "34017",
+      "municipality": "hoboken",
+      "language": "ko",
+      "response_count": 0
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": "morristown",
+      "language": "es",
+      "response_count": 5
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": "parsippany-troy-hills",
+      "language": "es",
+      "response_count": 3
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": null,
+      "language": "es",
+      "response_count": 2
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": "morristown",
+      "language": "en",
+      "response_count": 7
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": "parsippany-troy-hills",
+      "language": "en",
+      "response_count": 6
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": null,
+      "language": "en",
+      "response_count": 3
+    },
+    {
+      "county_geoid": "34027",
+      "municipality": null,
+      "language": "ko",
+      "response_count": 0
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": "newark",
+      "language": "es",
+      "response_count": 20
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": "montclair",
+      "language": "es",
+      "response_count": 2
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": null,
+      "language": "es",
+      "response_count": 4
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": "newark",
+      "language": "en",
+      "response_count": 9
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": "montclair",
+      "language": "en",
+      "response_count": 5
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": null,
+      "language": "en",
+      "response_count": 2
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": "newark",
+      "language": "pt",
+      "response_count": 6
+    },
+    {
+      "county_geoid": "34013",
+      "municipality": null,
+      "language": "pt",
+      "response_count": 3
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{# Only a fixed, verified repository SVG is included. Never include user-supplied SVG. #}
+<article class="lit-geometry-preview">
+  <header class="lit-geometry-preview__header">
+    <p class="lit-geometry-preview__eyebrow">Lives in Translation · Milestone 2</p>
+    <h2>New Jersey, county by county</h2>
+    <p class="lit-geometry-preview__intro"><strong>Geometry preview — not a finished map.</strong> A geographic reference for the future LiT component. No survey results are shown.</p>
+  </header>
+  <div class="lit-geometry-preview__layout">
+    <figure class="lit-geometry-preview__figure">
+      {% include '@lit_map/geometry/nj-counties.svg' only %}
+      <figcaption>Source: U.S. Census Bureau, 2025 Cartographic Boundary Files, 1:500,000. Projected in NAD83 / New Jersey. North is up.</figcaption>
+    </figure>
+    <aside class="lit-geometry-preview__reference" aria-label="County reference">
+      <h3>21 counties. One shared geography.</h3>
+      <p><span class="lit-geometry-preview__swatch" aria-hidden="true"></span>Bergen, Hudson, Morris and Essex are highlighted solely to check geometry and styling. The color does not represent survey data.</p>
+      <h4>County identifiers</h4>
+      <p class="lit-geometry-preview__note">Names and five-digit GEOIDs come directly from the Census source. Highlighted counties also carry a text marker below.</p>
+      <dl class="lit-geometry-preview__counties">
+        {% for county in counties %}
+          <div>
+            <dt>{{ county.name }}{% if county.key in ['nj-bergen', 'nj-hudson', 'nj-morris', 'nj-essex'] %} <span class="lit-geometry-preview__marker">Preview highlight</span>{% endif %}</dt>
+            <dd>{{ county.geoid }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+    </aside>
+  </div>
+  <footer class="lit-geometry-preview__footer">Generalized boundaries for small-scale visual reference; not for navigation or precise boundary analysis. No filtering or data loading is implemented.</footer>
+</article>

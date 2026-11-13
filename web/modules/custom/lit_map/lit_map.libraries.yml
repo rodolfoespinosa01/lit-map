@@ -1,0 +1,36 @@
+geometry:
+  css:
+    component:
+      css/geometry.css: {}
+
+bubbles:
+  css:
+    component:
+      css/bubbles.css: {}
+  js:
+    js/bubble-model.js: {}
+    js/bubbles.js: {}
+  dependencies:
+    - lit_map/geometry
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+geometry_preview:
+  css:
+    theme:
+      css/geometry-preview.css: {}
+  dependencies:
+    - lit_map/geometry
+
+interactions:
+  css:
+    component:
+      css/interactions.css: {}
+  js:
+    js/interactions.js: {}
+  dependencies:
+    - lit_map/geometry
+    - core/drupal
+    - core/drupalSettings
+    - core/once

@@ -1,0 +1,12 @@
+services:
+  lit_map.bubble_data:
+    class: Drupal\lit_map\Service\BubblePreviewData
+    arguments: ['@lit_map.survey_data', '@extension.list.module', '@logger.channel.lit_map']
+  logger.channel.lit_map:
+    parent: logger.channel_base
+    arguments: ['lit_map']
+  lit_map.survey_normalizer:
+    class: Drupal\lit_map\Service\SurveyNormalizer
+  lit_map.survey_data:
+    class: Drupal\lit_map\Service\SurveyDataProvider
+    arguments: ['@extension.list.module', '@lit_map.survey_normalizer', '@logger.channel.lit_map']

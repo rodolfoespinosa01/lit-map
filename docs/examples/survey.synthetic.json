@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "Invented demonstration counts; not Rutgers or Qualtrics research data",
+  "observations": [
+    {"county_fips": "34013", "language_code": "es", "respondent_count": 12, "recording_urls": []},
+    {"county_fips": "34023", "language_code": "en", "respondent_count": 18, "recording_urls": []}
+  ]
+}
