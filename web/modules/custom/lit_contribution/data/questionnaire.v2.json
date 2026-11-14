@@ -1,0 +1,319 @@
+{
+  "schema_version": 2,
+  "title": "LiT’s Language Survey",
+  "questions": [
+    {
+      "key": "q01",
+      "number": 1,
+      "label": "Are you a resident of Newark, New Jersey?",
+      "type": "choice",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q02",
+      "number": 2,
+      "label": "If not, please specify the city/town and state where you currently reside:",
+      "type": "text"
+    },
+    {
+      "key": "q03",
+      "number": 3,
+      "label": "If you live in New Jersey, what county do you currently reside in?",
+      "type": "text"
+    },
+    {
+      "key": "q04",
+      "number": 4,
+      "label": "How old are you?",
+      "type": "age"
+    },
+    {
+      "key": "q05",
+      "number": 5,
+      "label": "How do you identify your gender?",
+      "type": "gender",
+      "options": {
+        "female": "Female",
+        "male": "Male",
+        "non_binary": "Non-binary",
+        "prefer_not": "Prefer not to say",
+        "different": "I use a different term"
+      }
+    },
+    {
+      "key": "q06",
+      "number": 6,
+      "label": "What is your birth order among your siblings?",
+      "type": "choice",
+      "options": {
+        "only": "I’m an only child",
+        "oldest": "I’m the oldest sibling",
+        "middle": "I’m the middle sibling",
+        "youngest": "I’m the youngest sibling"
+      }
+    },
+    {
+      "key": "q07",
+      "number": 7,
+      "label": "Which languages do you speak or understand, and when did you start learning each one?",
+      "type": "languages",
+      "help": "Enter one language per box with age learning began. Include English and languages understood even if rarely spoken. If multiple languages were learned from birth, give the same age. Complete only the entries that apply. Three ordered entries."
+    },
+    {
+      "key": "q08",
+      "number": 8,
+      "label": "How often do you use Language 1 in the following settings?",
+      "type": "frequency",
+      "help": "The printout says settings, but its rows are Language 1, Language 2 and Language 3. This demo preserves those language rows; no home/work settings are inferred.",
+      "options": {
+        "rarely": "Rarely",
+        "few_year": "A few times a year",
+        "few_month": "A few times a month",
+        "weekly": "Weekly",
+        "daily": "Daily"
+      }
+    },
+    {
+      "key": "q09",
+      "number": 9,
+      "label": "Do you consider yourself a heritage speaker?",
+      "type": "choice",
+      "help": "Someone in the US raised in a home where a non-English language was spoken, who understands and maybe speaks it, and is fluent to some degree in both English and that language.",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q10",
+      "number": 10,
+      "label": "Rate proficiency in Language 1.",
+      "type": "proficiency",
+      "help": "Speaking; Reading; Writing.",
+      "options": {
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "native": "Native/native-like"
+      }
+    },
+    {
+      "key": "q11",
+      "number": 11,
+      "label": "Rate proficiency in Language 2.",
+      "type": "proficiency",
+      "help": "Speaking; Reading; Writing.",
+      "options": {
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "native": "Native/native-like"
+      }
+    },
+    {
+      "key": "q12",
+      "number": 12,
+      "label": "Rate proficiency in Language 3.",
+      "type": "proficiency",
+      "help": "Speaking; Reading; Writing. Skip if there is no third language.",
+      "options": {
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "native": "Native/native-like"
+      }
+    },
+    {
+      "key": "q13",
+      "number": 13,
+      "label": "Do you feel Language 2 is supported in the following settings?",
+      "type": "support",
+      "help": "At work or school; in healthcare settings; in government or public offices; in your local community. No Language 1 support matrix was supplied.",
+      "options": {
+        "never": "Never",
+        "sometimes": "Sometimes",
+        "always": "Always"
+      }
+    },
+    {
+      "key": "q14",
+      "number": 14,
+      "label": "Do you feel Language 3 is supported in the following settings?",
+      "type": "support",
+      "help": "At work or school; in healthcare settings; in government or public offices; in your local community. No Language 1 support matrix was supplied.",
+      "options": {
+        "never": "Never",
+        "sometimes": "Sometimes",
+        "always": "Always"
+      }
+    },
+    {
+      "key": "q15",
+      "number": 15,
+      "label": "Have you ever translated or interpreted for family/community members, e.g. school, healthcare, housing, legal, government?",
+      "type": "choice",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q16",
+      "number": 16,
+      "label": "How often do you translate or interpret for your family, friends, or community?",
+      "type": "choice",
+      "options": {
+        "daily": "Daily",
+        "4_6_week": "4–6 times a week",
+        "2_3_week": "2–3 times a week",
+        "monthly": "Once a month",
+        "never": "Never"
+      }
+    },
+    {
+      "key": "q17",
+      "number": 17,
+      "label": "In which settings do you most often translate or interpret?",
+      "type": "multiple",
+      "options": {
+        "healthcare": "Healthcare, e.g. doctor’s office/hospitals",
+        "legal": "Legal, e.g. court processing",
+        "education": "Education, e.g. parent-teacher meetings/school events",
+        "government": "Government and public services, e.g. DMV",
+        "housing": "Housing",
+        "finances": "Finances, e.g. banks/accounting",
+        "social_services": "Social services and benefits",
+        "customer_service": "Customer service",
+        "stores": "Stores, restaurants",
+        "religious": "Religious settings"
+      }
+    },
+    {
+      "key": "q18",
+      "number": 18,
+      "label": "About how old were you when you first started translating or interpreting for family/community members?",
+      "type": "age"
+    },
+    {
+      "key": "q19",
+      "number": 19,
+      "label": "When translating/interpreting for your community, do you use tools?",
+      "type": "multiple",
+      "options": {
+        "google_translate": "Google Translate",
+        "chatgpt": "ChatGPT",
+        "claude": "Claude",
+        "deepl": "DeepL",
+        "dictionaries": "Bilingual dictionaries",
+        "live_app": "Live interpretation app, e.g. Google Live Transcribe"
+      }
+    },
+    {
+      "key": "q20",
+      "number": 20,
+      "label": "How do you feel about being a language broker—translating and interpreting for family, friends, or community?",
+      "type": "reflection"
+    },
+    {
+      "key": "q21",
+      "number": 21,
+      "label": "Are language services provided by public institutions in NJ sufficient for your community’s needs?",
+      "type": "choice",
+      "help": "Examples: hospitals, courts, schools, government offices.",
+      "options": {
+        "not_sufficient": "Not sufficient",
+        "somewhat": "Somewhat",
+        "fully": "Fully sufficient"
+      }
+    },
+    {
+      "key": "q22",
+      "number": 22,
+      "label": "Do you support policies requiring NJ government agencies to provide services in languages other than English?",
+      "type": "slider",
+      "help": "0 Strongly Oppose; 50 Neutral; 100 Strongly support. Ticks every 10 in the printout; allowed step unconfirmed. Demo uses integer steps and an explicit unanswered state."
+    },
+    {
+      "key": "q23",
+      "number": 23,
+      "label": "When accessing language services, have you experienced barriers?",
+      "type": "choice",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q24",
+      "number": 24,
+      "label": "What barriers have you experienced?",
+      "type": "multiple",
+      "options": {
+        "interpreters": "Lack of available interpreters/translators",
+        "wait": "Long wait times",
+        "cost": "Cost of services",
+        "quality": "Low quality or inaccurate translations",
+        "awareness": "Lack of awareness about available services",
+        "availability": "Lack of available language services",
+        "specific_languages": "Limited availability for specific languages or dialects",
+        "technology": "Technology-related issues",
+        "privacy": "Privacy or confidentiality concerns",
+        "trust": "Concerns about trust",
+        "discomfort": "Discomfort sharing sensitive information"
+      }
+    },
+    {
+      "key": "q25",
+      "number": 25,
+      "label": "Did you ever participate in bilingual education or a dual-language or immersion program studying academic subjects in English plus another language?",
+      "type": "choice",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q26",
+      "number": 26,
+      "label": "If so, for how many years?",
+      "type": "years"
+    },
+    {
+      "key": "q27",
+      "number": 27,
+      "label": "At what level did you participate?",
+      "type": "multiple",
+      "help": "Printout refers to selection of a program type, but Q25 is Yes/No. Demo displays this when Q25 is Yes; this branching assumption is unconfirmed.",
+      "options": {
+        "elementary": "Elementary",
+        "middle": "Middle school",
+        "high": "High school"
+      }
+    },
+    {
+      "key": "q28",
+      "number": 28,
+      "label": "Interested in sharing your bilingual/multilingual experience through a recorded interview for this project?",
+      "type": "choice",
+      "options": {
+        "no": "No",
+        "yes": "Yes"
+      }
+    },
+    {
+      "key": "q29",
+      "number": 29,
+      "label": "If Yes, include your email.",
+      "type": "email"
+    },
+    {
+      "key": "q30",
+      "number": 30,
+      "label": "To enter your name in the raffle, include full name and email.",
+      "type": "contact",
+      "help": "Original questionnaire wording. Local demonstration only: supplying these optional fields does NOT enter a real raffle. Use fictional details."
+    }
+  ]
+}

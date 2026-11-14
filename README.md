@@ -1,4 +1,4 @@
-# Rutgers Lives in Translation — Milestones 1–3
+# Rutgers Lives in Translation — local development prototypes
 
 This Composer-managed Drupal installation is a **local development/test host**
 for a custom component destined for an existing Drupal website. It is not a
@@ -7,9 +7,53 @@ and a verified static New Jersey county SVG with local geometry and synthetic
 interaction previews.
 
 The interaction preview uses fabricated JSON metrics only. No final Paragraph,
-taxonomy vocabulary, importer, media integration, frontend framework, or build
+taxonomy vocabulary, importer, frontend framework, or build
 pipeline is implemented. See [the versioned survey format](docs/survey-format.md).
 Survey data and SVG geometry remain separate.
+
+## Contribution review prototype (contribution branch)
+
+**Current questionnaire and dates:** [transcription-aligned v2 guide](docs/contribution/questionnaire-v2.md),
+[question mapping](docs/contribution/questionnaire-mapping.md). Local demonstration
+intake is explicitly development-gated; publication uses one selected synthetic
+baseline plus approved operational contributions and NY submission-date filters.
+
+**Current imports:** [normalized CSV/JSON upload workflow](docs/contribution/export-upload.md).
+The operational queue excludes preserved seeded test requests; owner publication
+combines the original 10,000-response baseline with approved uploads.
+
+**Current access:** [superadmin-managed email/password setup](docs/contribution/password-access.md).
+Start at <https://rutgers-lit-m1.ddev.site/lit>. This replaces earlier email-link
+instructions; privately configure the initial owner password before bootstrap.
+
+
+The local [approved aggregate map](https://rutgers-lit-m1.ddev.site/lit-map/contribution-preview)
+uses only a successful publication of approved, permitted synthetic responses.
+The [private Drupal review queue](https://rutgers-lit-m1.ddev.site/admin/content/lit-contributions)
+requires reviewer permission. Qualtrics remains the intended authoritative survey
+source; **no live API connection or public submission endpoint exists**.
+
+The mock source is outside `web/`. Drupal stores source references and private
+review/publication metadata, not raw answers. Invitation defaults OFF. Shared
+bubble colors show equal categorical language segments. Contribution bubble area
+and headline numbers count **survey responses reporting ANY selected language**,
+counting each matching approved submission once. Individual language counts overlap.
+
+See [setup, admin walkthrough, provisional schema and real-adapter requirements](docs/contribution/README.md)
+and [exercised checks and limitations](docs/contribution/verification.md).
+See [count accuracy, breakdown behavior and private reconciliation](docs/contribution/count-reconciliation.md)
+for the exact published English count and a read-only verification walkthrough.
+The contribution preview now opens with an English county preset (or the first
+published language when English is absent). See [opening behavior, visibility checks and invitation status](docs/contribution/opening-experience.md).
+The active contribution demo now contains **10,000 approved eligible submissions plus
+100 pending**. Account `ree32` is the explicitly bootstrapped application owner.
+See [dataset setup, owner/admin sign-in, verification and recovery](docs/contribution/large-demo-owner.md).
+See [combined-count schema, source reconciliation, and current owner access](docs/contribution/combined-counts-access.md)
+for the current implementation, verified URLs, and browser walkthrough.
+See [passwordless access, resource editing, and floating bubbles](docs/contribution/resources-passwordless.md)
+for the current owner/admin walkthrough and optional access-checked Media links.
+Earlier sparse-publication reports describe the archived dataset.
+All prior milestone previews remain available.
 
 ## Milestone 3 interaction preview
 

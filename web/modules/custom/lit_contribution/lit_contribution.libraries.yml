@@ -1,0 +1,23 @@
+signin:
+  js:
+    js/signin.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+admin:
+  css:
+    theme:
+      css/admin.css: {}
+assigned_password:
+  js:
+    js/assigned-password.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+questionnaire:
+  js:
+    js/questionnaire.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

@@ -1,0 +1,242 @@
+lit_contribution.list:
+  path: '/admin/content/lit-contributions'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\ReviewController::listing'
+    _title: 'Private LiT contributor reviews'
+  requirements:
+    _permission: 'review lit contributions'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.detail:
+  path: '/admin/content/lit-contributions/{review}'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\ReviewController::detail'
+    _title: 'Private contribution review'
+  requirements:
+    _permission: 'review lit contributions'
+    review: '\d+'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.sync:
+  path: '/admin/content/lit-contributions/synchronize'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\SyncForm'
+    _title: 'Synchronize mock submissions'
+  requirements:
+    _permission: 'synchronize lit contributions'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.publish:
+  path: '/admin/content/lit-contributions/publish'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\PublishForm'
+    _title: 'Publish approved synthetic aggregates locally'
+  requirements:
+    _permission: 'publish lit contributions'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.settings:
+  path: '/admin/config/lit-contributions'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\SettingsForm'
+    _title: 'LiT contribution invitation'
+  requirements:
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.map:
+  path: '/lit-map/contribution-preview'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\PublicMapController::build'
+    _title: 'LiT language map'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: true
+lit_contribution.reconciliation:
+  path: '/admin/content/lit-contributions/reconciliation'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\ReconciliationController::build'
+    _title: 'LiT private publication reconciliation'
+  requirements:
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.entry:
+  path: '/lit'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\EntryController::build'
+    _title: 'LiT access'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: true
+lit_contribution.signin:
+  path: '/lit/sign-in'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\EntryController::build'
+    _title: 'LiT access'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: true
+lit_contribution.superadmin_login:
+  path: '/lit/superadmin/login'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\SignInForm'
+    _title: 'Superadmin login'
+    mode: 'superadmin'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: true
+lit_contribution.administrator_login:
+  path: '/lit/administrator/login'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\SignInForm'
+    _title: 'Administrator login'
+    mode: 'administrator'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: true
+lit_contribution.signin_confirm:
+  path: '/lit/sign-in/confirm'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\SignInConfirmForm'
+    _title: 'Email-link sign-in disabled'
+  requirements:
+    _access: 'FALSE'
+  options:
+    no_cache: true
+lit_contribution.administrators:
+  path: '/admin/people/lit-administrators'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\AdministratorsForm'
+    _title: 'LiT authorized administrators'
+  requirements:
+    _permission: 'manage lit administrators'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.dashboard:
+  path: '/admin/lit'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\OwnerDashboardController::build'
+    _title: 'LiT owner dashboard'
+  requirements:
+    _permission: 'manage lit administrators'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.pending:
+  path: '/admin/content/lit-contributions/pending'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\ReviewController::pending'
+    _title: 'Pending LiT contribution reviews'
+  requirements:
+    _permission: 'review lit contributions'
+  options:
+    _admin_route: true
+    no_cache: true
+
+lit_contribution.resources:
+  path: '/admin/config/lit-contributions/resources'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\ResourcesForm'
+    _title: 'LiT recordings and resources'
+  requirements:
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+
+lit_contribution.administrator_password:
+  path: '/admin/people/lit-administrators/{administrator}/password'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\AdministratorPasswordForm'
+    _title: 'Assign a new administrator password'
+  requirements:
+    administrator: '\d+'
+    _permission: 'manage lit administrators'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+
+lit_contribution.import:
+  path: '/admin/content/lit-contributions/import'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\ImportForm'
+    _title: 'Import survey responses'
+  requirements:
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+lit_contribution.import_example:
+  path: '/admin/content/lit-contributions/import/example/{format}'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\ExportExampleController::download'
+  requirements:
+    format: 'csv|json'
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    no_cache: true
+
+lit_contribution.datasets:
+  path: '/admin/content/lit-contributions/datasets'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\DatasetController::build'
+    _title: 'LiT dataset composition and preserved fixtures'
+  requirements:
+    _permission: 'administer lit contribution settings'
+    _custom_access: 'lit_contribution.owner:access'
+  options:
+    _admin_route: true
+    no_cache: true
+
+lit_contribution.demo:
+  path: '/lit/local-survey'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\DemoSurveyForm'
+    _title: 'LiT local demonstration survey'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: true
+lit_contribution.resolve_questionnaire:
+  path: '/admin/content/lit-contributions/{review}/resolve-questionnaire'
+  defaults:
+    _form: '\Drupal\lit_contribution\Form\QuestionnaireResolutionForm'
+    _title: 'Resolve questionnaire references'
+  requirements:
+    review: '\d+'
+    _permission: 'review lit contributions'
+  options:
+    _admin_route: true
+    no_cache: true
+
+lit_contribution.panels:
+  path: '/lit-map/questionnaire-aggregates'
+  defaults:
+    _controller: '\Drupal\lit_contribution\Controller\QuestionPanelController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: true

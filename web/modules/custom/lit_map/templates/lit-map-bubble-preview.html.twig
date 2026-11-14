@@ -1,22 +1,43 @@
-<section id="{{ instance_id }}" class="lit-bubbles" aria-label="LiT synthetic bubble map preview">
-  <h2>New Jersey language survey · interaction preview</h2>
-  <p class="lit-bubbles__notice"><strong>Synthetic demonstration data.</strong> Every count is fabricated for testing. Values mean survey responses, not population, language prevalence, or unique people.</p>
+<section id="{{ instance_id }}" class="lit-bubbles{% if approved_preview %} lit-bubbles--approved{% endif %}" aria-label="LiT synthetic bubble map preview">
+  <h2>New Jersey language survey{% if not approved_preview %} · interaction preview{% endif %}</h2>
+  <p class="lit-bubbles__notice"><strong>Synthetic demonstration data.</strong> {% if approved_preview %}This preview retains a fabricated baseline and may include approved imported contributions. Values mean survey responses, not population or unique people.{% else %}Every count is fabricated for testing. Values mean survey responses, not population, language prevalence, or unique people.{% endif %}</p>
+  {% if approved_preview %}
+    <p data-publication-date>Public data updated: {{ publication_date ?: 'No approved publication yet' }}{% if publication_date %} (UTC date){% endif %}.</p>
+
+  {% endif %}
   {% if available %}
+    {% if approved_preview %}
+      <p data-opening-status role="status"></p>
+      {% if invitation_url %}<p><a class="lit-bubbles__invitation" data-invitation href="{{ invitation_url }}" rel="noopener noreferrer">Share your language experience</a></p>{% endif %}
+      <details class="lit-bubbles__filters" data-filter-disclosure><summary>Change languages, places and submission dates</summary>
+    <fieldset class="lit-bubbles__dates"><legend>Submission dates · America/New_York</legend>
+      <label>From <input type="date" data-date-from></label>
+      <label>Through <input type="date" data-date-through></label>
+      <button type="button" data-date-preset="all">All time</button><button type="button" data-date-preset="30">Last 30 days</button><button type="button" data-date-preset="90">Last 90 days</button><button type="button" data-date-preset="year">This year</button>
+      <p data-date-status role="status"></p>
+    </fieldset>
+
+    {% endif %}
     <div class="lit-bubbles__controls">
       <fieldset data-languages><legend>Compare languages</legend></fieldset>
-      <label>Bubble size: active language <select data-active></select></label>
+      {% if not approved_preview %}<label>Numbers and bubble size: active language <select data-active></select></label>{% endif %}
       <label>County <select data-county><option value="">Choose a county</option></select></label>
       <label><input type="checkbox" data-breakdown disabled> Show towns/cities</label>
       <label>Town/city <select data-municipality disabled><option value="">All towns/cities</option></select></label>
     </div>
+    {% if approved_preview %}</details>{% endif %}
+    {% set navigation %}
     <div class="lit-bubbles__toolbar" aria-label="Map navigation">
       <button type="button" data-action="nj">Back to New Jersey</button>
       <button type="button" data-action="usa">USA overview</button>
       <button type="button" data-action="in" aria-label="Zoom in">Zoom +</button>
       <button type="button" data-action="out" aria-label="Zoom out">Zoom −</button>
       <button type="button" data-action="fit">Fit current view</button>
-      <button type="button" data-action="reset">Reset selections</button>
+      <button type="button" data-action="reset">{% if approved_preview %}Reset opening preset{% else %}Reset selections{% endif %}</button>
+      {% if approved_preview %}<button type="button" data-action="clear">Clear languages</button>{% endif %}
     </div>
+    {% endset %}
+    {% if not approved_preview %}{{ navigation }}{% endif %}
     <div class="lit-bubbles__layout">
       <div>
         <h3 data-heading>New Jersey</h3>
@@ -25,7 +46,15 @@
           <div data-usa hidden></div>
           <svg class="lit-bubbles__overlay" aria-label="Synthetic survey response bubbles"></svg>
         </div>
+        {% if approved_preview %}{{ navigation }}<p data-coverage></p><p>This preview uses only the approved local aggregate publication. Qualtrics collects responses externally. Uploaded exports require review and publication; there is no live Qualtrics connection.</p>{% endif %}
+        {% if approved_preview %}    <details><summary>Questionnaire aggregates · development disclosure rules</summary><div data-question-panels aria-live="polite"></div></details>
+{% endif %}
         <p data-map-status role="status"></p>
+        <div class="lit-bubbles__tooltip-dock">
+          <small>Hover or focus a place for counts here. Click/tap for the panel. Escape dismisses the tooltip.</small>
+          <p id="{{ instance_id }}-tooltip" data-tooltip role="tooltip" hidden></p>
+          <button type="button" data-tooltip-dismiss hidden>Dismiss tooltip</button>
+        </div>
         <p class="lit-bubbles__callout" data-callout aria-live="polite">Select languages to show bubbles. Select a county at any time.</p>
         <div class="lit-bubbles__toolbar" aria-label="Pan controls">
           <button type="button" data-action="left" aria-label="Pan left">←</button><button type="button" data-action="up" aria-label="Pan up">↑</button><button type="button" data-action="down" aria-label="Pan down">↓</button><button type="button" data-action="right" aria-label="Pan right">→</button>
@@ -37,8 +66,10 @@
         <div class="lit-bubbles__legend">
           <strong>Reading the bubbles</strong>
           <div data-legend></div>
-          <p>Area represents only the active language. Small positive bubbles have a 5 px minimum radius; large bubbles cap at 32 px. These caps alter visual scaling. Hollow rings mean an explicit zero; no bubble means no data, not zero. Touch targets are at least 44 px.</p>
-          <p>Anchors stay inside their boundaries. Bubbles may overlap or extend across borders. Select a bubble or a result below to bring it forward and show its name and exact count. Zoom in for separation. The results list provides every value.</p>
+          <div data-color-legend></div>
+          <p>Colors identify selected languages with positive counts in this place. Equal segments are categories, not population shares. More than six matches use a neutral disc marked “+”; every matching language is named in the callout and results. {% if approved_preview %}Numbers and size represent survey responses reporting ANY selected language, counted once per area. Individual language counts overlap. An explicit combined zero is hollow; missing data is not zero.{% else %}Size still represents only the active language. An active-language zero remains hollow, with a categorical outline if other selected languages have positive counts. An unrecorded active language has no bubble; other language results remain in the panel.{% endif %}</p>
+          <p>{% if approved_preview %}Area represents the combined distinct-response count for ANY selected language.{% else %}Area represents only the active language.{% endif %} Small positive bubbles have a {% if approved_preview %}14{% else %}5{% endif %} px minimum radius; large bubbles cap at {% if approved_preview %}38{% else %}32{% endif %} px. These caps alter visual scaling. Hollow rings mean an explicit zero; no bubble means no data, not zero. Touch targets are at least 44 px.</p>
+          <p>Geographic anchors stay inside their boundaries. Bubbles may extend across borders.{% if approved_preview %} Crowded bubbles move a limited distance from their anchors, shown by a small dot and connector. Counts stay inside the bubbles where possible; named callouts are a last resort for crowded labels.{% endif %} Select a bubble or a result below to bring it forward and show its name and exact count. Zoom in for separation. The results list provides every value.</p>
           <p>Drag to pan after zooming; use buttons or arrow keys for precise movement. Page scrolling remains available by default. Enable touch movement only when you want to drag the map on a phone.</p>
         </div>
       </div>
@@ -46,6 +77,7 @@
         <h3 data-results-heading>Survey responses</h3>
         <p data-summary role="status"></p>
         <div data-results></div>
+        {% if approved_preview %}<template data-resource-templates>{% for resource in resources %}{{ resource.card }}{% endfor %}</template>{% endif %}
       </aside>
     </div>
     <noscript>This interactive preview requires JavaScript. No survey counts are represented by the unfiltered geometry.</noscript>

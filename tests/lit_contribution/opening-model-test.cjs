@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),M=require('../../web/modules/custom/lit_map/js/bubble-model.js');
+const data={languages:[{id:'es'},{id:'en'},{id:'ko'}],counties:[{geoid:'34003'}],municipalities:[],totals:{34003:{en:7,es:5}}};
+let n=0;const check=(v)=>{assert(v);n++;};
+check(M.read('https://example.test/',data,true).active==='en');
+check(M.read('https://example.test/?campaign=x&lit_lang=bad&lit_level=bad',data,true).active==='en');
+check(M.read('https://example.test/?lit_lang=es',data,true).active==='es');
+check(M.read('https://example.test/?lit_county=34003',data,true).languages.length===0);
+check(M.read('https://example.test/?lit_level=usa',data,true).level==='usa');
+const clear=M.normalize({languages:[],level:'nj'},data),url=M.write('https://example.test/?campaign=x#map',clear);
+assert.deepEqual(M.read(url,data,true),clear);n++;check(url.searchParams.get('campaign')==='x'&&url.hash==='#map');
+check(M.opening({...data,totals:{34003:{es:0,ko:2}}}).active==='es');
+check(M.opening({...data,totals:{}}).languages.length===0);
+check(M.read('https://example.test/',data).languages.length===0);
+console.log(n+' opening-state model checks passed.');

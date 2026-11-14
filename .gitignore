@@ -21,6 +21,8 @@
 *.sqlite3
 .env
 .env.*
+/.env*
+!/.env.example
 auth.json
 *.pem
 *.key
@@ -64,3 +66,8 @@ __pycache__/
 /secrets/
 /survey-exports/
 /recordings/
+
+# Contribution prototype QA output; keep schema/docs and synthetic source fixture.
+/docs/contribution/screenshots/
+/docs/contribution/integration-results.json
+/docs/contribution/browser-results.json

@@ -36,8 +36,8 @@ final class BubblePreviewData {
     return array_intersect_key($feature, array_flip(['anchor', 'bbox', 'clearance']));
   }
 
-  public function load(): ?array {
-    $data = $this->survey->loadStatewide();
+  public function load(?array $validatedSurvey = NULL): ?array {
+    $data = $validatedSurvey ?? $this->survey->loadStatewide();
     if ($data === NULL) {
       return NULL;
     }

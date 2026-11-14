@@ -1,0 +1,7 @@
+const assert=require('node:assert/strict'),M=require('../../web/modules/custom/lit_map/js/bubble-model.js');
+let n=0;const check=(v)=>{assert(v);n++;},s={county:'34003',municipality:'',languages:['en'],level:'county'},global={languages:['en'],county:null,municipality:null},county={...global,county:'34003'},town={...county,municipality:'town-a'};
+check(M.resourceMatches(global,s));check(M.resourceMatches(county,s));check(M.resourceMatches(town,s));check(!M.resourceMatches({...county,county:'34013'},s));check(!M.resourceMatches({...county,languages:['ko']},s));check(M.resourceMatches(county,{...s,languages:[]}));
+check(M.resourceMatches(county,{...s,municipality:'town-a'}));check(M.resourceMatches(town,{...s,municipality:'town-a'}));check(!M.resourceMatches(town,{...s,municipality:'town-b'}));check(!M.resourceMatches(town,{...s,municipality:'_unspecified'}));check(!M.resourceMatches(global,{...s,county:''}));check(!M.resourceMatches(county,{...s,level:'usa'}));
+check(M.presentationRadius(undefined,false)===null);check(M.presentationRadius(0,false)===4);check(M.presentationRadius(1,false)===14);check(M.presentationRadius(100000,false)===38);
+check(Math.abs(M.presentationRadius(1000,false)**2/M.presentationRadius(500,false)**2-2)<1e-9);check(Math.abs(M.presentationRadius(200,true)**2/M.presentationRadius(100,true)**2-2)<1e-9);
+console.log(n+' resource matching and proportional-area checks passed.');

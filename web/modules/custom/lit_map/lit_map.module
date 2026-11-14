@@ -11,7 +11,7 @@
 function lit_map_theme($existing, $type, $theme, $path): array {
   return [
     'lit_map_bubble_preview' => [
-      'variables' => ['available' => FALSE, 'instance_id' => NULL],
+      'variables' => ['available' => FALSE, 'instance_id' => NULL, 'publication_date' => NULL, 'invitation_url' => NULL, 'approved_preview' => FALSE, 'resources' => []],
     ],
     'lit_map_interaction_preview' => [
       'variables' => ['available' => FALSE],

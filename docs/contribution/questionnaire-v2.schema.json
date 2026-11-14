@@ -1,0 +1,624 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LiT transcription-aligned normalized questionnaire export v2 — not a native Qualtrics mapping",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "export_version",
+    "submissions"
+  ],
+  "properties": {
+    "export_version": {
+      "const": 2
+    },
+    "submissions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema_version",
+          "survey_id",
+          "response_id",
+          "email",
+          "submitted_at",
+          "updated_at",
+          "answers"
+        ],
+        "properties": {
+          "schema_version": {
+            "const": 2
+          },
+          "survey_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,96}$"
+          },
+          "response_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,96}$"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "submitted_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "[+-][0-9]{2}:[0-9]{2}$"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "[+-][0-9]{2}:[0-9]{2}$"
+          },
+          "answers": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "consent",
+              "map_permission",
+              "questions"
+            ],
+            "properties": {
+              "consent": {
+                "const": true
+              },
+              "map_permission": {
+                "enum": [
+                  "yes",
+                  "no",
+                  "unknown"
+                ]
+              },
+              "questions": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "q01": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "Are you a resident of Newark, New Jersey?"
+                  },
+                  "q02": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 254,
+                    "title": "If not, please specify the city/town and state where you currently reside:"
+                  },
+                  "q03": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 254,
+                    "title": "If you live in New Jersey, what county do you currently reside in?"
+                  },
+                  "q04": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 120,
+                    "title": "How old are you?"
+                  },
+                  "q05": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "choice",
+                      "text"
+                    ],
+                    "properties": {
+                      "choice": {
+                        "enum": [
+                          null,
+                          "female",
+                          "male",
+                          "non_binary",
+                          "prefer_not",
+                          "different"
+                        ]
+                      },
+                      "text": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "title": "How do you identify your gender?"
+                  },
+                  "q06": {
+                    "enum": [
+                      null,
+                      "only",
+                      "oldest",
+                      "middle",
+                      "youngest"
+                    ],
+                    "title": "What is your birth order among your siblings?"
+                  },
+                  "q07": {
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "text",
+                        "age"
+                      ],
+                      "properties": {
+                        "text": {
+                          "type": "string",
+                          "maxLength": 100
+                        },
+                        "age": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
+                          "minimum": 0,
+                          "maximum": 120
+                        }
+                      }
+                    },
+                    "title": "Which languages do you speak or understand, and when did you start learning each one?"
+                  },
+                  "q08": {
+                    "type": "array",
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "items": {
+                      "enum": [
+                        null,
+                        "rarely",
+                        "few_year",
+                        "few_month",
+                        "weekly",
+                        "daily"
+                      ]
+                    },
+                    "title": "How often do you use Language 1 in the following settings?"
+                  },
+                  "q09": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "Do you consider yourself a heritage speaker?"
+                  },
+                  "q10": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "speaking",
+                      "reading",
+                      "writing"
+                    ],
+                    "properties": {
+                      "speaking": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "native"
+                        ]
+                      },
+                      "reading": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "native"
+                        ]
+                      },
+                      "writing": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "native"
+                        ]
+                      }
+                    },
+                    "title": "Rate proficiency in Language 1."
+                  },
+                  "q11": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "speaking",
+                      "reading",
+                      "writing"
+                    ],
+                    "properties": {
+                      "speaking": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      },
+                      "reading": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      },
+                      "writing": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      }
+                    },
+                    "title": "Rate proficiency in Language 2."
+                  },
+                  "q12": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "speaking",
+                      "reading",
+                      "writing"
+                    ],
+                    "properties": {
+                      "speaking": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      },
+                      "reading": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      },
+                      "writing": {
+                        "enum": [
+                          null,
+                          "beginner",
+                          "intermediate",
+                          "advanced",
+                          "native"
+                        ]
+                      }
+                    },
+                    "title": "Rate proficiency in Language 3."
+                  },
+                  "q13": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "work_school",
+                      "healthcare",
+                      "government",
+                      "community"
+                    ],
+                    "properties": {
+                      "work_school": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "healthcare": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "government": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "community": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      }
+                    },
+                    "title": "Do you feel Language 2 is supported in the following settings?"
+                  },
+                  "q14": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "work_school",
+                      "healthcare",
+                      "government",
+                      "community"
+                    ],
+                    "properties": {
+                      "work_school": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "healthcare": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "government": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      },
+                      "community": {
+                        "enum": [
+                          null,
+                          "never",
+                          "sometimes",
+                          "always"
+                        ]
+                      }
+                    },
+                    "title": "Do you feel Language 3 is supported in the following settings?"
+                  },
+                  "q15": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "Have you ever translated or interpreted for family/community members, e.g. school, healthcare, housing, legal, government?"
+                  },
+                  "q16": {
+                    "enum": [
+                      null,
+                      "daily",
+                      "4_6_week",
+                      "2_3_week",
+                      "monthly",
+                      "never"
+                    ],
+                    "title": "How often do you translate or interpret for your family, friends, or community?"
+                  },
+                  "q17": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "healthcare",
+                            "legal",
+                            "education",
+                            "government",
+                            "housing",
+                            "finances",
+                            "social_services",
+                            "customer_service",
+                            "stores",
+                            "religious"
+                          ]
+                        },
+                        "uniqueItems": true
+                      }
+                    ],
+                    "title": "In which settings do you most often translate or interpret?"
+                  },
+                  "q18": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 120,
+                    "title": "About how old were you when you first started translating or interpreting for family/community members?"
+                  },
+                  "q19": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "google_translate",
+                            "chatgpt",
+                            "claude",
+                            "deepl",
+                            "dictionaries",
+                            "live_app"
+                          ]
+                        },
+                        "uniqueItems": true
+                      }
+                    ],
+                    "title": "When translating/interpreting for your community, do you use tools?"
+                  },
+                  "q20": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 2000,
+                    "title": "How do you feel about being a language broker—translating and interpreting for family, friends, or community?"
+                  },
+                  "q21": {
+                    "enum": [
+                      null,
+                      "not_sufficient",
+                      "somewhat",
+                      "fully"
+                    ],
+                    "title": "Are language services provided by public institutions in NJ sufficient for your community’s needs?"
+                  },
+                  "q22": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 100,
+                    "title": "Do you support policies requiring NJ government agencies to provide services in languages other than English?"
+                  },
+                  "q23": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "When accessing language services, have you experienced barriers?"
+                  },
+                  "q24": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "interpreters",
+                            "wait",
+                            "cost",
+                            "quality",
+                            "awareness",
+                            "availability",
+                            "specific_languages",
+                            "technology",
+                            "privacy",
+                            "trust",
+                            "discomfort"
+                          ]
+                        },
+                        "uniqueItems": true
+                      }
+                    ],
+                    "title": "What barriers have you experienced?"
+                  },
+                  "q25": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "Did you ever participate in bilingual education or a dual-language or immersion program studying academic subjects in English plus another language?"
+                  },
+                  "q26": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 120,
+                    "title": "If so, for how many years?"
+                  },
+                  "q27": {
+                    "anyOf": [
+                      {
+                        "type": "null"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "elementary",
+                            "middle",
+                            "high"
+                          ]
+                        },
+                        "uniqueItems": true
+                      }
+                    ],
+                    "title": "At what level did you participate?"
+                  },
+                  "q28": {
+                    "enum": [
+                      null,
+                      "no",
+                      "yes"
+                    ],
+                    "title": "Interested in sharing your bilingual/multilingual experience through a recorded interview for this project?"
+                  },
+                  "q29": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 254,
+                    "title": "If Yes, include your email."
+                  },
+                  "q30": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "name",
+                      "email"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "email": {
+                        "type": "string",
+                        "maxLength": 254
+                      }
+                    },
+                    "title": "To enter your name in the raffle, include full name and email."
+                  }
+                }
+              },
+              "resolutions": {
+                "type": "object",
+                "description": "Private reviewer mapping, not original survey questions. Runtime validates canonical references."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

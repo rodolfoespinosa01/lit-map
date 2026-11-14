@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "items": [
+    {"id":"demo-language-stories","approved":true,"title":"Language experiences — demonstration placeholder","description":"A real approved interview or resource can appear here. This card is not an interview and has no playback link.","languages":["en","es"],"county":null,"municipality":null,"kind":"audio","target":"placeholder","url":null,"media_id":null,"transcript_url":null,"test_only":true},
+    {"id":"demo-bergen-stories","approved":true,"title":"Bergen stories — demonstration placeholder","description":"Example of a county-wide resource associated with English and Korean. It also appears for towns within Bergen. No actual recording is attached.","languages":["en","ko"],"county":"34003","municipality":null,"kind":"video","target":"placeholder","url":null,"media_id":null,"transcript_url":null,"test_only":true}
+  ]
+}

@@ -1,0 +1,9 @@
+name: LiT contribution review prototype
+type: module
+description: 'Private mock-source review and local approved aggregate publication. No live Qualtrics connection.'
+package: Custom
+core_version_requirement: '~10.6.0 || ^11'
+php: 8.3
+dependencies:
+  - lit_map:lit_map
+  - drupal:user

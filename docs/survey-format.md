@@ -1,3 +1,7 @@
+> Contribution publication now also supports [questionnaire v2 and aggregate v4](contribution/questionnaire-v2.md). The original standalone map fixtures described below remain supported.
+
+> The contribution preview now uses [aggregate schema 3 with disjoint language-combination groups](contribution/combined-counts-access.md#aggregate-contract). This version-2 contract remains in use by the earlier milestone previews; its marginal counts cannot determine language overlaps.
+
 # Synthetic survey interchange contract — version 2
 
 Milestone 3 implements this vendor-independent JSON contract. It is **not** a

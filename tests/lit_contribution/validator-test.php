@@ -1,0 +1,28 @@
+<?php
+require __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/SubmissionValidator.php';
+use Drupal\lit_contribution\Service\SubmissionValidator;
+$v=new SubmissionValidator(realpath(__DIR__.'/../../web'));
+$fixture=json_decode(file_get_contents(__DIR__.'/../../fixtures/lit-contribution/submissions.v1.json'),TRUE,512,JSON_THROW_ON_ERROR);
+$original=$fixture['submissions'][0];$checks=0;
+$check=function($ok)use(&$checks){if(!$ok)throw new RuntimeException('Validator assertion failed.');$checks++;};
+$reject=function($mutate)use($v,$original,$check){$s=$original;$mutate($s);try{$v->normalize($s);}catch(UnexpectedValueException $e){$check(TRUE);return;}throw new RuntimeException('Invalid record accepted.');};
+foreach($fixture['submissions'] as $s)$check(count($v->normalize($s)['answers']['languages'])>0);
+$reject(function(&$s){$s['email']='real-address@unapproved.test';});
+$reject(function(&$s){$s['submitted_at']='2026-11-10T09:00:00';});
+$reject(function(&$s){$s['submitted_at']='2026-02-30T09:00:00-05:00';});
+$reject(function(&$s){$s['submitted_at']='2026-11-10T09:00:00+25:00';});
+$reject(function(&$s){$s['updated_at']='2020-01-01T00:00:00+00:00';});
+$reject(function(&$s){$s['answers']['county_geoid']='34017';$s['answers']['municipality']='m3400300700';});
+$reject(function(&$s){$s['answers']['aggregate_permission']='maybe';});
+$reject(function(&$s){$s['answers']['languages']['xx']=$s['answers']['languages']['en'];});
+$reject(function(&$s){$s['answers']['languages']['en']['speaking']='native';});
+$reject(function(&$s){$s['answers']['languages']['en']['free_text']='not allowed';});
+$reject(function(&$s){unset($s['answers']['languages']['en']['brokering']);});
+$reject(function(&$s){$s['answers']['first_languages']=['en','en'];});
+$reject(function(&$s){$s['answers']['languages']['en']['other_settings']=['none','work'];});
+$reject(function(&$s){$s['unexpected_private_field']='extra';});
+$check(SubmissionValidator::normalizeEmail(' Person+One@Example.org ')==='person+one@example.org');
+$check(SubmissionValidator::normalizeEmail('s.hared@example.org')!==SubmissionValidator::normalizeEmail('shared@example.org'));
+$a=$v->normalize($original);$s=$original;$s['updated_at']='2026-11-12T00:00:00+00:00';$check($v->fingerprint($a)===$v->fingerprint($v->normalize($s)));
+$s=$original;$s['answers']['aggregate_permission']='no';$check($v->fingerprint($a)!==$v->fingerprint($v->normalize($s)));
+echo "$checks private fixed-answer validation checks passed.\n";

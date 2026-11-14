@@ -1,0 +1,19 @@
+.lit-contribution-form { font:16px/1.5 system-ui,sans-serif; color:#163b46; max-width:70rem; margin:1.5rem 0; }
+.lit-contribution-form .form-item { margin:1rem 0; }
+.lit-contribution-form label { display:block; font-weight:600; }
+.lit-contribution-form input:not([type=hidden]):not([type=checkbox]),.lit-contribution-form select,.lit-contribution-form textarea { max-width:100%; min-height:44px; box-sizing:border-box; padding:.5rem; border:1px solid #62818b; border-radius:4px; }
+.lit-contribution-form input[type=submit] { cursor:pointer; background:#163b46; color:white; margin:.35rem; }
+.lit-contribution-form table { width:100%; border-collapse:collapse; margin:1rem 0; overflow-wrap:anywhere; }
+.lit-contribution-form td,.lit-contribution-form th { padding:.5rem; border-bottom:1px solid #c7d6d9; text-align:left; }
+.lit-contribution-form :focus-visible { outline:3px solid #b54c00; outline-offset:2px; }
+.lit-account-nav { display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; align-items:center; padding:.7rem 1rem; border-bottom:1px solid #c7d6d9; font:15px/1.5 system-ui,sans-serif; color:#163b46; }
+.lit-account-nav a { padding:.35rem 0; }
+.lit-account-nav a:focus-visible,.lit-owner-dashboard a:focus-visible { outline:3px solid #b54c00; outline-offset:3px; }
+.lit-owner-dashboard { font:16px/1.6 system-ui,sans-serif; color:#163b46; max-width:55rem; }
+.lit-owner-dashboard a { display:inline-block; padding:.6rem .8rem; border:1px solid #62818b; border-radius:4px; }
+
+.lit-questionnaire fieldset { min-inline-size:0; margin-block:1.2rem; padding:1rem; border:1px solid #9cafb5; border-radius:.3rem; }
+.lit-questionnaire legend { max-width:100%; white-space:normal; overflow-wrap:anywhere; font-weight:600; }
+.lit-questionnaire input,.lit-questionnaire select,.lit-questionnaire textarea { max-width:100%; }
+.lit-questionnaire .description { overflow-wrap:anywhere; }
+.lit-questionnaire input[type=range] { width:100%; }

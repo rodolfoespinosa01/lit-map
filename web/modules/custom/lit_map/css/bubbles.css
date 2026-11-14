@@ -44,8 +44,65 @@
 .lit-bubbles__legend { font-size:.9rem; }
 .lit-bubbles__legend-samples { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; }
 .lit-bubbles__legend-samples span { display:inline-flex; align-items:center; gap:.4rem; }
-.lit-bubbles__legend-samples i { display:inline-block; border-radius:50%; background:#8b183dcc; border:1px solid #681331; }
+.lit-bubbles__legend-samples i { display:inline-block; border-radius:50%; background:#666b73; border:1px solid #333; }
 @media(max-width:700px) { .lit-bubbles__layout { grid-template-columns:1fr; } .lit-bubbles__panel { max-height:none; overflow:visible; } .lit-bubbles__stage { height:460px; } .lit-bubbles__controls { align-items:stretch; flex-direction:column; } .lit-bubbles__controls label { flex-wrap:wrap; } .lit-bubbles select { flex:1; min-width:0; } }
 
 .lit-bubbles.is-county .lit-map-labels { display:none; }
 .lit-bubbles.has-town-selection .lit-bubbles__bubble:not(.is-selected) { opacity:.45; }
+
+.lit-bubbles__segment,.lit-bubbles__edge { pointer-events:none; }
+.lit-bubbles__bubble.is-selected .lit-bubbles__edge,.lit-bubbles__bubble:focus .lit-bubbles__edge { stroke:#102f36; stroke-width:3; }
+.lit-bubbles__bubble text { stroke:#222; }
+.lit-bubbles__color-key { display:flex; flex-wrap:wrap; gap:.6rem 1rem; padding:0; list-style:none; }
+.lit-bubbles__color-key li { display:flex; align-items:center; gap:.4rem; }
+.lit-bubbles__swatch { display:inline-block; width:1.1rem; height:1.1rem; border:1px solid #222; border-radius:50%; }
+
+/* In normal document flow: never covers map navigation or pointer targets. */
+.lit-bubbles__tooltip-dock { min-height:5rem; padding:.5rem; border:1px solid #c7d6d9; background:#f7f8f8; }
+.lit-bubbles__tooltip-dock p { margin:0 0 .5rem; }
+.lit-bubbles [hidden] { display:none !important; }
+
+@media(max-width:700px) {
+  .lit-bubbles__controls label:has([data-active]) { display:block; }
+  .lit-bubbles__controls [data-active] { display:block; width:100%; margin-top:.35rem; }
+}
+
+/* Explicit layer order keeps loaded municipality geography below screen-space bubbles. */
+.lit-bubbles__stage > div { z-index:0; }
+.lit-bubbles__overlay { z-index:1; }
+.lit-bubbles__invitation { display:inline-block; padding:.7rem 1rem; background:#8b183d; color:white; border-radius:5px; font-weight:700; }
+.lit-bubbles__invitation:visited { color:white; }
+.lit-bubbles__filters summary { cursor:pointer; padding:.65rem; min-height:44px; font-weight:600; }
+
+.lit-bubbles__count-callouts > g { pointer-events:auto; cursor:pointer; }
+.lit-bubbles__count-callouts text { font:600 11px system-ui,sans-serif; fill:#163b46; pointer-events:none; }
+.lit-bubbles__count-callouts > g:focus rect { stroke:#b54c00; stroke-width:3; }
+
+/* Contribution bubbles: translucent categorical color, high-contrast numbers. */
+.lit-bubbles--approved .lit-bubbles__stage { background:radial-gradient(ellipse at 30% 20%,#fff 0,#eef5f7 70%); }
+.lit-bubbles--approved .lit-bubbles__bubble .disc { fill-opacity:.56; stroke:#365865; stroke-width:1.4; }
+.lit-bubbles--approved .lit-bubbles__segment { fill-opacity:.62; }
+.lit-bubbles--approved .lit-bubbles__edge { stroke:#365865; stroke-width:1.4; }
+.lit-bubbles--approved .lit-bubbles__bubble text { fill:#102f3b; stroke:#fff; stroke-width:3px; stroke-linejoin:round; font-weight:750; }
+.lit-bubbles--approved .lit-bubbles__shine { opacity:.75; pointer-events:none; }
+.lit-bubbles--approved .lit-bubbles__bubble.is-selected .disc,
+.lit-bubbles--approved .lit-bubbles__bubble:focus-visible .disc,
+.lit-bubbles--approved .lit-bubbles__bubble.is-selected .lit-bubbles__edge { stroke:#8b183d; stroke-width:3; }
+.lit-bubbles--approved .lit-bubbles__bubble.is-zero .disc { fill-opacity:1; }
+.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) { opacity:1; }
+.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) .disc { fill-opacity:.35; }
+.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) .lit-bubbles__segment { fill-opacity:.4; }
+.lit-bubbles__anchor-line { stroke:#476b79; stroke-width:1; stroke-opacity:.65; }
+.lit-bubbles__anchor-dot { fill:#163b46; stroke:white; stroke-width:1; }
+.lit-bubbles__selection { fill:none; stroke:#8b183d; stroke-width:2; opacity:0; pointer-events:none; }
+.lit-bubbles__bubble.is-selected .lit-bubbles__selection,.lit-bubbles__bubble:focus-visible .lit-bubbles__selection { opacity:1; }
+.lit-bubbles--approved [data-selected-details] > [data-combined-count] { font-size:1.22rem; font-weight:700; }
+.lit-bubbles__resources { margin:1.2rem 0; border-top:1px solid #b9cdd4; }
+.lit-bubbles__resource { border:1px solid #a9bec7; border-radius:10px; background:white; padding:1rem; margin:.8rem 0; }
+.lit-bubbles__resource h5 { margin:0 0 .5rem; font-size:1rem; }
+.lit-bubbles__resource a { display:inline-block; color:#064d71; padding:.6rem 0; min-height:44px; text-decoration:underline; overflow-wrap:anywhere; }
+.lit-bubbles__panel > [data-results] details > summary { padding:.7rem 0; cursor:pointer; min-height:44px; }
+.lit-bubbles__dates {display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-block:1rem;}
+.lit-bubbles__dates label {display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
+.lit-bubbles__dates input {max-width:100%;font:inherit;}
+.lit-bubbles__dates p {flex-basis:100%;}
