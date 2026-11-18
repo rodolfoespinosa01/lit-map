@@ -1,0 +1,20 @@
+<?php
+/** Additive installed-site architecture; does not create editorial content. */
+function lit_map_update_10001(): string {
+  \Drupal\lit_map\Service\ComponentSetup::install();
+  return 'Component configuration installed. Run scripts/seed-lit-references.php explicitly before serving maps.';
+}
+
+/** Add long descriptions without changing or deleting existing field storage. */
+function lit_map_update_10002(): string {
+  \Drupal\lit_map\Service\ComponentSetup::install();
+  $storage=\Drupal::entityTypeManager()->getStorage('node');
+  foreach($storage->loadMultiple($storage->getQuery()->accessCheck(FALSE)->condition('type','lit_resource')->execute()) as $node){
+    if($node->field_lit_description_long->isEmpty() && !$node->field_lit_description->isEmpty()){
+      $node->field_lit_description_long=$node->field_lit_description->value;$node->save();
+    }
+  }
+  $form=\Drupal\Core\Entity\Entity\EntityFormDisplay::load('node.lit_resource.default');
+  if($form)$form->removeComponent('field_lit_description')->setComponent('field_lit_description_long',['type'=>'string_textarea','weight'=>2])->save();
+  return 'Long description field added; original short descriptions retained.';
+}

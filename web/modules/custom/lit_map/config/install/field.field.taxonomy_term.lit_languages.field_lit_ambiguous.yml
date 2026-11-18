@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: taxonomy_term.lit_languages.field_lit_ambiguous
+field_name: field_lit_ambiguous
+entity_type: taxonomy_term
+bundle: lit_languages
+label: 'Historical ambiguous category (manual review required)'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: boolean
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_lit_ambiguous
+    - taxonomy.vocabulary.lit_languages

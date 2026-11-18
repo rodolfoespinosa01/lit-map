@@ -1,5 +1,6 @@
 <?php
-require __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/SubmissionValidator.php';
+// Run with drush php:script: canonical editorial references now come from taxonomy.
+require_once __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/SubmissionValidator.php';
 use Drupal\lit_contribution\Service\SubmissionValidator;
 $v=new SubmissionValidator(realpath(__DIR__.'/../../web'));
 $fixture=json_decode(file_get_contents(__DIR__.'/../../fixtures/lit-contribution/submissions.v1.json'),TRUE,512,JSON_THROW_ON_ERROR);

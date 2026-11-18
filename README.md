@@ -1,17 +1,24 @@
-# Rutgers Lives in Translation — local development prototypes
+# Rutgers Lives in Translation — Drupal map component
 
-This Composer-managed Drupal installation is a **local development/test host**
-for a custom component destined for an existing Drupal website. It is not a
-replacement production website. The `lit_map` module now includes the foundation
-and a verified static New Jersey county SVG with local geometry and synthetic
-interaction previews.
+The `lit_map` module provides a reusable **LiT Map Paragraph**, Counties and
+Languages taxonomy, native resource/Media references, and the existing layered
+New Jersey SVG experience. The local host remains Drupal 10.6.21; fresh and
+additive installations have also been exercised on isolated Drupal 11.4.13.
 
-The interaction preview uses fabricated JSON metrics only. No final Paragraph,
-taxonomy vocabulary, importer, frontend framework, or build
-pipeline is implemented. See [the versioned survey format](docs/survey-format.md).
-Survey data and SVG geometry remain separate.
+Start with the [component architecture, exact fields, installation and editor guide](docs/component/README.md)
+and [verification evidence and limitations](docs/component/verification.md).
+The normal local page is <https://rutgers-lit-m1.ddev.site/node/3>.
+
+Taxonomy owns editorial labels/aliases and stable identifiers. Validated numeric
+JSON/CSV-derived metrics remain separate. `lit_contribution` optionally supplies
+approved publications, questionnaire panels and the existing review/import flows;
+the informational component works without it. All data remains local demonstration
+data, and the historical preview routes remain available.
 
 ## Contribution review prototype (contribution branch)
+
+[Community search and municipality normalization](docs/contribution/community-places.md)
+includes Whippany and Cedar Knolls within Hanover Township.
 
 **Current questionnaire and dates:** [transcription-aligned v2 guide](docs/contribution/questionnaire-v2.md),
 [question mapping](docs/contribution/questionnaire-mapping.md). Local demonstration
@@ -46,7 +53,7 @@ for the exact published English count and a read-only verification walkthrough.
 The contribution preview now opens with an English county preset (or the first
 published language when English is absent). See [opening behavior, visibility checks and invitation status](docs/contribution/opening-experience.md).
 The active contribution demo now contains **10,000 approved eligible submissions plus
-100 pending**. Account `ree32` is the explicitly bootstrapped application owner.
+100 pending**. Account `configured-owner` is the explicitly bootstrapped application owner.
 See [dataset setup, owner/admin sign-in, verification and recovery](docs/contribution/large-demo-owner.md).
 See [combined-count schema, source reconciliation, and current owner access](docs/contribution/combined-counts-access.md)
 for the current implementation, verified URLs, and browser walkthrough.
@@ -140,9 +147,10 @@ Robo is constrained to `~5.1.0`: Robo 5.2.3 called `Application::addCommand()`,
 which is unavailable in Drupal 10's Symfony Console 6.4, and prevented Drush
 from starting. This is an explicit Composer constraint, not a vendor patch.
 
-The custom module declares `~10.6.0 || ^11` and PHP 8.3. **Drupal 11 is untested**;
-compatibility must be verified separately in an isolated host before claiming
-support. The current host remains Drupal 10.6.
+The custom module declares `~10.6.0 || ^11` and PHP 8.3. Drupal 11.4.13 was tested
+on a separate PHP 8.4 DDEV host, including fresh install and an additive update
+from a disposable database copy. See the component verification record. The
+working host and its Composer lock remain Drupal 10.6.21.
 
 ## Everyday use
 
@@ -160,7 +168,8 @@ Open the one-time URL printed by `ddev drush uli` to log in as `admin` (UID 1).
 The password was randomly generated inside the container and was not saved in
 the repository. Generate another one-time link whenever needed. Do not share
 login links. After login, the status report is at `/admin/reports/status`.
-The minimal profile has no editorial content types or taxonomy vocabularies.
+The host began with the minimal profile. It now has the namespaced component
+vocabularies/resource type and an explicitly installed demonstration page type.
 
 ```sh
 ddev stop
@@ -268,3 +277,5 @@ Use ignored `private/`, `survey-exports/`, `recordings/` or `secrets/` directori
 for local sensitive material; never put real responses or credentials in the
 module's public synthetic data directory. Ignore rules are path-based and cannot
 identify sensitive contents placed elsewhere.
+
+Local application-data reset and front-page setup: [commands, recovery, and disposable verification](docs/contribution/local-reset.md).

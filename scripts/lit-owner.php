@@ -1,3 +1,4 @@
 <?php
-/** Historical identity reference only. Bootstrap now reads LIT_SUPERADMIN_EMAIL from injected environment or local .env; this file is not loaded. */
-return ['uid'=>4, 'email'=>'ree32@scarletmail.rutgers.edu'];
+/** Compatibility accessor: configured identity only, never a tracked credential. */
+$values=\Drupal\lit_contribution\Service\BootstrapEnvironment::read(dirname(__DIR__));
+return ['uid'=>(int)\Drupal::state()->get('lit_contribution.owner_uid',0), 'email'=>$values['LIT_SUPERADMIN_EMAIL']];

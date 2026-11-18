@@ -1,0 +1,18 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_municipality
+field_name: field_lit_municipality
+entity_type: node
+bundle: lit_resource
+label: 'Optional municipality key'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+dependencies:
+  config:
+    - field.storage.node.field_lit_municipality
+    - node.type.lit_resource

@@ -1,0 +1,27 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_counties
+field_name: field_lit_counties
+entity_type: paragraph
+bundle: lit_map
+label: 'Counties (empty means all)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      lit_counties: lit_counties
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_counties
+    - paragraphs.paragraphs_type.lit_map
+    - taxonomy.vocabulary.lit_counties

@@ -11,6 +11,7 @@ final class MockQualtricsSource implements ScopedSubmissionSourceInterface {
   public function surveyId(): string { return \Drupal::state()->get('lit_contribution.active_dataset',self::LEGACY); }
   public function listSubmissions(): array { return $this->load($this->surveyId()); }
   public function load(string $survey): array {
+    if($survey==='none')return [];
     $paths=[self::QUESTIONNAIRE=>'/private/lit-questionnaire-10000-v2/submissions.json',self::LEGACY=>'/fixtures/lit-contribution/submissions.v1.json',self::LARGE=>'/private/lit-contribution-demo-10000-v1/submissions.json'];
     if(!isset($paths[$survey]))throw new \RuntimeException('Unknown local dataset.');
     $bytes = @file_get_contents(dirname($this->appRoot) . $paths[$survey]);

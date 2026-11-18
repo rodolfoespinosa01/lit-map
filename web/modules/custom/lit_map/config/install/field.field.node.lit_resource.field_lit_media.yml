@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_media
+field_name: field_lit_media
+entity_type: node
+bundle: lit_resource
+label: 'Drupal Media'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference
+dependencies:
+  config:
+    - field.storage.node.field_lit_media
+    - node.type.lit_resource

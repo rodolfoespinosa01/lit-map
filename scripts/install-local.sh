@@ -15,4 +15,5 @@ fi
 ddev exec bash scripts/install-drupal-in-container.sh
 ddev drush en paragraphs lit_map -y
 ddev drush cr
+ddev drush php:script scripts/seed-lit-references.php
 echo 'Local host installed. Run: ddev drush uli'

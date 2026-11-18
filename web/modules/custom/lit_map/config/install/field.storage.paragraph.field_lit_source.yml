@@ -1,0 +1,25 @@
+langcode: en
+status: true
+id: paragraph.field_lit_source
+field_name: field_lit_source
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: informational
+      label: 'Informational synthetic fixture'
+    -
+      value: published
+      label: 'Approved publication (requires LiT contribution)'
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
+dependencies:
+  module:
+    - paragraphs
+    - options

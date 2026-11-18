@@ -15,6 +15,7 @@ final class ExportStore extends AtomicAggregateWriter {
     else $this->db->update('lit_contribution_import_state')->fields(['file_hash'=>$hash])->condition('id',1)->execute();
   }
   public function stage(array $rows,int $uid): string {
+    $gate=LocalOperationGate::acquire();
     $this->cleanup();$token=bin2hex(random_bytes(24));$dir=$this->directory().'/staging';
     if(!is_dir($dir) && !mkdir($dir,0700,TRUE) && !is_dir($dir))throw new \RuntimeException('Private staging unavailable.');
     $p=$dir.'/'.$token.'.json';$f=fopen($p,'xb');if(!$f)throw new \RuntimeException('Private staging unavailable.');
@@ -28,6 +29,7 @@ final class ExportStore extends AtomicAggregateWriter {
   }
   public function discard(string $token):void {if(preg_match('/^[a-f0-9]{48}$/D',$token)){ $p=$this->directory().'/staging/'.$token.'.json';if(is_file($p))unlink($p);}}
   public function cleanup():int {
+    $gate=LocalOperationGate::acquire();
     $n=0;foreach(glob($this->directory().'/staging/*.json')?:[] as $p)if(filemtime($p)<time()-3600){unlink($p);$n++;}return $n;
   }
 }

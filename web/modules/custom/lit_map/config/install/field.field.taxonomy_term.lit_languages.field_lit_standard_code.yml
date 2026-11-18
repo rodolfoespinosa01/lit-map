@@ -1,0 +1,18 @@
+langcode: en
+status: true
+id: taxonomy_term.lit_languages.field_lit_standard_code
+field_name: field_lit_standard_code
+entity_type: taxonomy_term
+bundle: lit_languages
+label: 'Standard language code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_lit_standard_code
+    - taxonomy.vocabulary.lit_languages

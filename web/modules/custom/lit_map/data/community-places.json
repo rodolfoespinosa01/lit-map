@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "communities": [
+    {"name":"Whippany","state":"NJ","county":"34027","municipality":"m3402729550","source":"https://www.hanovertownship.com/231/Township-Profile"},
+    {"name":"Cedar Knolls","state":"NJ","county":"34027","municipality":"m3402729550","source":"https://www.hanovertownship.com/231/Township-Profile"}
+  ]
+}

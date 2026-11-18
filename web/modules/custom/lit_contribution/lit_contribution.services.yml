@@ -57,3 +57,7 @@ services:
   lit_contribution.local_source:
     class: Drupal\lit_contribution\Source\LocalDemoSourceAdapter
     arguments: ['@lit_contribution.importer']
+  lit_contribution.local_reset_subscriber:
+    class: Drupal\lit_contribution\EventSubscriber\LocalResetSubscriber
+    tags:
+      - { name: event_subscriber }

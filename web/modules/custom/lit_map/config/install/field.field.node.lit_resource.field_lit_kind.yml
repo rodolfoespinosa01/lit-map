@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_kind
+field_name: field_lit_kind
+entity_type: node
+bundle: lit_resource
+label: 'Resource type'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: resource
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+dependencies:
+  config:
+    - field.storage.node.field_lit_kind
+    - node.type.lit_resource

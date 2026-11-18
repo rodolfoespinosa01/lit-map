@@ -1,0 +1,13 @@
+langcode: en
+status: true
+name: 'LiT resource'
+type: lit_resource
+description: 'Reusable editorial recording or resource; separate from survey answers.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false
+dependencies:
+  enforced:
+    module:
+      - lit_map

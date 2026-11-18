@@ -45,8 +45,8 @@ final class SurveyDataProvider {
     try {
       return $this->normalizer->normalize(
         $this->read($fixture),
-        $this->read('nj-counties.json'),
-        $this->read($references),
+        \Drupal::service('lit_map.references')->counties(),
+        ['languages'=>array_map(fn($id,$label)=>compact('id','label'),array_keys(\Drupal::service('lit_map.references')->languages()),array_values(\Drupal::service('lit_map.references')->languages()))]+$this->read($references),
       );
     }
     catch (\Throwable $error) {

@@ -4,3 +4,11 @@ description: 'Rutgers Lives in Translation county geometry and synthetic interac
 package: Rutgers
 core_version_requirement: '~10.6.0 || ^11'
 php: '8.3'
+dependencies:
+  - drupal:taxonomy
+  - drupal:node
+  - drupal:text
+  - drupal:options
+  - drupal:link
+  - drupal:media
+  - paragraphs:paragraphs

@@ -1,0 +1,34 @@
+langcode: en
+status: true
+id: node.lit_resource.default
+targetEntityType: node
+bundle: lit_resource
+mode: default
+content:
+  field_lit_external:
+    type: link
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_lit_media:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_lit_kind: true
+  field_lit_description: true
+  field_lit_transcript: true
+  field_lit_counties: true
+  field_lit_languages: true
+  field_lit_municipality: true
+  field_lit_resource_key: true
+  field_lit_test: true
+dependencies:
+  config:
+    - node.type.lit_resource

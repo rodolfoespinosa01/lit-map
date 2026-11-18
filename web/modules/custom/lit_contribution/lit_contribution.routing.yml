@@ -5,6 +5,7 @@ lit_contribution.list:
     _title: 'Private LiT contributor reviews'
   requirements:
     _permission: 'review lit contributions'
+    _custom_access: 'lit_contribution.owner:reviewAccess'
   options:
     _admin_route: true
     no_cache: true
@@ -15,6 +16,7 @@ lit_contribution.detail:
     _title: 'Private contribution review'
   requirements:
     _permission: 'review lit contributions'
+    _custom_access: 'lit_contribution.owner:reviewAccess'
     review: '\d+'
   options:
     _admin_route: true
@@ -148,6 +150,7 @@ lit_contribution.pending:
     _title: 'Pending LiT contribution reviews'
   requirements:
     _permission: 'review lit contributions'
+    _custom_access: 'lit_contribution.owner:reviewAccess'
   options:
     _admin_route: true
     no_cache: true
@@ -228,6 +231,7 @@ lit_contribution.resolve_questionnaire:
   requirements:
     review: '\d+'
     _permission: 'review lit contributions'
+    _custom_access: 'lit_contribution.owner:reviewAccess'
   options:
     _admin_route: true
     no_cache: true

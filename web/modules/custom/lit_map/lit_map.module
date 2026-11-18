@@ -10,8 +10,9 @@
  */
 function lit_map_theme($existing, $type, $theme, $path): array {
   return [
+    'paragraph__lit_map'=>['base hook'=>'paragraph','render element'=>'elements','template'=>'paragraph--lit-map'],
     'lit_map_bubble_preview' => [
-      'variables' => ['available' => FALSE, 'instance_id' => NULL, 'publication_date' => NULL, 'invitation_url' => NULL, 'approved_preview' => FALSE, 'resources' => []],
+      'variables' => ['available' => FALSE, 'instance_id' => NULL, 'publication_date' => NULL, 'invitation_url' => NULL, 'approved_preview' => FALSE, 'empty_publication' => FALSE, 'resources' => [], 'heading'=>NULL, 'intro'=>NULL, 'fallback'=>NULL, 'svg'=>NULL],
     ],
     'lit_map_interaction_preview' => [
       'variables' => ['available' => FALSE],
@@ -21,3 +22,49 @@ function lit_map_theme($existing, $type, $theme, $path): array {
     ],
   ];
 }
+
+/** Implements hook_entity_bundle_field_info_alter(). */
+function lit_map_entity_bundle_field_info_alter(array &$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle): void {
+  if (!in_array($bundle,['lit_counties','lit_languages','lit_resource'],TRUE)) return;
+  foreach (['field_lit_geoid','field_lit_map_key','field_lit_language_key','field_lit_resource_key'] as $name) {
+    if (isset($fields[$name])) $fields[$name]->addConstraint('LitStableIdentifier');
+  }
+}
+
+/** Protect stable keys also for programmatic writes that omit validation. */
+function lit_map_entity_presave(\Drupal\Core\Entity\EntityInterface $entity): void {
+  if (!in_array($entity->getEntityTypeId(),['taxonomy_term','node'],TRUE) || !in_array($entity->bundle(),['lit_counties','lit_languages','lit_resource'],TRUE)) return;
+  foreach (['field_lit_geoid','field_lit_map_key','field_lit_language_key','field_lit_resource_key'] as $field) {
+    if ($entity->hasField($field)) {
+      $violations=$entity->get($field)->validate();
+      if (count($violations)) throw new \Drupal\Core\Entity\EntityStorageException((string)$violations);
+    }
+  }
+}
+
+/** Implements hook_theme_suggestions_paragraph_alter(). */
+function lit_map_theme_suggestions_paragraph_alter(array &$suggestions, array $variables): void {
+  if ($variables['elements']['#paragraph']->bundle() === 'lit_map') $suggestions[] = 'paragraph__lit_map';
+}
+
+/** Module preprocessing owns entity resolution; themes only override markup. */
+function lit_map_preprocess_paragraph(array &$variables): void {
+  $paragraph=$variables['paragraph'];
+  if ($paragraph->bundle() !== 'lit_map') return;
+  $variables['lit_component']=\Drupal::service('lit_map.component')->build($paragraph->field_lit_source->value ?: 'informational',$paragraph);
+}
+
+/** Native editorial validation is available to forms and entity validation. */
+function lit_map_entity_type_alter(array &$types): void {
+  if(isset($types['node']))$types['node']->addConstraint('LitResource');
+  if(isset($types['paragraph']))$types['paragraph']->addConstraint('LitMapSettings');
+}
+
+/** Historical stable references cannot be deleted; unpublish instead. */
+function lit_map_taxonomy_term_predelete(\Drupal\Core\Entity\EntityInterface $term): void {
+  if(in_array($term->bundle(),['lit_counties','lit_languages'],TRUE))throw new \Drupal\Core\Entity\EntityStorageException('LiT historical identifiers must be retained. Unpublish the term to hide it from public components.');
+}
+
+/** Reset request-local reference caches after editorial writes. */
+function lit_map_taxonomy_term_insert($entity): void { \Drupal::service('lit_map.references')->reset(); }
+function lit_map_taxonomy_term_update($entity): void { \Drupal::service('lit_map.references')->reset(); }

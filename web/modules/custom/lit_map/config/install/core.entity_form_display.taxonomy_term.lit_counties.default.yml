@@ -1,0 +1,30 @@
+langcode: en
+status: true
+id: taxonomy_term.lit_counties.default
+targetEntityType: taxonomy_term
+bundle: lit_counties
+mode: default
+content:
+  field_lit_geoid:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_map_key:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+dependencies:
+  config:
+    - field.field.taxonomy_term.lit_counties.field_lit_geoid
+    - field.field.taxonomy_term.lit_counties.field_lit_map_key

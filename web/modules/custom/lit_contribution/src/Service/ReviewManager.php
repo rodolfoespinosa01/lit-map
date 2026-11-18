@@ -15,12 +15,14 @@ final class ReviewManager {
     private readonly SubmissionValidator $validator, private readonly AccountProxyInterface $account,
     private readonly PrivateKey $key, private readonly LockBackendInterface $lock) {}
   public function requirePermission(string $permission): void {
+    if($permission==='review lit contributions' && !\Drupal::service('lit_contribution.owner')->reviewAccess()->isAllowed())throw new AccessDeniedHttpException();
     if(in_array($permission,['publish lit contributions','synchronize lit contributions','administer lit contribution settings'],TRUE) && \Drupal::state()->get('lit_contribution.owner_uid'))\Drupal::service('lit_contribution.owner')->requireOwner();
     if (!$this->account->isAuthenticated() || !$this->account->hasPermission($permission)) throw new AccessDeniedHttpException();
   }
   public function locked(callable $callback): mixed {
+    $gate=LocalOperationGate::acquire();
     if (!$this->lock->acquire(self::LOCK, 120)) throw new \RuntimeException('Another contribution operation is running. Try again.');
-    try { return $callback(); } finally { $this->lock->release(self::LOCK); }
+    try { return $callback(); } finally { $this->lock->release(self::LOCK); fclose($gate); }
   }
   public function scope(): ?string { return $this->source instanceof \Drupal\lit_contribution\Source\ScopedSubmissionSourceInterface ? $this->source->surveyId() : NULL; }
   public function rows(): array {

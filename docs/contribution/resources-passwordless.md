@@ -1,4 +1,6 @@
 > Authentication update: use [password access](password-access.md). Email-link
+
+Account names and email examples in this document are placeholders. Use the configured owner identity; never configure an account from these historical examples.
 > login instructions below are historical and superseded.
 
 # Passwordless administration, editorial resources and floating bubbles
@@ -10,8 +12,8 @@ push, deployment, dependency installation or Media module enablement occurred.
 
 ## Passwordless application access
 
-Verified before changes: **ree32, UID 4**, active, sole application owner, email
-**ree32@scarletmail.rutgers.edu**. UID 1 remains emergency Drupal administration.
+Verified before changes: **configured-owner, UID 4**, active, sole application owner, email
+**owner@example.org**. UID 1 remains emergency Drupal administration.
 `scripts/lit-owner.php` now records this project's explicitly supplied deployment
 identity. `setup-contribution-owner.php` uses those defaults, still rejects a
 different existing owner or a conflicting email, and leaves an unchanged owner
@@ -62,7 +64,7 @@ No anonymous or general authenticated role receives administrative permissions.
 | Mailpit | <https://rutgers-lit-m1.ddev.site:8026> |
 
 1. Run `ddev start`, open **Email sign-in**, enter
-   `ree32@scarletmail.rutgers.edu`, and choose **Email sign-in link**.
+   `owner@example.org`, and choose **Email sign-in link**.
 2. In Mailpit, open the newest “LiT local administrator sign-in” message to that
    address. Follow the link and choose **Confirm sign-in**. No password is needed;
    the owner dashboard opens.

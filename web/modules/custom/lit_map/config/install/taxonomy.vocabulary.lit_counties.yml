@@ -1,0 +1,11 @@
+langcode: en
+status: true
+name: 'LiT Counties'
+vid: lit_counties
+description: 'Canonical LiT editorial references. Numeric metrics are stored separately.'
+weight: 0
+new_revision: false
+dependencies:
+  enforced:
+    module:
+      - lit_map

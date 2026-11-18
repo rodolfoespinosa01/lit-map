@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: paragraph.lit_map.default
+targetEntityType: paragraph
+bundle: lit_map
+mode: default
+content: {  }
+hidden:
+  field_lit_heading: true
+  field_lit_intro: true
+  field_lit_counties: true
+  field_lit_languages: true
+  field_lit_defaults: true
+  field_lit_municipalities: true
+  field_lit_breakdown: true
+  field_lit_source: true
+  field_lit_resources: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lit_map

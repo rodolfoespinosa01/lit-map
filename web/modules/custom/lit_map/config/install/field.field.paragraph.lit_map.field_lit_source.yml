@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_source
+field_name: field_lit_source
+entity_type: paragraph
+bundle: lit_map
+label: Dataset
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: informational
+default_value_callback: ''
+settings: {  }
+field_type: list_string
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_source
+    - paragraphs.paragraphs_type.lit_map

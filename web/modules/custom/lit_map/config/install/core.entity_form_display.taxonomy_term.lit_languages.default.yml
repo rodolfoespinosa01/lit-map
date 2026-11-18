@@ -1,0 +1,44 @@
+langcode: en
+status: true
+id: taxonomy_term.lit_languages.default
+targetEntityType: taxonomy_term
+bundle: lit_languages
+mode: default
+content:
+  field_lit_language_key:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_standard_code:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_aliases:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_ambiguous:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+dependencies:
+  config:
+    - field.field.taxonomy_term.lit_languages.field_lit_language_key
+    - field.field.taxonomy_term.lit_languages.field_lit_standard_code
+    - field.field.taxonomy_term.lit_languages.field_lit_aliases
+    - field.field.taxonomy_term.lit_languages.field_lit_ambiguous

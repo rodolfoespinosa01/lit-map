@@ -9,7 +9,7 @@
   function normalize(input, data) {
     const languages = data.languages.map(l => l.id).filter(id => (input.languages || []).includes(id));
     let county = data.counties.some(c => c.geoid === input.county) ? input.county : '';
-    let breakdown = Boolean(input.breakdown && county);
+    let breakdown = Boolean(input.breakdown && county && data.municipalitiesEnabled !== false);
     let municipality = breakdown && (input.municipality === '_unspecified' || data.municipalities.some(m => m.id === input.municipality && m.county === county)) ? input.municipality : '';
     let level = ['usa', 'nj', 'county', 'municipality'].includes(input.level) ? input.level : (county ? (breakdown ? 'municipality' : 'county') : 'nj');
     if (level === 'usa' || level === 'nj') { county = ''; breakdown = false; municipality = ''; }
@@ -23,22 +23,28 @@
     const active=available.includes('en')?'en':(available[0]||'');
     return normalize({languages:active?[active]:[],active,level:'nj'},data);
   }
-  function read(url, data, preset = false) {
-    const q = new URL(url).searchParams;
+  function read(url, data, preset = false, namespace = '') {
+    const params = new URL(url).searchParams;
+    const key = k => namespace ? namespace + '_' + k : k;
+    const q = {get:k=>params.get(key(k)),getAll:k=>params.getAll(key(k))};
     const state=normalize({languages: q.getAll('lit_lang'), active: q.get('lit_active'), county: q.get('lit_county'), municipality: q.get('lit_municipality'), breakdown: q.get('lit_breakdown') === '1', level: q.get('lit_level'),from:q.get('lit_from'),through:q.get('lit_through')}, data);
     const valid=state.languages.length || state.county || ['nj','usa'].includes(q.get('lit_level')) || q.getAll('lit_lang').includes('');
     return preset && !valid ? normalize({...opening(data),from:state.from,through:state.through},data) : state;
   }
-  function write(url, state) {
-    const result = new URL(url); keys.forEach(k => result.searchParams.delete(k));
-    if(!state.languages.length)result.searchParams.append('lit_lang','');
-    state.languages.forEach(l => result.searchParams.append('lit_lang', l));
-    if (state.active) result.searchParams.set('lit_active', state.active);
-    if (state.county) result.searchParams.set('lit_county', state.county);
-    if (state.municipality) result.searchParams.set('lit_municipality', state.municipality);
-    if (state.breakdown) result.searchParams.set('lit_breakdown', '1');
-    result.searchParams.set('lit_level', state.level);
-    if(state.from)result.searchParams.set('lit_from',state.from);if(state.through)result.searchParams.set('lit_through',state.through);
+  function write(url, state, namespace = '') {
+    const result = new URL(url);
+    const original = result.searchParams;
+    const key = k => namespace ? namespace + '_' + k : k;
+    const params = {delete:k=>original.delete(key(k)),append:(k,v)=>original.append(key(k),v),set:(k,v)=>original.set(key(k),v)};
+    keys.forEach(k => params.delete(k));
+    if(!state.languages.length)params.append('lit_lang','');
+    state.languages.forEach(l => params.append('lit_lang', l));
+    if (state.active) params.set('lit_active', state.active);
+    if (state.county) params.set('lit_county', state.county);
+    if (state.municipality) params.set('lit_municipality', state.municipality);
+    if (state.breakdown) params.set('lit_breakdown', '1');
+    params.set('lit_level', state.level);
+    if(state.from)params.set('lit_from',state.from);if(state.through)params.set('lit_through',state.through);
     return result;
   }
   /** Union of disjoint approved-submission groups, never a sum of marginals. */

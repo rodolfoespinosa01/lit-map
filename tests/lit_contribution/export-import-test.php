@@ -27,7 +27,7 @@ try{
  try{$db->insert('lit_contribution_email_reservation')->fields(array_replace($held,['response_id'=>'CONCURRENT_OTHER']))->execute();throw new LogicException('Duplicate reservation inserted');}catch(\Drupal\Core\Database\IntegrityConstraintViolationException $e){$check(TRUE,'Database unique email reservation blocks competing acceptance');}
  try{$store->point(str_repeat('f',64),str_repeat('0',64));throw new LogicException('Stale pointer accepted');}catch(RuntimeException $e){$check(TRUE,'Transactional source pointer rejects stale writer');}
  $again=$importer->preview($json);$check($again['counts']['new']===0 && $again['counts']['already_imported']===4,'Reimport idempotent');$importer->confirm($json,$again['signature']);
- $rows=array_values($review->listing(TRUE));$admin=User::create(['uid'=>999999,'name'=>'isolated-export-reviewer','mail'=>'reviewer@example.org','status'=>1,'roles'=>['lit_contribution_administrator']]);$account->setAccount($admin);
+ $rows=array_values($review->listing(TRUE));$admin=getenv('LIT_QA_REVIEWER_UID')?User::load((int)getenv('LIT_QA_REVIEWER_UID')):User::create(['uid'=>999999,'name'=>'isolated-export-reviewer','mail'=>'reviewer@example.org','status'=>1,'roles'=>['lit_contribution_administrator']]);$account->setAccount($admin);
  foreach($rows as $r)$review->decide((int)$r['id'],'approved','Isolated export review',$r['fingerprint']);
  try{$importer->preview($json);throw new LogicException('Admin import allowed');}catch(Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException $e){$check(TRUE,'Admin upload denied');}
  try{$pub->publish();throw new LogicException('Admin publish allowed');}catch(Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException $e){$check(TRUE,'Admin publish denied');}

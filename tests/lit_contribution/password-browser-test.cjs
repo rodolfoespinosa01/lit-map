@@ -8,10 +8,11 @@ const email='password-qa-'+Date.now()+'@example.org';let stage='start';
 const owner=await browser.newPage({viewport:{width:1280,height:900}}),admin=await browser.newPage(),anon=await browser.newPage();
 const mailCount=()=>run('echo \\Drupal::database()->select("lit_contribution_login_token","t")->countQuery()->execute()->fetchField();');
 const initialTokens=mailCount();
+const ownerEmail=run('echo \\Drupal\\user\\Entity\\User::load(\\Drupal::service("lit_contribution.owner")->ownerId())->getEmail();');
 async function login(page,password){await page.goto(origin+adminLogin);await page.getByLabel('Email address',{exact:true}).fill(email);await page.getByLabel('Password',{exact:true}).fill(password);await page.getByRole('button',{name:'Sign in',exact:true}).click();}
 try {
  stage='public entry';await anon.goto(origin+'/lit');for(const name of ['View map','Superadmin login','Administrator login'])check(await anon.getByRole('link',{name,exact:true}).count()===1,'Entry choice: '+name);
- check((await anon.goto(origin+'/lit-map/contribution-preview')).status()===200,'Anonymous map accessible');check(!(await anon.content()).includes('LIT_SUPERADMIN_INITIAL_PASSWORD')&&!(await anon.content()).includes('ree32@scarletmail.rutgers.edu'),'Environment values absent from public map');
+ check((await anon.goto(origin+'/lit-map/contribution-preview')).status()===200,'Anonymous map accessible');check(!(await anon.content()).includes('LIT_SUPERADMIN_INITIAL_PASSWORD')&&!(await anon.content()).includes(ownerEmail),'Environment values absent from public map');
  check((await anon.goto(origin+'/lit/sign-in/confirm#token='+('a'.repeat(64)))).status()===403,'Legacy confirmation endpoint denied');
  await anon.goto(origin+'/lit/superadmin/login');check(await anon.getByLabel('Password',{exact:true}).count()===1,'Superadmin requires password');check(await anon.getByRole('link',{name:/register|forgot|email sign-in/i}).count()===0,'No registration/email-link choices');
  for(const route of [manage,'/admin/lit',review,'/admin/config/lit-contributions', '/admin/content/lit-contributions/publish'])check((await anon.goto(origin+route)).status()===403,'Anonymous denied '+route);

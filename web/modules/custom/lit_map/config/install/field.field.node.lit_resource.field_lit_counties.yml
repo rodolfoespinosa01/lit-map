@@ -1,0 +1,27 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_counties
+field_name: field_lit_counties
+entity_type: node
+bundle: lit_resource
+label: 'County (empty means global)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      lit_counties: lit_counties
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
+dependencies:
+  config:
+    - field.storage.node.field_lit_counties
+    - node.type.lit_resource
+    - taxonomy.vocabulary.lit_counties

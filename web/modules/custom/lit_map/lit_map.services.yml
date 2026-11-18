@@ -10,3 +10,10 @@ services:
   lit_map.survey_data:
     class: Drupal\lit_map\Service\SurveyDataProvider
     arguments: ['@extension.list.module', '@lit_map.survey_normalizer', '@logger.channel.lit_map']
+  lit_map.references:
+    class: Drupal\lit_map\Service\ReferenceProvider
+    arguments: ['@entity_type.manager']
+  lit_map.component:
+    class: Drupal\lit_map\Service\ComponentBuilder
+  lit_map.resources:
+    class: Drupal\lit_map\Service\EditorialResources

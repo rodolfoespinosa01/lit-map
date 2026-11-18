@@ -1,7 +1,8 @@
 <?php
-require __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/AggregateBuilder.php';
-require __DIR__.'/../../web/modules/custom/lit_map/src/Service/SurveyNormalizer.php';
-require __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/SubmissionValidator.php';
+// Run with drush php:script: canonical editorial references now come from taxonomy.
+require_once __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/AggregateBuilder.php';
+require_once __DIR__.'/../../web/modules/custom/lit_map/src/Service/SurveyNormalizer.php';
+require_once __DIR__.'/../../web/modules/custom/lit_contribution/src/Service/SubmissionValidator.php';
 use Drupal\lit_contribution\Service\{AggregateBuilder,SubmissionValidator};
 use Drupal\lit_map\Service\SurveyNormalizer;
 $v=new SubmissionValidator(realpath(__DIR__.'/../../web'));$normalizer=new SurveyNormalizer();$source=[];$rows=[];$id=0;
@@ -16,7 +17,7 @@ foreach([[60,['en']],[20,['es']],[30,['en','es']],[10,['en','es','ko']],[10,['ko
 $result=AggregateBuilder::build($source,$rows);$aggregate=$result['aggregate'];$public=$normalizer->normalize($aggregate,$v->counties(),$v->references());
 $checks=0;$check=function($ok,$label)use(&$checks){if(!$ok)throw new RuntimeException($label);$checks++;};
 $union=function(array $selected,?string $town=NULL)use($public){$total=0;foreach($public['combinations'] as $g)if(($town===NULL||$g['municipality']===$town)&&array_intersect($g['languages'],$selected))$total+=$g['count'];return $total;};
-$check($public['schemaVersion']===3,'Schema version');$check(count($result['included'])===132,'Eligible count');
+$check($public['schemaVersion']===4 && count($public['days'])===1 && $public['days'][0]['day']===NULL,'Daily schema retains undated combination fixture');$check(count($result['included'])===132,'Eligible count');
 $check($union(['en'])===100,'English');$check($union(['es'])===60,'Spanish');$check($union(['en','es'])===120,'Overlap counted once');$check($union(['en','es','ko'])===130,'Three-way union');
 $check($union(['en','es'],'m3400300700')===105 && $union(['en','es'],'_unspecified')===15,'Town plus unspecified');
 $check($public['totals']['34003']['ar']===0 && !isset($public['totals']['34003']['hi']),'Zero versus missing');

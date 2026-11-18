@@ -3,21 +3,21 @@ namespace Drupal\lit_contribution\Service;
 
 /** Provisional fixed-answer contract, not a confirmed research questionnaire. */
 final class SubmissionValidator {
-  public const LANGUAGES = ['en' => 'English', 'es' => 'Spanish', 'ko' => 'Korean', 'pt' => 'Portuguese', 'zh' => 'Chinese (provisional grouping)', 'ar' => 'Arabic', 'hi' => 'Hindi', 'ase' => 'American Sign Language', 'cmn'=>'Mandarin Chinese', 'yue'=>'Cantonese', 'fr'=>'French'];
+  public static function languages(): array { return \Drupal::service('lit_map.references')->languages(); }
   public const PROFICIENCY = ['none', 'basic', 'conversational', 'advanced', 'fluent', 'not_applicable', 'prefer_not_to_answer'];
   public const YES_NO = ['yes', 'no', 'prefer_not_to_answer'];
   public function __construct(private readonly string $appRoot) {}
   private ?array $referenceCache = NULL;
   private ?array $countyCache = NULL;
   public function references(): array {
-    if ($this->referenceCache!==NULL) return $this->referenceCache;
-    $refs = json_decode(file_get_contents($this->appRoot . '/modules/custom/lit_map/data/survey-statewide-references.json'), TRUE, 512, JSON_THROW_ON_ERROR);
+
+    $refs = $this->referenceCache ?? json_decode(file_get_contents($this->appRoot . '/modules/custom/lit_map/data/survey-statewide-references.json'), TRUE, 512, JSON_THROW_ON_ERROR);
     $refs['languages'] = [];
-    foreach (self::LANGUAGES as $id => $label) $refs['languages'][] = compact('id', 'label');
+    foreach (self::languages() as $id => $label) $refs['languages'][] = compact('id', 'label');
     return $this->referenceCache=$refs;
   }
   public function counties(): array {
-    return $this->countyCache ??= json_decode(file_get_contents($this->appRoot . '/modules/custom/lit_map/data/nj-counties.json'), TRUE, 512, JSON_THROW_ON_ERROR);
+    return \Drupal::service('lit_map.references')->counties();
   }
   private function require(bool $ok): void { if (!$ok) throw new \UnexpectedValueException('Submission does not match the provisional mock contract.'); }
   public static function normalizeEmail(string $email): string { return strtolower(trim($email)); }
@@ -43,11 +43,11 @@ final class SubmissionValidator {
     $this->require($a['municipality'] === NULL || (is_string($a['municipality']) && isset($towns[$a['municipality']]) && $towns[$a['municipality']]['county'] === $a['county_geoid']));
     $this->require(in_array($a['aggregate_permission'], ['yes', 'no'], TRUE));
     $this->require(is_array($a['first_languages']) && array_is_list($a['first_languages']) && count(array_unique($a['first_languages'], SORT_REGULAR)) === count($a['first_languages']));
-    foreach ($a['first_languages'] as $id) $this->require(is_string($id) && isset(self::LANGUAGES[$id]));
+    foreach ($a['first_languages'] as $id) $this->require(is_string($id) && isset(self::languages()[$id]));
     sort($a['first_languages']);
     $this->require(is_array($a['languages']) && count($a['languages']) > 0 && !array_is_list($a['languages']));
     foreach ($a['languages'] as $id => &$profile) {
-      $this->require(isset(self::LANGUAGES[$id]) && is_array($profile) && count($profile) === 7 && !array_diff(array_keys($profile), ['uses_language', 'speaking', 'signing', 'home_use', 'other_settings', 'frequency', 'brokering']));
+      $this->require(isset(self::languages()[$id]) && is_array($profile) && count($profile) === 7 && !array_diff(array_keys($profile), ['uses_language', 'speaking', 'signing', 'home_use', 'other_settings', 'frequency', 'brokering']));
       foreach (['uses_language', 'home_use'] as $key) $this->require(in_array($profile[$key], self::YES_NO, TRUE));
       foreach (['speaking', 'signing'] as $key) $this->require(in_array($profile[$key], self::PROFICIENCY, TRUE));
       $this->require(in_array($profile['frequency'], ['daily', 'weekly', 'monthly', 'less_often', 'never', 'prefer_not_to_answer'], TRUE));

@@ -7,6 +7,7 @@ use Drupal\user\Entity\Role;
 final class SuperadminBootstrap {
   public function __construct(private readonly OwnerAccess $owner) {}
   public function run(#[\SensitiveParameter] array $values,bool $reset=FALSE): string {
+    $gate=LocalOperationGate::acquire();
     if(PHP_SAPI!=='cli')throw new \RuntimeException('Server CLI only.');
     $email=strtolower(trim($values['LIT_SUPERADMIN_EMAIL']??''));
     if(!filter_var($email,FILTER_VALIDATE_EMAIL) || strlen($email)>254)throw new \RuntimeException('Set a valid LIT_SUPERADMIN_EMAIL privately.');

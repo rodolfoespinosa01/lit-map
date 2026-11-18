@@ -1,0 +1,27 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_languages
+field_name: field_lit_languages
+entity_type: node
+bundle: lit_resource
+label: Languages
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      lit_languages: lit_languages
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
+dependencies:
+  config:
+    - field.storage.node.field_lit_languages
+    - node.type.lit_resource
+    - taxonomy.vocabulary.lit_languages

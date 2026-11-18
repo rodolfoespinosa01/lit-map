@@ -11,8 +11,8 @@ final class PublishedBaselineAndExports implements SubmissionSourceInterface {
   public static function baselineSurvey():string {return \Drupal::state()->get('lit_contribution.baseline',MockQualtricsSource::LARGE);}
   public static function reserved(string $survey):bool {return str_starts_with($survey,'SYN_LIT_') || $survey===MockQualtricsSource::LEGACY;}
   public function listSubmissions():array {
-    $baseline=array_filter($this->mock->load(self::baselineSurvey()),fn($s)=>self::baseline($s['survey_id'],$s['response_id']));
-    if(count($baseline)!==10000)throw new \RuntimeException('The required 10,000-response baseline is incomplete.');
+    $baseline=self::baselineSurvey()==='none'?[]:array_filter($this->mock->load(self::baselineSurvey()),fn($s)=>self::baseline($s['survey_id'],$s['response_id']));
+    if(self::baselineSurvey()!=='none' && count($baseline)!==10000)throw new \RuntimeException('The required 10,000-response baseline is incomplete.');
     $ops=[];foreach($this->store->snapshot() as $key=>$raw){$s=$this->validator->normalize($raw,FALSE);if(self::reserved($s['survey_id']) || $key!==$s['survey_id'].'/'.$s['response_id'])throw new \RuntimeException('Invalid operational source reference.');$ops[$key]=$s;}
     return $baseline+$ops;
   }

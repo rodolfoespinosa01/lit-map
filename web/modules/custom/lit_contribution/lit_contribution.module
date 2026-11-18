@@ -22,7 +22,7 @@ function lit_contribution_user_role_predelete(EntityInterface $entity): void {
 function lit_contribution_mail($key,&$message,$params): void {
   if($key==='signin')$message['send']=FALSE;
 }
-function lit_contribution_cron(): void { \Drupal::service('lit_contribution.export_store')->cleanup();
+function lit_contribution_cron(): void { $gate=\Drupal\lit_contribution\Service\LocalOperationGate::acquire(); \Drupal::service('lit_contribution.export_store')->cleanup();
   \Drupal::database()->delete('lit_contribution_login_token')->condition('expires',time(),'<')->execute();
 }
 
@@ -70,3 +70,25 @@ function lit_contribution_block_access(\Drupal\block\BlockInterface $block,$oper
   return $result->addCacheContexts(['url.path','route']);
 }
 
+
+/** Preserve the existing owner's catalogue editing scope on native resources. */
+function lit_contribution_resource_owner(\Drupal\Core\Session\AccountInterface $account): bool {
+  $owner=(int)\Drupal::state()->get('lit_contribution.owner_uid',0);
+  if(!$owner || (int)$account->id()!==$owner)return FALSE;
+  $user=\Drupal\user\Entity\User::load($owner);
+  return $user && $user->isActive() && $user->hasRole(\Drupal\lit_contribution\Service\OwnerAccess::OWNER_ROLE);
+}
+function lit_contribution_node_create_access($account, array $context, $bundle) {
+  if($bundle==='lit_resource' && lit_contribution_resource_owner($account))return \Drupal\Core\Access\AccessResult::allowed()->addCacheContexts(['user'])->setCacheMaxAge(0);
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+function lit_contribution_node_access($node, $operation, $account) {
+  if($node->bundle()==='lit_resource' && in_array($operation,['view','update'],TRUE) && lit_contribution_resource_owner($account))return \Drupal\Core\Access\AccessResult::allowed()->addCacheContexts(['user'])->setCacheMaxAge(0);
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+function lit_contribution_entity_field_access($operation, $definition, $account, $items = NULL) {
+  $entity=$items?->getEntity();
+  $allow=$operation==='edit' && $definition->getName()==='status' && $entity && $entity->getEntityTypeId()==='node' && $entity->bundle()==='lit_resource' && lit_contribution_resource_owner($account);
+  if($allow)return \Drupal\Core\Access\AccessResult::allowed()->addCacheContexts(['user'])->setCacheMaxAge(0);
+  return \Drupal\Core\Access\AccessResult::neutral();
+}

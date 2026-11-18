@@ -1,4 +1,6 @@
 > Current questionnaire, selected baseline, dated aggregates and sample downloads:
+
+Account names and email examples in this document are placeholders. Use the configured owner identity; never configure an account from these historical examples.
 > [questionnaire v2](questionnaire-v2.md). Older counts/instructions below are
 > retained as historical version-1 context; existing records remain supported.
 
@@ -124,7 +126,7 @@ envelope/schema versions, grouped submission total and full-language union.
 
 ## Owner identity and access
 
-Exactly one existing account has `ree32@scarletmail.rutgers.edu`: **ree32, UID 4**,
+Exactly one existing account has `owner@example.org`: **configured-owner, UID 4**,
 active, designated sole application owner. No account was merged/created or email
 changed to establish this identity. **admin, UID 1** remains emergency administration.
 Anonymous/general authenticated roles receive no review or owner permissions.
@@ -171,7 +173,7 @@ sendmail transport at `127.0.0.1:1025`. **Messages are captured locally and are 
 delivered to the actual Rutgers mailbox.** No production mail or live Qualtrics
 integration is configured. Invitation remains OFF, URL blank.
 
-1. Run `ddev start`. Open Sign-in and enter `ree32@scarletmail.rutgers.edu`.
+1. Run `ddev start`. Open Sign-in and enter `owner@example.org`.
 2. Open Mailpit, open the latest “LiT local administrator sign-in” message to that
    address, follow its link, and choose **Confirm sign-in**. The dashboard opens.
 3. Use **Manage administrator emails** to authorize a fictional `example.org`
@@ -239,7 +241,7 @@ normal throttles; do not repeatedly run them within the throttle windows.
   **10** opening model; **25** contribution PHP files linted; `git diff --check`.
 - Desktop/mobile map screenshots were inspected for recognizable geography,
   visible count labels, segments, callouts and overflow. Owner dashboard and mobile
-  sign-in screenshots were also visually inspected. The dashboard displays ree32,
+  sign-in screenshots were also visually inspected. The dashboard displays configured-owner,
   logout and all owner-action links; the email form fits the mobile viewport and
   clearly explains Mailpit-only delivery. The sole-owner protection test deliberately
   triggers a caught rejection; its logged error is expected, not a failed check.

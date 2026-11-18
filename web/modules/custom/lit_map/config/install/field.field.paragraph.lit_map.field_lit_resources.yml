@@ -1,0 +1,27 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_resources
+field_name: field_lit_resources
+entity_type: paragraph
+bundle: lit_map
+label: 'Editorial resources'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      lit_resource: lit_resource
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_resources
+    - paragraphs.paragraphs_type.lit_map
+    - node.type.lit_resource

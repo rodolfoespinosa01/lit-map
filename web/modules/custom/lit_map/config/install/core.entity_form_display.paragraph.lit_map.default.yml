@@ -1,0 +1,73 @@
+langcode: en
+status: true
+id: paragraph.lit_map.default
+targetEntityType: paragraph
+bundle: lit_map
+mode: default
+content:
+  field_lit_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_intro:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_counties:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_languages:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_defaults:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_municipalities:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_breakdown:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_source:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_resources:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+dependencies:
+  config:
+    - field.field.paragraph.lit_map.field_lit_heading
+    - field.field.paragraph.lit_map.field_lit_intro
+    - field.field.paragraph.lit_map.field_lit_counties
+    - field.field.paragraph.lit_map.field_lit_languages
+    - field.field.paragraph.lit_map.field_lit_defaults
+    - field.field.paragraph.lit_map.field_lit_municipalities
+    - field.field.paragraph.lit_map.field_lit_breakdown
+    - field.field.paragraph.lit_map.field_lit_source
+    - field.field.paragraph.lit_map.field_lit_resources

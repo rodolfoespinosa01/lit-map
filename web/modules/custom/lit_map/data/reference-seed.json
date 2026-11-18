@@ -1,0 +1,88 @@
+[
+  {
+    "key": "en",
+    "label": "English",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "en"
+  },
+  {
+    "key": "es",
+    "label": "Spanish",
+    "aliases": [
+      "español",
+      "espanol"
+    ],
+    "ambiguous": false,
+    "code": "es"
+  },
+  {
+    "key": "ko",
+    "label": "Korean",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "ko"
+  },
+  {
+    "key": "pt",
+    "label": "Portuguese",
+    "aliases": [
+      "português"
+    ],
+    "ambiguous": false,
+    "code": "pt"
+  },
+  {
+    "key": "zh",
+    "label": "Chinese (provisional grouping)",
+    "aliases": [],
+    "ambiguous": true,
+    "code": ""
+  },
+  {
+    "key": "ar",
+    "label": "Arabic",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "ar"
+  },
+  {
+    "key": "hi",
+    "label": "Hindi",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "hi"
+  },
+  {
+    "key": "ase",
+    "label": "American Sign Language",
+    "aliases": [
+      "asl"
+    ],
+    "ambiguous": false,
+    "code": "ase"
+  },
+  {
+    "key": "cmn",
+    "label": "Mandarin Chinese",
+    "aliases": [
+      "mandarin"
+    ],
+    "ambiguous": false,
+    "code": "cmn"
+  },
+  {
+    "key": "yue",
+    "label": "Cantonese",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "yue"
+  },
+  {
+    "key": "fr",
+    "label": "French",
+    "aliases": [],
+    "ambiguous": false,
+    "code": "fr"
+  }
+]

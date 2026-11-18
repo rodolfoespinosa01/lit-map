@@ -1,13 +1,15 @@
 # Superadmin-managed password access
 
+Account names and email examples in this document are placeholders. Use the configured owner identity; never configure an account from these historical examples.
+
 This is the current contribution-branch authentication guide. It supersedes the
 email-link instructions in earlier milestone reports. No email or Mailpit step
 is needed for LiT login; shared Drupal mail infrastructure remains installed.
 
 ## Private initial setup
 
-The verified existing sole owner is **ree32, UID 4**, with email
-**ree32@scarletmail.rutgers.edu**. UID 1 remains emergency Drupal administration.
+The verified existing sole owner is **configured-owner, UID 4**, with email
+**owner@example.org**. UID 1 remains emergency Drupal administration.
 The owner's real password has not been changed by this implementation.
 
 Edit `/Users/rodolfoespinosanunez/Documents/Rutgers/LIT/lit-map/.env` privately
@@ -164,7 +166,7 @@ tests. Existing map/resource/count work in the working tree was preserved.
 
 The bootstrap email must match the existing designated owner's email; editing
 `.env` does not transfer ownership. On 2026-11-13, diagnosis confirmed UID 4
-(`ree32`) already had `ree32@scarletmail.rutgers.edu`, with no conflicting
+(`configured-owner`) already had `owner@example.org`, with no conflicting
 account. The local email assignment differed, with no injected email override.
 Only that assignment was corrected. Bootstrap then reached password validation
 and rejected the privately configured value; no password or ownership change

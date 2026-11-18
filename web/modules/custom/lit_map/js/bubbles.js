@@ -1,10 +1,25 @@
 (function (Drupal, once, settings, M) {
   'use strict';
   const NS = 'http://www.w3.org/2000/svg';
+  const instances = new WeakMap();
   Drupal.behaviors.litMapBubbles = {attach(context) {
-    once('lit-map-bubbles', '.lit-bubbles', context).forEach(root => {
+    const candidates=[...(context.querySelectorAll?.('.lit-bubbles')||[])];
+    if(context.matches?.('.lit-bubbles'))candidates.unshift(context);
+    once('lit-map-bubbles', candidates).forEach(root => {
       const config = settings.litMapBubbles?.[root.id];
       if (!config) return;
+      const pristine = root.innerHTML;
+      const controller = new AbortController(), observers = [];
+      const listen = (node,type,callback,options={}) => node.addEventListener(type,callback,{...(typeof options==='boolean'?{capture:options}:options),signal:controller.signal});
+      const namespace = config.stateKey || '';
+      const readState = () => {
+        const state = M.read(location.href, config.survey, config.openingPreset, namespace);
+        const query = new URL(location.href).searchParams;
+        if (namespace && ![...query.keys()].some(k=>k.startsWith(namespace+'_lit_')) && config.defaultLanguages?.length) state.languages=config.defaultLanguages;
+        return M.normalize(state,config.survey);
+      };
+      config.survey.municipalitiesEnabled = config.municipalitiesEnabled !== false;
+      instances.set(root, () => { renderToken++; controller.abort(); observers.forEach(o=>o.disconnect()); root.innerHTML=pristine; });
       const originalData=config.survey, geo=config.geography, unionMode=originalData.schemaVersion>=3;
       let data=originalData;
       const unionLabel='Survey responses reporting speaking or understanding ANY selected language';
@@ -18,12 +33,12 @@
       const countyById = Object.fromEntries(data.counties.map(c => [c.geoid, c]));
       const townById = Object.fromEntries(data.municipalities.map(t => [t.id, t]));
       const languageById = Object.fromEntries(data.languages.map(l => [l.id, l.label]));
-      let state = M.read(location.href, originalData, config.openingPreset), camera, bounds, activeSvg = nj, renderToken = 0;
+      let state = readState(), camera, bounds, activeSvg = nj, renderToken = 0;
       let bubbleNodes = [], suppressClick = false, drag = null;
       const assets = new Map();
       const displayRadius=(n,towns)=>config.openingPreset?M.presentationRadius(n,towns):M.radius(n,towns);
-      const matching=n=>n===undefined?'No data available':`${n.toLocaleString()} matching survey responses`;
-      const fmt = n => n === undefined ? 'No data available' : `${n.toLocaleString()} survey responses`;
+      const matching=n=>config.emptyPublication||n===undefined?'No data available':`${n.toLocaleString()} matching survey responses`;
+      const fmt = n => config.emptyPublication || n === undefined ? 'No data available' : `${n.toLocaleString()} survey responses`;
       const el = (tag, text, parent, attrs = {}) => {
         const node = document.createElement(tag); if (text !== null) node.textContent = text;
         Object.entries(attrs).forEach(([k,v]) => node.setAttribute(k,v)); parent?.append(node); return node;
@@ -43,10 +58,10 @@
           tooltip.textContent=`${name}: ${unionMode&&state.languages.length?unionLabel+': '+matching(total())+'. Individual language counts overlap. ':''}${languages.length?languages.map(id=>`${languageById[id]}: ${fmt(counts?.[id])}`).join('; '):'No data available'}. Click or press Enter for the information panel.`;
           tooltip.hidden=false;tooltipOwner=node;node.setAttribute('aria-describedby',tooltip.id);$('[data-tooltip-dismiss]').hidden=false;
         };
-        node.addEventListener('mouseenter',show);node.addEventListener('focus',show);
+        listen(node,'mouseenter',show);listen(node,'focus',show);
       }
-      $('[data-tooltip-dismiss]').addEventListener('click',hideTooltip);
-      root.addEventListener('keydown',e=>{if(e.key==='Escape')hideTooltip();});
+      listen($('[data-tooltip-dismiss]'),'click',hideTooltip);
+      listen(root,'keydown',e=>{if(e.key==='Escape')hideTooltip();});
 
       data.languages.forEach(l => {
         const label = el('label', null, $('[data-languages]'));
@@ -54,32 +69,45 @@
       });
       data.counties.forEach(c => option($ ('select[data-county]'), c.geoid, c.name));
       if($('[data-date-from]')){
-        $('[data-date-from]').addEventListener('change',()=>change({from:$('[data-date-from]').value}));
-        $('[data-date-through]').addEventListener('change',()=>change({through:$('[data-date-through]').value}));
-        root.querySelectorAll('[data-date-preset]').forEach(b=>b.addEventListener('click',()=>change(M.datePreset(b.dataset.datePreset,config.today))));
+        listen($('[data-date-from]'),'change',()=>change({from:$('[data-date-from]').value}));
+        listen($('[data-date-through]'),'change',()=>change({through:$('[data-date-through]').value}));
+        root.querySelectorAll('[data-date-preset]').forEach(b=>listen(b,'click',()=>change(M.datePreset(b.dataset.datePreset,config.today))));
       }
       async function loadPanels(token){
         const panel=$('[data-question-panels]');if(!panel||!config.panelsUrl)return;panel.replaceChildren();
         if(state.dateError){el('p','Invalid date range; no questionnaire results.',panel);return;}
         if(!state.languages.length){el('p','Select languages to view questionnaire aggregates.',panel);return;}
-        const url=new URL(config.panelsUrl,location.origin);if(config.publicationHash)url.searchParams.set('publication',config.publicationHash);state.languages.forEach(l=>url.searchParams.append('languages[]',l));for(const [k,v] of Object.entries({county:state.county,municipality:state.municipality,from:state.from,through:state.through}))if(v)url.searchParams.set(k,v);
+        const url=new URL(config.panelsUrl,location.origin);(config.allowedCounties||[]).forEach(c=>url.searchParams.append('counties[]',c));if(config.publicationHash)url.searchParams.set('publication',config.publicationHash);state.languages.forEach(l=>url.searchParams.append('languages[]',l));for(const [k,v] of Object.entries({county:state.county,municipality:state.municipality,from:state.from,through:state.through}))if(v)url.searchParams.set(k,v);
         el('p','Loading approved questionnaire aggregates…',panel);
-        try{const response=await fetch(url,{credentials:'same-origin'});if(!response.ok)throw Error('Unavailable');const d=await response.json();if(token!==renderToken)return;panel.replaceChildren();el('p',d.notice,panel);el('p',`${d.legacyWithoutQuestionnaire} matching legacy responses have no questionnaire answers. Minimum answered-response threshold: ${d.threshold}.`,panel);if(!d.panels.length)el('p','No questionnaire results for this selection.',panel);
+        try{const response=await fetch(url,{credentials:'same-origin',signal:controller.signal});if(!response.ok)throw Error('Unavailable');const d=await response.json();if(token!==renderToken)return;panel.replaceChildren();el('p',d.notice,panel);el('p',`${d.legacyWithoutQuestionnaire} matching legacy responses have no questionnaire answers. Minimum answered-response threshold: ${d.threshold}.`,panel);if(!d.panels.length)el('p','No questionnaire results for this selection.',panel);
           for(const p of d.panels){const box=el('details',null,panel);el('summary',p.label,box);if(p.suppressed){el('p','Suppressed: too few answered responses or a small answer/missing breakdown.',box);continue;}el('p',`${p.answered} answered of ${p.eligible} applicable responses; ${p.missing} missing.`,box);const list=el('ul',null,box);p.values.forEach(v=>el('li',`${v.label}: ${v.count} survey responses`,list));}
         }catch(e){if(token===renderToken){panel.replaceChildren();el('p','Questionnaire aggregates unavailable or publication changed. Refresh the map to align all results.',panel);}}
       }
-      const chooseCounty = county => change({county, municipality:'', level:county ? (state.breakdown ? 'municipality' : 'county') : 'nj'});
+      const chooseCounty = county => change({county, municipality:'', breakdown:state.breakdown || Boolean(config.defaultBreakdown), level:county ? ((state.breakdown || config.defaultBreakdown) && config.municipalitiesEnabled !== false ? 'municipality' : 'county') : 'nj'});
       const chooseTown = municipality => change({municipality, breakdown:true, level:'municipality'});
-      $('[data-languages]').addEventListener('change', () => change({languages:[...$('[data-languages]').querySelectorAll('input:checked')].map(i => i.value)}));
-      $('[data-active]')?.addEventListener('change', e => change({active:e.target.value}));
-      $ ('select[data-county]').addEventListener('change', e => chooseCounty(e.target.value));
-      $ ('select[data-municipality]').addEventListener('change', e => chooseTown(e.target.value));
-      $('[data-breakdown]').addEventListener('change', e => change({breakdown:e.target.checked, municipality:'', level:e.target.checked ? 'municipality' : 'county'}));
+      function placeSearch() {
+        const host=$('[data-place-results]'), query=$('[data-place-search]').value.trim().toLocaleLowerCase();host.replaceChildren();if(!query)return;
+        if(config.municipalitiesEnabled===false)return;
+        const places=[...originalData.municipalities.map(t=>({name:t.name,county:t.county,municipality:t.id})),...(config.communities||[])];
+        const matches=places.filter(p=>(!state.county||p.county===state.county)&&p.name.toLocaleLowerCase().includes(query));
+        if(!matches.length)el('p','No matching place in this county/state. Try clearing County to search New Jersey.',host);
+        matches.slice(0,30).forEach(p=>{const parent=townById[p.municipality];const label=p.state?`${p.name} — within ${parent.name}`:p.name;
+          const button=el('button',`${label} · ${countyById[p.county].name} County, NJ`,host,{type:'button'});
+          listen(button,'click',()=>{change({county:p.county,municipality:p.municipality,breakdown:true,level:'municipality'});$('select[data-municipality]').focus();});
+        });
+        if(matches.length>30)el('p','Showing 30 matches; narrow your search.',host);
+      }
+      listen($('[data-place-search]'),'input',placeSearch);
+      listen($('[data-languages]'),'change', () => change({languages:[...$('[data-languages]').querySelectorAll('input:checked')].map(i => i.value)}));
+      if($('[data-active]'))listen($('[data-active]'),'change', e => change({active:e.target.value}));
+      listen($ ('select[data-county]'),'change', e => chooseCounty(e.target.value));
+      listen($ ('select[data-municipality]'),'change', e => chooseTown(e.target.value));
+      listen($('[data-breakdown]'),'change', e => change({breakdown:e.target.checked, municipality:'', level:e.target.checked ? 'municipality' : 'county'}));
       function change(patch) {
         state = M.normalize({...state, ...patch}, data);
-        history.pushState(null, '', M.write(location.href, state)); render();
+        history.pushState(null, '', M.write(location.href, state, namespace)); render();
       }
-      window.addEventListener('popstate', () => {state = M.read(location.href, originalData, config.openingPreset); render();});
+      listen(window,'popstate', () => {state = readState(); render();});
       function setCamera(next) { camera = M.clamp(next, bounds); activeSvg.setAttribute('viewBox', camera.join(' ')); positionBubbles(); }
       function zoom(factor) {
         if (factor < 1 && camera[2] >= bounds[2] - .001) {
@@ -90,26 +118,26 @@
       function pan(dx, dy) { setCamera([camera[0]+dx*camera[2], camera[1]+dy*camera[3], camera[2], camera[3]]); }
       function action(name) {
         if (name === 'nj' || name === 'usa') change({level:name});
-        if (name === 'reset') change(config.openingPreset?M.opening(originalData):{languages:[],active:'',county:'',municipality:'',breakdown:false,level:'nj'});
+        if (name === 'reset') change({...config.openingPreset?M.opening(originalData):{languages:[],active:'',county:'',municipality:'',breakdown:false,level:'nj'},...(config.defaultLanguages?.length?{languages:config.defaultLanguages}:{}),from:'',through:''});
         if (name === 'clear') change({languages:[],active:''});
         if (name === 'in') zoom(1.5); if (name === 'out') zoom(1/1.5);
         if (name === 'fit') setCamera(bounds);
         if (name === 'left') pan(-.15,0); if (name === 'right') pan(.15,0);
         if (name === 'up') pan(0,-.15); if (name === 'down') pan(0,.15);
       }
-      root.querySelectorAll('[data-action]').forEach(b => b.addEventListener('click', () => action(b.dataset.action)));
-      stage.addEventListener('keydown', e => {
+      root.querySelectorAll('[data-action]').forEach(b => listen(b,'click', () => action(b.dataset.action)));
+      listen(stage,'keydown', e => {
         if (e.target !== stage) return;
         const a = {ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down', '+':'in', '=':'in', '-':'out', Home:'fit'}[e.key];
         if (a) {e.preventDefault(); action(a);}
       });
-      $('[data-touch]').addEventListener('change', e => stage.classList.toggle('is-touch-moving',e.target.checked));
-      stage.addEventListener('pointerdown', e => {
+      listen($('[data-touch]'),'change', e => stage.classList.toggle('is-touch-moving',e.target.checked));
+      listen(stage,'pointerdown', e => {
         if (e.button !== 0 || (e.pointerType === 'touch' && !$('[data-touch]').checked)) return;
         // Delay capture until the drag threshold, preserving native click targets.
         drag = {id:e.pointerId,x:e.clientX,y:e.clientY,camera:[...camera],moved:false};
       });
-      stage.addEventListener('pointermove', e => {
+      listen(stage,'pointermove', e => {
         if (!drag || e.pointerId !== drag.id) return;
         const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
         if (!drag.moved && Math.hypot(dx,dy)<6) return;
@@ -123,32 +151,32 @@
         if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId);
         setTimeout(() => {suppressClick=false;}, 0);
       }
-      stage.addEventListener('pointerup',endDrag); stage.addEventListener('pointercancel',endDrag);
-      stage.addEventListener('click', e => {if(suppressClick) {e.preventDefault();e.stopImmediatePropagation();}},true);
+      listen(stage,'pointerup',endDrag); listen(stage,'pointercancel',endDrag);
+      listen(stage,'click', e => {if(suppressClick) {e.preventDefault();e.stopImmediatePropagation();}},true);
       function activate(node, callback, label) {
         node.setAttribute('tabindex','0'); node.setAttribute('role','button'); node.setAttribute('aria-label',label);
-        node.addEventListener('click',callback);
-        node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();callback();}});
+        listen(node,'click',callback);
+        listen(node,'keydown',e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();callback();}});
       }
-      nj.querySelectorAll('[data-geoid]').forEach(p => {activate(p, () => chooseCounty(p.dataset.geoid), `${countyById[p.dataset.geoid].name} County: zoom to county`);describe(p,`${countyById[p.dataset.geoid].name} County`,()=>data.totals[p.dataset.geoid],()=>countAt(p.dataset.geoid));});
+      nj.querySelectorAll('[data-geoid]').forEach(p => {if(!countyById[p.dataset.geoid]){p.removeAttribute('tabindex');p.setAttribute('aria-hidden','true');p.style.opacity='.2';return;}activate(p, () => chooseCounty(p.dataset.geoid), `${countyById[p.dataset.geoid].name} County: zoom to county`);describe(p,`${countyById[p.dataset.geoid].name} County`,()=>data.totals[p.dataset.geoid],()=>countAt(p.dataset.geoid));});
       const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-      let motionPreference; try {motionPreference=localStorage.getItem('lit_map.motion');} catch (_) { /* Storage can be disabled. */ }
+      let motionPreference; try {motionPreference=localStorage.getItem(namespace?'lit_map.motion.'+namespace:'lit_map.motion');} catch (_) { /* Storage can be disabled. */ }
       function motion() {
         const on=!reduced.matches && motionPreference !== 'off';
         $('[data-motion]').checked=on; $('[data-motion]').disabled=reduced.matches;
         root.classList.toggle('is-motion-off',!on);
         $('[data-motion-help]').textContent=reduced.matches ? 'Motion is off because your device requests reduced motion.' : 'Motion pauses on hover, focus, selection, and while the map is offscreen.';
       }
-      $('[data-motion]').addEventListener('change', e=>{motionPreference=e.target.checked?'on':'off';try{localStorage.setItem('lit_map.motion',motionPreference);}catch(_){}motion();});
-      reduced.addEventListener('change',motion); motion();
+      listen($('[data-motion]'),'change', e=>{motionPreference=e.target.checked?'on':'off';try{localStorage.setItem(namespace?'lit_map.motion.'+namespace:'lit_map.motion',motionPreference);}catch(_){}motion();});
+      listen(reduced,'change',motion); motion();
       let visible=true;
       function visibility() {root.classList.toggle('is-offscreen',!visible || document.hidden);}
-      new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;visibility();}).observe(stage);
-      document.addEventListener('visibilitychange',visibility);
-      new ResizeObserver(positionBubbles).observe(stage);
+      const intersection=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;visibility();});intersection.observe(stage);observers.push(intersection);
+      listen(document,'visibilitychange',visibility);
+      const resize=new ResizeObserver(positionBubbles);resize.observe(stage);observers.push(resize);
       async function asset(file) {
         if (!assets.has(file)) {
-          const promise = fetch(config.assetBase+file, {credentials:'same-origin'}).then(r=>{if(!r.ok)throw Error('asset');return r.text();}).then(text=>{
+          const promise = fetch(config.assetBase+file, {credentials:'same-origin',signal:controller.signal}).then(r=>{if(!r.ok)throw Error('asset');return r.text();}).then(text=>{
             const doc=new DOMParser().parseFromString(text,'image/svg+xml');
             const allowed=new Set(['svg','g','path','title','desc','text','rect']);
             if(doc.querySelector('parsererror')||doc.documentElement.localName!=='svg')throw Error('svg');
@@ -158,6 +186,7 @@
                 if(/^on/i.test(attr.name)||/href|style/i.test(attr.name)||/url\s*\(/i.test(attr.value))throw Error('attribute');
               }
             }
+            doc.querySelectorAll('[id]').forEach(n=>{n.id=root.id+'-'+n.id;});
             return doc.documentElement;
           }).catch(error=>{assets.delete(file);throw error;});
           assets.set(file,promise);
@@ -172,7 +201,7 @@
         selected.forEach(id=>el('p',`${languageById[id]}: ${fmt(values?.[id])}`,parent));
       }
       function resources(parent) {
-        if(!unionMode)return;
+
         const section=el('section',null,parent,{'data-resource-panel':'',class:'lit-bubbles__resources'});
         el('h4','Recordings and resources',section);
         if(!state.county){el('p','Select a bubble or place to explore related recordings and resources.',section);return;}
@@ -199,10 +228,10 @@
             el('summary','Town/city counts and unspecified municipality',detail);
             const towns=data.municipalities.filter(t=>t.county===state.county);
             const rows=[...towns,{id:'_unspecified',name:'Municipality unspecified'}];
-            if(selectedTown){const clear=el('button','Clear town/city selection',summary,{type:'button'});clear.addEventListener('click',()=>chooseTown(''));}
+            if(selectedTown){const clear=el('button','Clear town/city selection',summary,{type:'button'});listen(clear,'click',()=>chooseTown(''));}
             rows.sort((a,b)=>{const rank=t=>t.id===selectedTown?0:t.id==='_unspecified'?1:data.breakdown[state.county]?.[t.id]?2:3;return rank(a)-rank(b);}).forEach(t=>{
               const row=el('section',null,detail,{class:'lit-bubbles__result'+(selectedTown===t.id?' is-selected':'')});
-              const b=el('button',t.name,row,{type:'button'});b.addEventListener('click',()=>chooseTown(t.id));
+              const b=el('button',t.name,row,{type:'button'});listen(b,'click',()=>chooseTown(t.id));
               comparison(row,data.breakdown[state.county]?.[t.id],countAt(state.county,t.id));
             });
           }
@@ -210,7 +239,7 @@
           resources(target);
           if(state.languages.length)data.counties.forEach(c=>{
             const row=el('section',null,target,{class:'lit-bubbles__result'});
-            const b=el('button',`${c.name} County`,row,{type:'button'});b.addEventListener('click',()=>chooseCounty(c.geoid));comparison(row,data.totals[c.geoid],countAt(c.geoid));
+            const b=el('button',`${c.name} County`,row,{type:'button'});listen(b,'click',()=>chooseCounty(c.geoid));comparison(row,data.totals[c.geoid],countAt(c.geoid));
           });
         }
       }
@@ -348,10 +377,11 @@
         if(!state.languages.length)option(active,'','Choose languages first');
         state.languages.forEach(l=>option(active,l,languageById[l]));active.value=state.active;active.disabled=!state.languages.length;}
         $ ('select[data-county]').value=state.county;
-        $('[data-breakdown]').disabled=!state.county;$('[data-breakdown]').checked=state.breakdown;
+        $('[data-breakdown]').disabled=!state.county || config.municipalitiesEnabled===false;$('[data-breakdown]').checked=state.breakdown;
+        placeSearch();
         const town=$ ('select[data-municipality]');town.replaceChildren();option(town,'','All towns/cities');
         data.municipalities.filter(t=>t.county===state.county).forEach(t=>option(town,t.id,t.name));
-        option(town,'_unspecified','Municipality unspecified');town.disabled=!state.county;town.value=state.municipality;
+        option(town,'_unspecified','Municipality unspecified');town.disabled=!state.county || config.municipalitiesEnabled===false;town.value=state.municipality;
         nj.querySelector('[data-town-layer]')?.remove();
         nj.querySelectorAll('[data-geoid]').forEach(p=>p.classList.toggle('is-selected',p.dataset.geoid===state.county));
         $('[data-nj]').hidden=state.level==='usa';usaHost.hidden=state.level!=='usa';
@@ -399,7 +429,16 @@
           }catch(_){if(token===renderToken){nj.querySelector('[data-town-layer]')?.remove();$('[data-map-status]').textContent='Town boundaries could not load. Counts remain available below. Toggle Show towns/cities off and on to retry.';}}
         }
       }
+      if(config.municipalitiesEnabled===false){
+        ['[data-breakdown]','[data-place-search]','select[data-municipality]'].forEach(q=>{$(q).disabled=true;$(q).closest('label').hidden=true;});
+        $('[data-place-help]')?.setAttribute('hidden','');
+      }
       render();
     });
+  }, detach(context, settings, trigger) {
+    if(trigger!=='unload')return;
+    const roots=[...(context.querySelectorAll?.('.lit-bubbles')||[])];
+    if(context.matches?.('.lit-bubbles'))roots.unshift(context);
+    roots.forEach(root=>{instances.get(root)?.();instances.delete(root);once.remove('lit-map-bubbles',root);});
   }};
 })(Drupal, once, drupalSettings, window.LitBubbleModel);

@@ -2,13 +2,13 @@
 import json, random, sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-root=Path(__file__).resolve().parents[2];folder=root/'private/lit-questionnaire-10000-v2'
+root=Path(__file__).resolve().parents[2];folder=Path(sys.argv[1]) if len(sys.argv)>1 else root/'private/lit-questionnaire-10000-v2'
 if (folder/'submissions.json').exists():
     print('Questionnaire dataset already exists; preserved.');sys.exit(0)
-rng=random.Random(20261114);anchor=datetime.now(timezone.utc)-timedelta(minutes=5)
+rng=random.Random(20261114);anchor=datetime(2026,11,14,12,0,tzinfo=timezone.utc)
 refs=json.loads((root/'web/modules/custom/lit_map/data/survey-statewide-references.json').read_text())
 counties={c['geoid']:c['name'] for c in json.loads((root/'web/modules/custom/lit_map/data/nj-counties.json').read_text())['counties']}
-manifest=json.loads((root/'private/lit-contribution-demo-10000-v1/manifest.json').read_text());targets=manifest['counties']
+targets={c:40 for c in counties};targets.update({'34013':2200,'34017':1800,'34003':1600,'34027':1200,'34039':1200,'34023':1400})
 cat=json.loads((root/'web/modules/custom/lit_contribution/data/questionnaire.v2.json').read_text())['questions']
 langs=['English','Spanish','Korean','Portuguese','Mandarin','Arabic','Hindi','American Sign Language','Cantonese','French']
 rows=[];nb=next(t for t in refs['municipalities'] if t['name']=='New Brunswick city');i=0

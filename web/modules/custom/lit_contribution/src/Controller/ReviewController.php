@@ -11,7 +11,7 @@ final class ReviewController extends ControllerBase {
   public static function create(ContainerInterface $c): static { return new static($c->get('lit_contribution.reviews')); }
   private function stamp(int|string $time): string { return $time?gmdate('Y-m-d H:i:s \U\T\C',(int)$time):'Not yet'; }
   private function base(): array {
-    return ['#cache'=>['max-age'=>0], 'notice'=>['#type'=>'html_tag','#tag'=>'p','#value'=>$this->t('Private imported contributions. The map retains its synthetic demonstration baseline. No live Qualtrics connection. New/changed responses require review. Decisions affect the public map only after a successful publication. Email matches do not verify ownership.')]];
+    return ['#cache'=>['max-age'=>0], 'notice'=>['#type'=>'html_tag','#tag'=>'p','#value'=>$this->t('Private imported contributions. The map includes the selected synthetic baseline, if any. No live Qualtrics connection. New/changed responses require review. Decisions affect the public map only after a successful publication. Email matches do not verify ownership.')]];
   }
   public function pending(): array { return $this->queue(TRUE); }
   public function listing(): array { return $this->queue(FALSE); }
@@ -28,7 +28,7 @@ final class ReviewController extends ControllerBase {
       $r['source_present']?$r['status']:'Absent from source', $r['duplicate_conflict']?'Unresolved — excluded':'None / resolved',
       $r['submitted_at'],$this->stamp($r['imported_at']),$this->stamp($r['reviewed_at']),$this->stamp($r['published_at']),$r['in_publication']?'Yes (last snapshot)':'No'];
     $build['pager']=['#type'=>'pager'];
-    $build['scope']=['#plain_text'=>'Contributor queue: uploaded and local-demo responses only. Publication: selected 10,000-response baseline plus approved contributions.'];
+    $build['scope']=['#plain_text'=>'Contributor queue: uploaded and local-demo responses only. Publication: selected baseline (if any) plus approved contributions.'];
     return $build;
   }
   public function detail(int $review): array {

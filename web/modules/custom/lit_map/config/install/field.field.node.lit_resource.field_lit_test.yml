@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: node.lit_resource.field_lit_test
+field_name: field_lit_test
+entity_type: node
+bundle: lit_resource
+label: 'Clearly labeled test resource'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: boolean
+dependencies:
+  config:
+    - field.storage.node.field_lit_test
+    - node.type.lit_resource

@@ -5,7 +5,7 @@ final class QuestionPanels {
   public static function definitions():array {
     $d=[];$catalog=array_column(Questionnaire::catalog(),NULL,'key');
     foreach(['q09','q15','q16','q17','q19','q21','q22','q23','q24','q25','q26','q27'] as $k)$d[$k]=['label'=>$catalog[$k]['label'],'options'=>$catalog[$k]['options']??[],'language'=>NULL];
-    foreach(SubmissionValidator::LANGUAGES as $l=>$name){$d['frequency.'.$l]=['label'=>$name.' — use frequency','options'=>$catalog['q08']['options'],'language'=>$l];foreach(Questionnaire::SKILLS as $skill)$d['proficiency.'.$l.'.'.$skill]=['label'=>$name.' — '.$skill.' proficiency (slot-specific questionnaire options)','options'=>$catalog['q11']['options'],'language'=>$l];foreach(Questionnaire::SUPPORT as $key=>$label)$d['support.'.$l.'.'.$key]=['label'=>$name.' — support: '.$label,'options'=>$catalog['q13']['options'],'language'=>$l];}return $d;
+    foreach(SubmissionValidator::languages() as $l=>$name){$d['frequency.'.$l]=['label'=>$name.' — use frequency','options'=>$catalog['q08']['options'],'language'=>$l];foreach(Questionnaire::SKILLS as $skill)$d['proficiency.'.$l.'.'.$skill]=['label'=>$name.' — '.$skill.' proficiency (slot-specific questionnaire options)','options'=>$catalog['q11']['options'],'language'=>$l];foreach(Questionnaire::SUPPORT as $key=>$label)$d['support.'.$l.'.'.$key]=['label'=>$name.' — support: '.$label,'options'=>$catalog['q13']['options'],'language'=>$l];}return $d;
   }
   public static function values(array $s):array {
     if(($s['schema_version']??1)!==2)return [];$q=$s['answers']['questions'];$out=[];

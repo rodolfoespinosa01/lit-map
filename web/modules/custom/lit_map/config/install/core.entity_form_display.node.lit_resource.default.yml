@@ -1,0 +1,92 @@
+langcode: en
+status: true
+id: node.lit_resource.default
+targetEntityType: node
+bundle: lit_resource
+mode: default
+content:
+  field_lit_kind:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_description_long:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_external:
+    type: link_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_media:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_transcript:
+    type: link_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_counties:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_languages:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_municipality:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_resource_key:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lit_test:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }
+dependencies:
+  config:
+    - field.field.node.lit_resource.field_lit_kind
+    - field.field.node.lit_resource.field_lit_description_long
+    - field.field.node.lit_resource.field_lit_external
+    - field.field.node.lit_resource.field_lit_media
+    - field.field.node.lit_resource.field_lit_transcript
+    - field.field.node.lit_resource.field_lit_counties
+    - field.field.node.lit_resource.field_lit_languages
+    - field.field.node.lit_resource.field_lit_municipality
+    - field.field.node.lit_resource.field_lit_resource_key
+    - field.field.node.lit_resource.field_lit_test

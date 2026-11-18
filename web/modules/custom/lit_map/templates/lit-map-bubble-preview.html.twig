@@ -1,6 +1,7 @@
-<section id="{{ instance_id }}" class="lit-bubbles{% if approved_preview %} lit-bubbles--approved{% endif %}" aria-label="LiT synthetic bubble map preview">
-  <h2>New Jersey language survey{% if not approved_preview %} · interaction preview{% endif %}</h2>
-  <p class="lit-bubbles__notice"><strong>Synthetic demonstration data.</strong> {% if approved_preview %}This preview retains a fabricated baseline and may include approved imported contributions. Values mean survey responses, not population or unique people.{% else %}Every count is fabricated for testing. Values mean survey responses, not population, language prevalence, or unique people.{% endif %}</p>
+<section id="{{ instance_id }}" class="lit-bubbles{% if approved_preview %} lit-bubbles--approved{% endif %}" aria-label="{{ heading ?: 'New Jersey language survey' }}">
+  <h2>{{ heading ?: 'New Jersey language survey' }}{% if not heading and not approved_preview %} · interaction preview{% endif %}</h2>
+  {{ intro }}
+  <p class="lit-bubbles__notice"><strong>Synthetic demonstration data.</strong> {% if empty_publication %}No data available. Geographic boundaries remain available for exploration.{% elseif approved_preview %}This preview displays approved demonstration responses. Values mean survey responses, not population or unique people.{% else %}Every count is fabricated for testing. Values mean survey responses, not population, language prevalence, or unique people.{% endif %}</p>
   {% if approved_preview %}
     <p data-publication-date>Public data updated: {{ publication_date ?: 'No approved publication yet' }}{% if publication_date %} (UTC date){% endif %}.</p>
 
@@ -23,6 +24,9 @@
       {% if not approved_preview %}<label>Numbers and bubble size: active language <select data-active></select></label>{% endif %}
       <label>County <select data-county><option value="">Choose a county</option></select></label>
       <label><input type="checkbox" data-breakdown disabled> Show towns/cities</label>
+      <label>Search NJ municipality or community <input type="search" data-place-search maxlength="100" aria-describedby="{{ instance_id }}-place-help"></label>
+      <p id="{{ instance_id }}-place-help">Search within the selected county, or clear County to search New Jersey. Community matches select their municipality; counts describe the entire municipality.</p>
+      <div data-place-results aria-live="polite"></div>
       <label>Town/city <select data-municipality disabled><option value="">All towns/cities</option></select></label>
     </div>
     {% if approved_preview %}</details>{% endif %}
@@ -42,7 +46,7 @@
       <div>
         <h3 data-heading>New Jersey</h3>
         <div class="lit-bubbles__stage" tabindex="0" role="group" aria-label="Interactive map. Arrow keys pan, plus and minus zoom, Home fits view. County and town selectors provide equivalent navigation.">
-          <div data-nj>{{ source('@lit_map/geometry/nj-counties.svg')|replace({'id="county-': 'id="' ~ instance_id ~ '-county-'})|raw }}</div>
+          <div data-nj>{{ svg }}</div>
           <div data-usa hidden></div>
           <svg class="lit-bubbles__overlay" aria-label="Synthetic survey response bubbles"></svg>
         </div>
@@ -77,10 +81,10 @@
         <h3 data-results-heading>Survey responses</h3>
         <p data-summary role="status"></p>
         <div data-results></div>
-        {% if approved_preview %}<template data-resource-templates>{% for resource in resources %}{{ resource.card }}{% endfor %}</template>{% endif %}
+        <template data-resource-templates>{% for resource in resources %}{{ resource.card }}{% endfor %}</template>
       </aside>
     </div>
-    <noscript>This interactive preview requires JavaScript. No survey counts are represented by the unfiltered geometry.</noscript>
+    <noscript><p>Enable JavaScript to filter survey counts. These boundaries alone do not represent counts.</p>{{ fallback }}{% for resource in resources %}{{ resource.card }}{% endfor %}</noscript>
   {% else %}
     <p role="status">The demonstration data is temporarily unavailable. Please try again later.</p>
   {% endif %}

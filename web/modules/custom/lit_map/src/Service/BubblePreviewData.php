@@ -76,7 +76,7 @@ final class BubblePreviewData {
         throw new \UnexpectedValueException();
       }
       $public['usaAsset'] = $geo['usaAsset'];
-      return ['survey' => $data, 'geography' => $public, 'assetBase' => base_path() . $path . '/assets/'];
+      return ['communities' => CommunityPlaces::load($data['municipalities']), 'survey' => $data, 'geography' => $public, 'assetBase' => base_path() . $path . '/assets/'];
     }
     catch (\Throwable $error) {
       $this->logger->error('Bubble preview geography unavailable. Error category: @type.', ['@type' => get_class($error)]);

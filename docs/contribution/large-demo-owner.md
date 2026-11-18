@@ -1,4 +1,6 @@
 > Current questionnaire, selected baseline, dated aggregates and sample downloads:
+
+Account names and email examples in this document are placeholders. Use the configured owner identity; never configure an account from these historical examples.
 > [questionnaire v2](questionnaire-v2.md). Older counts/instructions below are
 > retained as historical version-1 context; existing records remain supported.
 
@@ -86,7 +88,7 @@ use the owner's Publish form to retry; it does not silently reset decisions.
 
 ## Owner and administrators
 
-At the user's explicit direction, existing account **ree32 (UID 4)** was activated
+At the user's explicit direction, existing account **configured-owner (UID 4)** was activated
 and bootstrapped as the **single application owner**, retaining its existing real
 email. No email was guessed or hardcoded in application/setup code. Local Mailpit
 sign-in was tested for this account; real mailbox delivery/ownership was not tested.
@@ -157,7 +159,7 @@ Already-installed site (additive schema update; never reinstall its database):
 ddev start
 ddev drush updatedb -y
 ddev drush cr
-# Choose an existing account explicitly; 4 is the user-authorized local ree32 account.
+# Choose an existing account explicitly; 4 is the user-authorized local configured-owner account.
 ddev exec env LIT_OWNER_UID=4 vendor/bin/drush php:script scripts/setup-contribution-owner.php
 python3 tools/contribution/generate-mock.py --large
 ddev drush php:script scripts/setup-contribution-large-demo.php
@@ -184,7 +186,7 @@ ddev exec env LIT_OWNER_UID=YOUR_UID LIT_OWNER_EMAIL='YOUR_CONFIRMED_EMAIL' vend
 ```
 
 Normal local recovery without changing owner:
-`ddev drush user:login --name=ree32 --no-browser`.
+`ddev drush user:login --name=configured-owner --no-browser`.
 Emergency Drupal administration: `ddev drush user:login --uid=1 --no-browser`.
 Never share or commit the printed one-time URL.
 

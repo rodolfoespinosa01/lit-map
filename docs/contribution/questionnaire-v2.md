@@ -32,11 +32,11 @@ Owner login is `/lit/superadmin/login`; reviewer login is
 
 ## Content fidelity and explicit assumptions
 
-The welcome reproduces study purpose, voluntary participation, 5–8 minute
-estimate, supplied research contacts and original IRB contact details. The local
-form prominently says **LOCAL demonstration** and **no real raffle entry**. The
-original $100 gift-card statement is identified as original study text, never a
-promise made by this local form. Use fictional details when demonstrating it.
+The welcome uses neutral demonstration text and clearly labeled placeholder
+contacts at example.org. Study agreement wording is a placeholder pending the
+team's approved text. The 18+ participation checkbox remains required. The form
+prominently states **no real raffle entry**. Survey questions, choices, scales,
+conditional behavior and requested name/email fields are unchanged.
 
 The printout does not establish all required flags or branching. Development
 choices, pending team confirmation:
@@ -314,6 +314,6 @@ production email delivery, research approval, or an actual raffle.
 - Visually inspected desktop/mobile map, municipality map and mobile form screenshots. Bubbles/counts remain visible, selected municipality is marked, and content fits mobile width. Screenshots remain ignored generated artifacts.
 - Read-only admin browser: 10 passed, including anonymous denial, submitted-date controls, malformed public query rejection and stale-publication rejection.
 - PHP syntax checks and `git diff --check` passed. Private generated fixtures/configuration and screenshots remain ignored.
-- Verified owner ree32 UID 4/email unchanged, archived baseline 10,000 approved + 100 pending preserved, and live operational source count zero. New baseline explicitly activated and published; local invitation mode enabled.
+- Verified owner configured-owner UID 4/email unchanged, archived baseline 10,000 approved + 100 pending preserved, and live operational source count zero. New baseline explicitly activated and published; local invitation mode enabled.
 
 Accepted workflow testing used isolated storage and the actual Form API submit handler, not a real accepted browser submission to the live queue. Browser tests exercised rendering and invalid requests. Real production concurrency/load, native Qualtrics imports, production delivery, screen-reader testing and Drupal Media playback were not verified. Existing separately approved external resource behavior was regression-tested; no interviews were created. Temporal aggregate queries are not a formal privacy guarantee.

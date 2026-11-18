@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_breakdown
+field_name: field_lit_breakdown
+entity_type: paragraph
+bundle: lit_map
+label: 'Initially show municipality breakdown'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: false
+default_value_callback: ''
+settings: {  }
+field_type: boolean
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_breakdown
+    - paragraphs.paragraphs_type.lit_map

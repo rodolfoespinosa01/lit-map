@@ -1,0 +1,12 @@
+langcode: en
+status: true
+id: lit_map
+label: 'LiT Map'
+icon_uuid: null
+icon_default: null
+description: 'Reusable New Jersey language map.'
+behavior_plugins: {  }
+dependencies:
+  enforced:
+    module:
+      - lit_map

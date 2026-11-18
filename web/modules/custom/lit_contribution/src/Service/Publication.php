@@ -35,10 +35,11 @@ final class Publication {
         if($this->reviews->scope())$reset->condition('survey_id',$this->reviews->scope());
         if($rows)$reset->condition('id',array_keys($rows),'IN')->execute();
         if ($included) $this->db->update('lit_contribution_review')->fields(['in_publication'=>1,'published_at'=>$now])->condition('id',$included,'IN')->execute();
-        $this->db->merge('lit_contribution_publication')->key(['id'=>1])->fields(['file_hash'=>$hash,'published_at'=>$now,'publisher_uid'=>(int)$this->account->id()])->execute();
-        if($this->reviews->scope())$this->db->merge('lit_contribution_dataset')->key(['survey_id'=>$this->reviews->scope()])->fields(['file_hash'=>$hash,'published_at'=>$now,'publisher_uid'=>(int)$this->account->id()])->execute();
+        $this->db->merge('lit_contribution_publication')->keys(['id'=>1])->fields(['file_hash'=>$hash,'published_at'=>$now,'publisher_uid'=>(int)$this->account->id()])->execute();
+        if($this->reviews->scope())$this->db->merge('lit_contribution_dataset')->keys(['survey_id'=>$this->reviews->scope()])->fields(['file_hash'=>$hash,'published_at'=>$now,'publisher_uid'=>(int)$this->account->id()])->execute();
         unset($tx);
       } catch (\Throwable $e) { $tx->rollBack();throw $e; }
+      \Drupal::service('cache_tags.invalidator')->invalidateTags(['lit_map:publication']);
       return ['included'=>count($included),'records'=>count($aggregate['records']),'updated_date'=>$document['updated_date']];
     });
   }
@@ -79,7 +80,7 @@ final class Publication {
       $totals=[];
       foreach($document['aggregate']['records']??[] as $r){$key=$r['county_geoid'].'/'.$r['language'];$totals[$key]=($totals[$key]??0)+$r['response_count'];}
       ksort($totals);
-      return compact('publication','counts','details','totals','after','sameSecond','countyRecords','municipalityRecords')+['publicationVersion'=>$document['publication_version']??NULL,'aggregateVersion'=>$document['aggregate']['schema_version']??NULL,'allLanguageUnion'=>$allLanguageUnion,'publishedSubmissions'=>$publishedSubmissions]+['dataset'=>$this->source instanceof \Drupal\lit_contribution\Source\PublishedBaselineAndExports?'Selected 10,000-response synthetic baseline + operational uploads':$this->reviews->scope()]+[
+      return compact('publication','counts','details','totals','after','sameSecond','countyRecords','municipalityRecords')+['publicationVersion'=>$document['publication_version']??NULL,'aggregateVersion'=>$document['aggregate']['schema_version']??NULL,'allLanguageUnion'=>$allLanguageUnion,'publishedSubmissions'=>$publishedSubmissions]+['dataset'=>$this->source instanceof \Drupal\lit_contribution\Source\PublishedBaselineAndExports?'Selected baseline (if any) + operational uploads':$this->reviews->scope()]+[
         'matches'=>$document && $document['aggregate']===$expected['aggregate'] && $published===$expected['included'] && !$counts['unsynchronized'],
       ];
     });

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_heading
+field_name: field_lit_heading
+entity_type: paragraph
+bundle: lit_map
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'New Jersey language survey'
+default_value_callback: ''
+settings: {  }
+field_type: string
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_heading
+    - paragraphs.paragraphs_type.lit_map

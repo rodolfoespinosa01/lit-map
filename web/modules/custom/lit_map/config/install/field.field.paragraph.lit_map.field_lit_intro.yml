@@ -1,0 +1,18 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_intro
+field_name: field_lit_intro
+entity_type: paragraph
+bundle: lit_map
+label: Introduction
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_intro
+    - paragraphs.paragraphs_type.lit_map
