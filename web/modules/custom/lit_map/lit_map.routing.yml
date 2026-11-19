@@ -25,3 +25,34 @@ lit_map.interaction_preview:
     _permission: 'access content'
   options:
     no_cache: TRUE
+
+lit_map.dataset:
+  path: '/admin/content/lit-map-dataset'
+  defaults:
+    _form: '\Drupal\lit_map\Form\DatasetForm'
+    _title: 'LiT map dataset'
+  requirements:
+    _permission: 'administer site configuration'
+
+lit_map.panels:
+  path: '/lit-map/questionnaire-aggregates'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\QuestionPanelController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+lit_map.legacy_map:
+  path: '/lit-map/contribution-preview'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\LegacyMapController::redirect'
+  requirements:
+    _permission: 'access content'
+
+lit_map.legacy_entry:
+  path: '/lit'
+  defaults:
+    _controller: '\Drupal\lit_map\Controller\LegacyMapController::redirect'
+  requirements:
+    _permission: 'access content'

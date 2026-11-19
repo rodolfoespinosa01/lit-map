@@ -15,7 +15,7 @@ $display->setComponent('title',['type'=>'string_textfield'])->setComponent('fiel
 $display=EntityViewDisplay::load('node.lit_demo_page.default')?:EntityViewDisplay::create(['targetEntityType'=>'node','bundle'=>'lit_demo_page','mode'=>'default','status'=>TRUE]);$display->setComponent('field_lit_components',['type'=>'entity_reference_revisions_entity_view','label'=>'hidden','settings'=>['view_mode'=>'default','link'=>FALSE]])->save();
 $nodes=\Drupal::entityTypeManager()->getStorage('node');$ids=$nodes->getQuery()->accessCheck(FALSE)->condition('type','lit_demo_page')->condition('title','LiT reusable component demonstration')->execute();
 if(!$ids){
-  $source=\Drupal::hasService('lit_contribution.publication')?'published':'informational';
+  $source='informational';
   $first=Paragraph::create(['type'=>'lit_map','field_lit_heading'=>'New Jersey language survey','field_lit_source'=>$source,'field_lit_municipalities'=>TRUE]);
   $second=Paragraph::create(['type'=>'lit_map','field_lit_heading'=>'Independent Bergen comparison','field_lit_source'=>$source,'field_lit_municipalities'=>FALSE]);
   $refs=\Drupal::service('lit_map.references');

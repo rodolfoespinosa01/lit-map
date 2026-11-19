@@ -21,7 +21,7 @@ final class SurveyNormalizer {
   public function normalize(array $input, array $countyMetadata, array $references): array {
     if (($input['schema_version']??NULL)===4)return $this->normalizeDaily($input,$countyMetadata,$references);
     if (($input['schema_version']??NULL)===3) return $this->normalizeCombinations($input,$countyMetadata,$references);
-    $this->require(($input['schema_version'] ?? NULL) === 2 && ($input['synthetic'] ?? NULL) === TRUE, 'Unsupported or non-synthetic dataset.');
+    $this->require(($input['schema_version'] ?? NULL) === 2 && is_bool($input['synthetic'] ?? NULL), 'Unsupported dataset.');
     $this->require(!array_diff(array_keys($input), ['schema_version', 'synthetic', 'records']), 'Unexpected dataset fields.');
     $this->require(isset($input['records']) && is_array($input['records']) && array_is_list($input['records']), 'Records must be a list.');
     $counties = [];
@@ -66,7 +66,7 @@ final class SurveyNormalizer {
     }
     return [
       'schemaVersion' => 2,
-      'synthetic' => TRUE,
+      'synthetic' => $input['synthetic'],
       'counties' => array_values($counties),
       'languages' => array_values($languages),
       'municipalities' => array_values($municipalities),
@@ -115,7 +115,7 @@ final class SurveyNormalizer {
     $all=$this->normalize(['schema_version'=>3,'synthetic'=>$input['synthetic'],'records'=>$input['records'],'groups'=>$input['groups']],$counties,$refs);
     $byDay=[];$sums=[];
     foreach(['daily_records'=>'records','daily_groups'=>'groups'] as $source=>$target){$this->require(is_array($input[$source]) && array_is_list($input[$source]),'Daily rows required.');foreach($input[$source] as $r){$day=$r['day']??NULL;$this->require(array_key_exists('day',$r),'Missing day.');if($day!==NULL){$d=is_string($day)?\DateTimeImmutable::createFromFormat('!Y-m-d',$day):FALSE;$this->require($d && $d->format('Y-m-d')===$day,'Invalid local date.');}unset($r['day']);$byDay[$day??'_undated'][$target][]=$r;$key=$target.'/'.$r['county_geoid'].'/'.($r['municipality']??'_unspecified').'/'.($target==='records'?$r['language']:implode(',',$r['languages']));$sums[$key]=($sums[$key]??0)+$r['response_count'];}}
-    $daily=[];foreach($byDay as $day=>$parts){$dto=$this->normalize(['schema_version'=>3,'synthetic'=>TRUE,'records'=>$parts['records']??[],'groups'=>$parts['groups']??[]],$counties,$refs);$daily[]=['day'=>$day==='_undated'?NULL:$day,'totals'=>$dto['totals'],'breakdown'=>$dto['breakdown'],'combinations'=>$dto['combinations']];}
+    $daily=[];foreach($byDay as $day=>$parts){$dto=$this->normalize(['schema_version'=>3,'synthetic'=>$input['synthetic'],'records'=>$parts['records']??[],'groups'=>$parts['groups']??[]],$counties,$refs);$daily[]=['day'=>$day==='_undated'?NULL:$day,'totals'=>$dto['totals'],'breakdown'=>$dto['breakdown'],'combinations'=>$dto['combinations']];}
     $expected=[];foreach(['records','groups'] as $target)foreach($input[$target] as $r){$key=$target.'/'.$r['county_geoid'].'/'.($r['municipality']??'_unspecified').'/'.($target==='records'?$r['language']:implode(',',$r['languages']));$expected[$key]=$r['response_count'];}ksort($expected);ksort($sums);$this->require($expected===$sums,'Daily counts disagree with all-time groups.');
     $all['schemaVersion']=4;$all['days']=$daily;$all['timezone']='America/New_York';return $all;
   }

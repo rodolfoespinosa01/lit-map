@@ -15,19 +15,26 @@ const base=process.env.LIT_TEST_BASE||'https://rutgers-lit-m1.ddev.site';const c
   await choose(field('field_lit_languages','[0][target_id]'),'English');
   await choose(field('field_lit_resources','[0][target_id]'),'Local test document');
   await field('field_lit_source','').selectOption('informational');
+  await field('field_lit_survey_url','[0][uri]').fill('https://example.org/qualtrics-test');
+  await field('field_lit_survey_show','[value]').check();
   await page.locator('[name="status[value]"]').check();
   await page.getByRole('button',{name:'Save',exact:true}).click();await page.waitForURL(/\/node\/\d+$/);
   const publicUrl=page.url();const anonymous=await browser.newContext();const viewer=await anonymous.newPage();await viewer.goto(publicUrl,{waitUntil:'networkidle'});
   assert.equal(await viewer.locator('.lit-bubbles h2').textContent(),'Editor-created map');
   assert.equal(await viewer.locator('select[data-county] option').count(),2);
   assert.equal(await viewer.locator('[data-languages] input').count(),1);
+  assert.equal(await viewer.locator('[data-invitation]').getAttribute('href'),'https://example.org/qualtrics-test');
+  assert((await viewer.textContent('body')).includes('The survey opens on Qualtrics'));
+  await viewer.locator('[data-filter-disclosure]').evaluate(n=>n.open=true);
   await viewer.locator('select[data-county]').selectOption('34003');
   assert.equal(await viewer.locator('[data-resource-link]').count(),1);
-  await page.goto(publicUrl+'/edit',{waitUntil:'networkidle'});await field('field_lit_heading').fill('Edited map heading');
+  await page.goto(publicUrl+'/edit',{waitUntil:'networkidle'});await field('field_lit_heading').fill('Edited map heading');await field('field_lit_survey_show','[value]').uncheck();
   await page.getByRole('button',{name:'Save',exact:true}).click();await page.waitForURL(publicUrl);await viewer.reload({waitUntil:'networkidle'});
   assert.equal(await viewer.locator('.lit-bubbles h2').textContent(),'Edited map heading');
-  await page.goto(publicUrl+'/edit',{waitUntil:'networkidle'});await page.locator('[name="status[value]"]').uncheck();await page.getByRole('button',{name:'Save',exact:true}).click();await page.waitForURL(publicUrl);
-  await anonymous.close();console.log('PASS: editor created a Paragraph page, selected terms/source/Media resource, saved, viewed anonymously, edited and saw updated markup. Test page retained as an unpublished draft.');
+  assert.equal(await viewer.locator('[data-invitation]').count(),0);
+  await page.goto(base+'/admin/content/lit-map-dataset',{waitUntil:'networkidle'});assert.equal(await page.locator('input[type=file]').count(),1);
+  await page.goto(publicUrl+'/delete',{waitUntil:'networkidle'});await page.getByRole('button',{name:'Delete',exact:true}).click();
+  await anonymous.close();console.log('PASS: editor created a Paragraph page, selected terms/source/Media resource, saved, viewed anonymously, edited and saw updated markup. External survey show/hide and standard dataset editor verified. Temporary page deleted.');
 
  }finally{await browser.close();}
 })().catch(e=>{console.error(e.message);process.exit(1);});

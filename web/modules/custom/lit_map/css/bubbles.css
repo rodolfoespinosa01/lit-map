@@ -79,24 +79,24 @@
 .lit-bubbles__count-callouts > g:focus rect { stroke:#b54c00; stroke-width:3; }
 
 /* Contribution bubbles: translucent categorical color, high-contrast numbers. */
-.lit-bubbles--approved .lit-bubbles__stage { background:radial-gradient(ellipse at 30% 20%,#fff 0,#eef5f7 70%); }
-.lit-bubbles--approved .lit-bubbles__bubble .disc { fill-opacity:.56; stroke:#365865; stroke-width:1.4; }
-.lit-bubbles--approved .lit-bubbles__segment { fill-opacity:.62; }
-.lit-bubbles--approved .lit-bubbles__edge { stroke:#365865; stroke-width:1.4; }
-.lit-bubbles--approved .lit-bubbles__bubble text { fill:#102f3b; stroke:#fff; stroke-width:3px; stroke-linejoin:round; font-weight:750; }
-.lit-bubbles--approved .lit-bubbles__shine { opacity:.75; pointer-events:none; }
-.lit-bubbles--approved .lit-bubbles__bubble.is-selected .disc,
-.lit-bubbles--approved .lit-bubbles__bubble:focus-visible .disc,
-.lit-bubbles--approved .lit-bubbles__bubble.is-selected .lit-bubbles__edge { stroke:#8b183d; stroke-width:3; }
-.lit-bubbles--approved .lit-bubbles__bubble.is-zero .disc { fill-opacity:1; }
-.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) { opacity:1; }
-.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) .disc { fill-opacity:.35; }
-.lit-bubbles--approved.has-town-selection .lit-bubbles__bubble:not(.is-selected) .lit-bubbles__segment { fill-opacity:.4; }
+.lit-bubbles--dataset .lit-bubbles__stage { background:radial-gradient(ellipse at 30% 20%,#fff 0,#eef5f7 70%); }
+.lit-bubbles--dataset .lit-bubbles__bubble .disc { fill-opacity:.56; stroke:#365865; stroke-width:1.4; }
+.lit-bubbles--dataset .lit-bubbles__segment { fill-opacity:.62; }
+.lit-bubbles--dataset .lit-bubbles__edge { stroke:#365865; stroke-width:1.4; }
+.lit-bubbles--dataset .lit-bubbles__bubble text { fill:#102f3b; stroke:#fff; stroke-width:3px; stroke-linejoin:round; font-weight:750; }
+.lit-bubbles--dataset .lit-bubbles__shine { opacity:.75; pointer-events:none; }
+.lit-bubbles--dataset .lit-bubbles__bubble.is-selected .disc,
+.lit-bubbles--dataset .lit-bubbles__bubble:focus-visible .disc,
+.lit-bubbles--dataset .lit-bubbles__bubble.is-selected .lit-bubbles__edge { stroke:#8b183d; stroke-width:3; }
+.lit-bubbles--dataset .lit-bubbles__bubble.is-zero .disc { fill-opacity:1; }
+.lit-bubbles--dataset.has-town-selection .lit-bubbles__bubble:not(.is-selected) { opacity:1; }
+.lit-bubbles--dataset.has-town-selection .lit-bubbles__bubble:not(.is-selected) .disc { fill-opacity:.35; }
+.lit-bubbles--dataset.has-town-selection .lit-bubbles__bubble:not(.is-selected) .lit-bubbles__segment { fill-opacity:.4; }
 .lit-bubbles__anchor-line { stroke:#476b79; stroke-width:1; stroke-opacity:.65; }
 .lit-bubbles__anchor-dot { fill:#163b46; stroke:white; stroke-width:1; }
 .lit-bubbles__selection { fill:none; stroke:#8b183d; stroke-width:2; opacity:0; pointer-events:none; }
 .lit-bubbles__bubble.is-selected .lit-bubbles__selection,.lit-bubbles__bubble:focus-visible .lit-bubbles__selection { opacity:1; }
-.lit-bubbles--approved [data-selected-details] > [data-combined-count] { font-size:1.22rem; font-weight:700; }
+.lit-bubbles--dataset [data-selected-details] > [data-combined-count] { font-size:1.22rem; font-weight:700; }
 .lit-bubbles__resources { margin:1.2rem 0; border-top:1px solid #b9cdd4; }
 .lit-bubbles__resource { border:1px solid #a9bec7; border-radius:10px; background:white; padding:1rem; margin:.8rem 0; }
 .lit-bubbles__resource h5 { margin:0 0 .5rem; font-size:1rem; }

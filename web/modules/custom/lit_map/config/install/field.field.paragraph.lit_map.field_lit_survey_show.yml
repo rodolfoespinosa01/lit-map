@@ -1,0 +1,18 @@
+langcode: en
+status: true
+id: paragraph.lit_map.field_lit_survey_show
+field_name: field_lit_survey_show
+entity_type: paragraph
+bundle: lit_map
+label: 'Show external Qualtrics survey link'
+description: 'Optional external HTTPS link. Drupal does not collect responses or detect survey completion.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: boolean
+dependencies:
+  config:
+    - field.storage.paragraph.field_lit_survey_show
+    - paragraphs.paragraphs_type.lit_map

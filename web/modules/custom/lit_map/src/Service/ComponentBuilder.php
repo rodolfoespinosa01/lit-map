@@ -29,22 +29,18 @@ final class ComponentBuilder {
   }
   public function build(string $source='informational', ?ParagraphInterface $paragraph=NULL): array {
     if (!in_array($source,['informational','published'],TRUE)) throw new \InvalidArgumentException('Unknown LiT source.');
-    $cache=(new CacheableMetadata())->setCacheTags(['taxonomy_term_list:lit_counties','taxonomy_term_list:lit_languages','node_list:lit_resource','lit_map:publication','config:media.settings'])->setCacheContexts(['user.permissions','user.node_grants:view','languages:language_content'])->setCacheMaxAge(300);
+    $cache=(new CacheableMetadata())->setCacheTags(['taxonomy_term_list:lit_counties','taxonomy_term_list:lit_languages','node_list:lit_resource','lit_map:dataset','config:media.settings'])->setCacheContexts(['user.permissions','user.node_grants:view','languages:language_content'])->setCacheMaxAge(300);
     $data=NULL;$public=NULL;$date=NULL;$invitation=NULL;
     try {
-      if($source==='published' && \Drupal::hasService('lit_contribution.publication')) {
-        $public=\Drupal::service('lit_contribution.publication')->publicData();
-        if($public && !in_array($public['survey']['schemaVersion'],[3,4],TRUE))throw new \RuntimeException('A combination aggregate is required for published union counts.');
-        if($public){$data=\Drupal::service('lit_map.bubble_data')->load($public['survey']);$date=$public['date'];}
-        $invitation=\Drupal::service('lit_contribution.invitation')->url();
-        $cache->addCacheTags(['config:lit_contribution.settings']);
+      $public=\Drupal::service('lit_map.dataset')->publicData();
+      if($public){$data=\Drupal::service('lit_map.bubble_data')->load($public['survey']);$date=$public['date'];}
+      if($paragraph && $paragraph->hasField('field_lit_survey_show') && $paragraph->field_lit_survey_show->value){
+        $url=$paragraph->field_lit_survey_url->uri;
+        if(EditorialResources::safeUrl($url))$invitation=$url;
       }
-      elseif($source==='informational') $data=\Drupal::service('lit_map.bubble_data')->load();
     } catch(\Throwable $e) { \Drupal::logger('lit_map')->error('Component data unavailable: @type',['@type'=>get_class($e)]); }
-    // Development fixtures are intentionally read on every request.
-    if($source==='informational')$cache->setCacheMaxAge(0);
     $id=Html::getUniqueId('lit-map-'.($paragraph?$paragraph->uuid():$source));
-    $build=['#theme'=>'lit_map_bubble_preview','#instance_id'=>$id,'#svg'=>$this->svg($id), '#available'=>$data!==NULL,'#approved_preview'=>$source==='published','#publication_date'=>$date,'#empty_publication'=>$public!==NULL && empty($public['survey']['combinations']),'#invitation_url'=>$invitation,'#attached'=>['library'=>['lit_map/bubbles']]];
+    $build=['#theme'=>'lit_map_bubble_preview','#instance_id'=>$id,'#svg'=>$this->svg($id), '#available'=>$data!==NULL,'#dataset_map'=>TRUE,'#synthetic'=>$public['survey']['synthetic']??FALSE,'#publication_date'=>$date,'#empty_publication'=>$public!==NULL && empty($public['survey']['combinations']),'#invitation_url'=>$invitation,'#attached'=>['library'=>['lit_map/bubbles']]];
     $references=\Drupal::service('lit_map.references');
     $allowed=[];$anonymous=new AnonymousUserSession();
     foreach(['counties'=>'lit_counties','languages'=>'lit_languages'] as $kind=>$vid){
@@ -83,8 +79,8 @@ final class ComponentBuilder {
       $cards=array_values(array_filter($cards,fn($r)=>(!$r['county'] || isset($allowed['counties'][$r['county']])) && (bool)array_intersect($r['languages'],array_keys($allowed['languages']??[]))));
       $build['#resources']=$cards;
       $data['communities']=array_values(array_filter($data['communities']??[],fn($c)=>isset($allowed['counties'][$c['county']])));
-      $settings=$data+['openingPreset'=>$source==='published','emptyPublication'=>$build['#empty_publication'],'allowedCounties'=>array_keys($allowed['counties']??[]),'publicationHash'=>$public['hash']??NULL,'today'=>(new \DateTimeImmutable('now',new \DateTimeZone('America/New_York')))->format('Y-m-d'),'resources'=>array_map(fn($r)=>array_diff_key($r,['card'=>TRUE]),$cards)];
-      if($source==='published' && \Drupal::hasService('lit_contribution.publication'))$settings['panelsUrl']=\Drupal\Core\Url::fromRoute('lit_contribution.panels')->toString();
+      $settings=$data+['openingPreset'=>TRUE,'emptyPublication'=>$build['#empty_publication'],'allowedCounties'=>array_keys($allowed['counties']??[]),'publicationHash'=>$public['hash']??NULL,'today'=>(new \DateTimeImmutable('now',new \DateTimeZone('America/New_York')))->format('Y-m-d'),'resources'=>array_map(fn($r)=>array_diff_key($r,['card'=>TRUE]),$cards)];
+      $settings['panelsUrl']=\Drupal\Core\Url::fromRoute('lit_map.panels')->toString();
       if($paragraph){
         $settings['stateKey']='p'.$paragraph->uuid();
         $settings['municipalitiesEnabled']=(bool)$paragraph->field_lit_municipalities->value;

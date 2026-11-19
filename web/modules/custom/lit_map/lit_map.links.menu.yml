@@ -1,0 +1,5 @@
+lit_map.dataset:
+  title: 'LiT map dataset'
+  description: 'Validate and replace a complete informational map dataset.'
+  route_name: lit_map.dataset
+  parent: system.admin_content

@@ -47,7 +47,7 @@
     if(state.from)params.set('lit_from',state.from);if(state.through)params.set('lit_through',state.through);
     return result;
   }
-  /** Union of disjoint approved-submission groups, never a sum of marginals. */
+  /** Union of disjoint response groups, never a sum of marginals. */
   function combined(data, selected) {
     if(data.schemaVersion<3)throw Error('Combination aggregate required');
     const totals={},breakdown={},languages=new Set(selected);

@@ -12,7 +12,7 @@ function lit_map_theme($existing, $type, $theme, $path): array {
   return [
     'paragraph__lit_map'=>['base hook'=>'paragraph','render element'=>'elements','template'=>'paragraph--lit-map'],
     'lit_map_bubble_preview' => [
-      'variables' => ['available' => FALSE, 'instance_id' => NULL, 'publication_date' => NULL, 'invitation_url' => NULL, 'approved_preview' => FALSE, 'empty_publication' => FALSE, 'resources' => [], 'heading'=>NULL, 'intro'=>NULL, 'fallback'=>NULL, 'svg'=>NULL],
+      'variables' => ['available' => FALSE, 'instance_id' => NULL, 'publication_date' => NULL, 'invitation_url' => NULL, 'dataset_map' => FALSE, 'synthetic'=>FALSE, 'empty_publication' => FALSE, 'resources' => [], 'heading'=>NULL, 'intro'=>NULL, 'fallback'=>NULL, 'svg'=>NULL],
     ],
     'lit_map_interaction_preview' => [
       'variables' => ['available' => FALSE],

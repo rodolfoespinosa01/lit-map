@@ -78,10 +78,10 @@
         if(state.dateError){el('p','Invalid date range; no questionnaire results.',panel);return;}
         if(!state.languages.length){el('p','Select languages to view questionnaire aggregates.',panel);return;}
         const url=new URL(config.panelsUrl,location.origin);(config.allowedCounties||[]).forEach(c=>url.searchParams.append('counties[]',c));if(config.publicationHash)url.searchParams.set('publication',config.publicationHash);state.languages.forEach(l=>url.searchParams.append('languages[]',l));for(const [k,v] of Object.entries({county:state.county,municipality:state.municipality,from:state.from,through:state.through}))if(v)url.searchParams.set(k,v);
-        el('p','Loading approved questionnaire aggregates…',panel);
+        el('p','Loading questionnaire aggregates…',panel);
         try{const response=await fetch(url,{credentials:'same-origin',signal:controller.signal});if(!response.ok)throw Error('Unavailable');const d=await response.json();if(token!==renderToken)return;panel.replaceChildren();el('p',d.notice,panel);el('p',`${d.legacyWithoutQuestionnaire} matching legacy responses have no questionnaire answers. Minimum answered-response threshold: ${d.threshold}.`,panel);if(!d.panels.length)el('p','No questionnaire results for this selection.',panel);
           for(const p of d.panels){const box=el('details',null,panel);el('summary',p.label,box);if(p.suppressed){el('p','Suppressed: too few answered responses or a small answer/missing breakdown.',box);continue;}el('p',`${p.answered} answered of ${p.eligible} applicable responses; ${p.missing} missing.`,box);const list=el('ul',null,box);p.values.forEach(v=>el('li',`${v.label}: ${v.count} survey responses`,list));}
-        }catch(e){if(token===renderToken){panel.replaceChildren();el('p','Questionnaire aggregates unavailable or publication changed. Refresh the map to align all results.',panel);}}
+        }catch(e){if(token===renderToken){panel.replaceChildren();el('p','Questionnaire aggregates unavailable or dataset changed. Refresh the map to align all results.',panel);}}
       }
       const chooseCounty = county => change({county, municipality:'', breakdown:state.breakdown || Boolean(config.defaultBreakdown), level:county ? ((state.breakdown || config.defaultBreakdown) && config.municipalitiesEnabled !== false ? 'municipality' : 'county') : 'nj'});
       const chooseTown = municipality => change({municipality, breakdown:true, level:'municipality'});
@@ -206,7 +206,7 @@
         el('h4','Recordings and resources',section);
         if(!state.county){el('p','Select a bubble or place to explore related recordings and resources.',section);return;}
         const matches=(config.resources||[]).filter(r=>M.resourceMatches(r,state));
-        if(!matches.length){el('p','No approved resources available for this selection.',section);return;}
+        if(!matches.length){el('p','No resources available for this selection.',section);return;}
         el('p','Related resources are separate from survey responses. County-wide and statewide resources may also appear for a selected town.',section);
         matches.forEach(r=>{const card=$('[data-resource-templates]')?.content.querySelector(`[data-resource-card="${r.id}"]`);if(card)section.append(card.cloneNode(true));});
       }
@@ -215,7 +215,7 @@
         const county=countyById[state.county],selectedTown=state.municipality;
         const place=selectedTown?(selectedTown==='_unspecified'?'Municipality unspecified':townById[selectedTown].name):county?county.name+' County':'County survey responses';
         $('[data-results-heading]').textContent=place;
-        $('[data-summary]').textContent=state.level==='usa'?'USA overview is context only. Select New Jersey to explore synthetic survey responses.':!state.languages.length?'Choose languages to size bubbles. With a county selected, all its available languages are listed below.':unionMode?`${unionLabel}. Each matching approved submission is counted once per area. Individual language counts overlap and must not be added together.`:`Numbers and bubble size: ${languageById[state.active]} survey responses. Other languages are comparisons.`;
+        $('[data-summary]').textContent=state.level==='usa'?'USA overview is context only. Select New Jersey to explore survey responses.':!state.languages.length?'Choose languages to size bubbles. With a county selected, all its available languages are listed below.':unionMode?`${unionLabel}. Each matching response is counted once per area. Individual language counts overlap and must not be added together.`:`Numbers and bubble size: ${languageById[state.active]} survey responses. Other languages are comparisons.`;
         if(state.level==='usa')return;
         if(county) {
           const summary=el('section',null,target,{'data-selected-details':''});
@@ -364,7 +364,7 @@
         if(unionMode){data=M.dated(originalData,state);combined=M.combined(data,state.languages);}
         if($('[data-date-from]')){
           $('[data-date-from]').value=state.from;$('[data-date-through]').value=state.through;
-          $('[data-date-status]').textContent=state.dateError?'Invalid date range. Choose valid dates with From on or before Through.':`${state.from||'All dates'} through ${state.through||'latest publication'} · America/New_York. ${data.undated||0} undated legacy responses are included only in All time. Date filters use submitted dates, not approval or publication dates.`;
+          $('[data-date-status]').textContent=state.dateError?'Invalid date range. Choose valid dates with From on or before Through.':`${state.from||'All dates'} through ${state.through||'latest supplied date'} · America/New_York. ${data.undated||0} undated legacy responses are included only in All time. Date filters use source submission dates.`;
           if(!state.dateError && (state.from||state.through) && !Object.values(combined.totals).some(n=>n>0))$('[data-date-status]').textContent+=' No published responses match these dates and languages.';
           const summary=$('[data-filter-disclosure] summary');if(summary)summary.textContent='Change languages, places and submission dates · '+(state.dateError?'Invalid dates':(state.from||state.through)?`${state.from||'earliest'} – ${state.through||'latest'}`:'All time');
           loadPanels(token);
@@ -397,7 +397,7 @@
         if(config.openingPreset){
           const count=state.languages.length?data.counties.filter(c=>countAt(c.geoid)!==undefined).length:0;
           $('[data-opening-status]').textContent=state.languages.length?(unionMode?`${unionLabel}. Numbers and bubble area count each matching submission once.`:`Numbers and bubble size: ${languageById[state.active]} survey responses.`):'Languages cleared. Choose a language or reset to the opening preset.';
-          $('[data-coverage]').textContent=state.languages.length?`Approved publication: ${count} of ${data.counties.length} counties have records for the selected languages. Other counties have No data available, not zero. City mode displays published municipality records; unspecified responses remain in the county total.`:'No language selected; bubbles are hidden until you choose a language.';
+          $('[data-coverage]').textContent=state.languages.length?`Dataset coverage: ${count} of ${data.counties.length} counties have records for the selected languages. Other counties have No data available, not zero. City mode displays supplied municipality records; unspecified responses remain in the county total.`:'No language selected; bubbles are hidden until you choose a language.';
 
         }
         results();legend();

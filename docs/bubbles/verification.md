@@ -1,3 +1,5 @@
+> Historical Milestone 4 record. The bubble route now uses the informational full-file dataset and distinct-response unions. The old active-language/fixture-refresh browser tests were retired; use [current component verification](../component/verification.md) and [dataset instructions](../dataset.md).
+
 # Milestone 4 verification — 2026-11-13
 
 Preview: <https://rutgers-lit-m1.ddev.site/lit-map/bubble-preview>

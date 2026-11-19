@@ -17,3 +17,12 @@ services:
     class: Drupal\lit_map\Service\ComponentBuilder
   lit_map.resources:
     class: Drupal\lit_map\Service\EditorialResources
+  lit_map.dataset_validator:
+    class: Drupal\lit_map\Service\SubmissionValidator
+    arguments: ['%app.root%']
+  lit_map.dataset_writer:
+    class: Drupal\lit_map\Service\AtomicAggregateWriter
+    arguments: ['%app.root%']
+  lit_map.dataset:
+    class: Drupal\lit_map\Service\Dataset
+    arguments: ['@lit_map.dataset_writer', '@lit_map.dataset_validator', '@lit_map.survey_normalizer']

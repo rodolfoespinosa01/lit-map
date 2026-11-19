@@ -1,1 +1,0 @@
-(function(Drupal,once){'use strict';Drupal.behaviors.litSignIn={attach(context){once('lit-signin','[data-lit-signin-token]',context).forEach(input=>{const token=new URLSearchParams(location.hash.slice(1)).get('token');history.replaceState(null,'',location.pathname);if(/^[a-f0-9]{64}$/.test(token||''))input.value=token;});}};})(Drupal,once);

@@ -80,7 +80,7 @@ rejects(function (&$f) { $f['records'][0]['municipality'] = 'newark'; }, 'Munici
 rejects(function (&$f) { $f['records'][0]['email'] = 'not-retained@example.test'; }, 'Unexpected personal fields');
 rejects(function (&$f) { $f['county_totals'] = []; }, 'Separate county totals rejected');
 rejects(function (&$f) { $f['schema_version'] = 1; }, 'Unsupported schema');
-rejects(function (&$f) { $f['synthetic'] = FALSE; }, 'Non-synthetic fixture');
+rejects(function (&$f) { $f['synthetic'] = 'false'; }, 'Synthetic flag must be boolean');
 rejects(function (&$f) { $f['records'] = ['invalid' => []]; }, 'Records must be a list');
 rejects(function (&$f) { $f['records'][0] = 'invalid'; }, 'Record must be an object');
 rejects(function (&$f) { $f['records'][0]['response_count'] = 9007199254740991; }, 'Aggregate overflow rejected');

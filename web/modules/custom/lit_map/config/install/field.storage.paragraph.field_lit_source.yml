@@ -8,10 +8,10 @@ settings:
   allowed_values:
     -
       value: informational
-      label: 'Informational synthetic fixture'
+      label: 'Active informational dataset'
     -
       value: published
-      label: 'Approved publication (requires LiT contribution)'
+      label: 'Active informational dataset (legacy value)'
 module: options
 locked: false
 cardinality: 1

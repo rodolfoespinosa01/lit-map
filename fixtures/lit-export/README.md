@@ -1,13 +1,8 @@
-# Simulated export—not yet verified against Qualtrics
+# Synthetic normalized examples
 
-The legacy `example` CSV and JSON files contain the same seven fictional records with reserved
-example-domain emails. They are normalized interchange examples, not real
-Qualtrics column names or actual LiT contributions. Record 5 repeats the local
-synthetic baseline's first record so the preview can demonstrate idempotency.
-See [format and walkthrough](../../docs/contribution/export-upload.md).
-
-On a newly seeded host with different baseline timestamps, regenerate both using
-`python3 tools/contribution/make-export-examples.py` before using the examples.
-This updates only synthetic examples, never the source or review database.
-
-Current downloads use `questionnaire-v2.json` and `questionnaire-v2.csv`: five fictional rows covering valid, duplicate, invalid-consent and unresolved-language cases. See [questionnaire mapping and assumptions](../../docs/contribution/questionnaire-v2.md). Both formats contain the same private normalized schema-v2 records; they are not native Qualtrics exports.
+`example.json/csv` contain provisional version-1 answers;
+`questionnaire-v2.json/csv` contain the retained version-2 questionnaire format.
+These are synthetic fixtures, not native Qualtrics exports. The envelope has no
+email field. Importing one replaces the complete active dataset; use an isolated
+site for testing or reseed the 10,000-response demonstration afterward.
+See [the file contract](../../docs/dataset.md).
